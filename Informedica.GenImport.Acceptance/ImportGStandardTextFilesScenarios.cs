@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Informedica.GenImport.Acceptance
 {
-    public class HelloWorld
+    public class ImportGStandardTextFilesScenarios
     {
-        public string SayHelloWorld ()
+        public bool DirectoryExists(string directory)
         {
-            return "Hello World";
+            return false;
         }
     }
 }
