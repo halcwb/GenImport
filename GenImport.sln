@@ -3,9 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Acceptance", "Informedica.GenImport.Acceptance\Informedica.GenImport.Acceptance.csproj", "{03C9FA43-68D0-4086-B378-9B1CCD9FFA83}"
 EndProject
-<<<<<<< HEAD
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport", "Informedica.GenImport\Informedica.GenImport.csproj", "{5C690F53-C120-4C78-A1A1-9EA5CA04EAE2}"
-=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport", "Informedica.GenImport\Informedica.GenImport.csproj", "{260E85C8-6A3E-4C4A-9983-F2ADE9652612}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Tests", "Informedica.GenImport.Tests\Informedica.GenImport.Tests.csproj", "{2127E5FF-CB20-4AAD-9681-6312B386D5C5}"
@@ -16,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Local.testsettings = Local.testsettings
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
->>>>>>> remotes/update/master
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -31,12 +27,6 @@ Global
 		{03C9FA43-68D0-4086-B378-9B1CCD9FFA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03C9FA43-68D0-4086-B378-9B1CCD9FFA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03C9FA43-68D0-4086-B378-9B1CCD9FFA83}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-		{5C690F53-C120-4C78-A1A1-9EA5CA04EAE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C690F53-C120-4C78-A1A1-9EA5CA04EAE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C690F53-C120-4C78-A1A1-9EA5CA04EAE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C690F53-C120-4C78-A1A1-9EA5CA04EAE2}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
 		{260E85C8-6A3E-4C4A-9983-F2ADE9652612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{260E85C8-6A3E-4C4A-9983-F2ADE9652612}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260E85C8-6A3E-4C4A-9983-F2ADE9652612}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,7 +35,6 @@ Global
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> remotes/update/master
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
