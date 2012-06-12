@@ -9,6 +9,11 @@ namespace Informedica.GenImport.Acceptance
     {
         public bool DirectoryExists(string directory)
         {
+            return true;
+        }
+
+        public bool CanFindGStandardFilesInDirectory(string directory)
+        {
             return false;
         }
     }
