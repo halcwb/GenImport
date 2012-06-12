@@ -43,7 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDatabaseService.cs" />
+    <Compile Include="Packing.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductForm.cs" />
+    <Compile Include="ProductUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Substance.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
