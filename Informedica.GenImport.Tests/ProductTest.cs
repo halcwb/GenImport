@@ -10,9 +10,9 @@ namespace Informedica.GenImport.Tests
     /// Summary description for UnitTest1
     /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class ProductTest
     {
-        public UnitTest1()
+        public ProductTest()
         {
             //
             // TODO: Add constructor logic here

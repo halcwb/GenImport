@@ -47,7 +47,7 @@
     <Compile Include="Packing.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductForm.cs" />
-    <Compile Include="ProductUnit.cs" />
+    <Compile Include="Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Substance.cs" />
   </ItemGroup>

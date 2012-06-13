@@ -6,5 +6,6 @@ namespace Informedica.GenImport
     {
         IEnumerable<Product> GetProducts();
         bool ProductExists(string productName);
+        void UpdateProduct(Product product);
     }
 }
