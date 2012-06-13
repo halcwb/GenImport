@@ -21,5 +21,10 @@ namespace Informedica.GenImport.Acceptance
         {
             return false;
         }
+
+        public bool IsWatchingGStandardDirectoryForChanges(string directory)
+        {
+            return false;
+        }
     }
 }
