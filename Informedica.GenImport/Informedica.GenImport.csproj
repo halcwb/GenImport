@@ -38,7 +38,9 @@
       <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,6 +54,12 @@
     </Compile>
     <Compile Include="GenImportService.Designer.cs">
       <DependentUpon>GenImportService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenImportServiceInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GenImportServiceInstaller.Designer.cs">
+      <DependentUpon>GenImportServiceInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

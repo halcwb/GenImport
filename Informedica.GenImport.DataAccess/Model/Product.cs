@@ -18,9 +18,7 @@ namespace Informedica.GenImport.DataAccess.Model
         #region IEquatable
         public bool Equals(Product other)
         {
-            bool areEqual = GenericName == other.GenericName;
-
-            return areEqual;
+            throw new NotImplementedException();
         }
         #endregion
     }
