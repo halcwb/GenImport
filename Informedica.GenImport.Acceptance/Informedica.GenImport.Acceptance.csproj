@@ -53,12 +53,16 @@
     <Compile Include="EchoUtility.cs" />
     <Compile Include="ImportGStandardTextFilesScenarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateProductScenarios.cs" />
+    <Compile Include="AddOrUpdateProduct.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Informedica.GenImport.DataAccess\Informedica.GenImport.DataAccess.csproj">
+      <Project>{1C415EAC-FEA9-45FD-9102-2289EA610E8F}</Project>
+      <Name>Informedica.GenImport.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenImport\Informedica.GenImport.csproj">
       <Project>{260E85C8-6A3E-4C4A-9983-F2ADE9652612}</Project>
       <Name>Informedica.GenImport</Name>

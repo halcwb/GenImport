@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Informedica.GenImport
+namespace Informedica.GenImport.DataAccess.Model
 {
     public class Product : IEquatable<Product>
     {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Informedica.GenImport.DataAccess.Model;
 
 namespace Informedica.GenImport
 {
