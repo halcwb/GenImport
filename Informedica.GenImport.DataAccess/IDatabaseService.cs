@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Informedica.GenImport.DataAccess.Model;
+using Informedica.GenImport.Library.DomainModel.Product;
 
-namespace Informedica.GenImport
+namespace Informedica.GenImport.DataAccess
 {
     public interface IDatabaseService
     {

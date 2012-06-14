@@ -12,29 +12,14 @@ namespace Informedica.GenImport
 {
     partial class GenImportService : ServiceBase
     {
-        private readonly FileSystemWatcher _watcher;
-
         public GenImportService()
         {
             InitializeComponent();
-            
-            _watcher = new FileSystemWatcher
-            {
-                NotifyFilter = NotifyFilters.DirectoryName | NotifyFilters.FileName | NotifyFilters.LastAccess | NotifyFilters.LastWrite,
-                Filter = "*.*",
-                Path = "" //TODO add path
-            };
-            _watcher.Changed += OnChanged;
-            _watcher.Created += OnChanged;
-            _watcher.Deleted += OnChanged;
-
-            components.Add(_watcher);
         }
 
         protected override void OnStart(string[] args)
         {
-            //begin watching
-            _watcher.EnableRaisingEvents = true;
+            //TODO add logic
         }
 
         private static void OnChanged(object sender, FileSystemEventArgs e)
@@ -44,8 +29,7 @@ namespace Informedica.GenImport
 
         protected override void OnStop()
         {
-            //stop watching
-            _watcher.EnableRaisingEvents = false;
+            //TODO add logic
         }
     }
 }

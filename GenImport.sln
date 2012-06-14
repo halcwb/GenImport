@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Services", "Informedica.GenImport.Services\Informedica.GenImport.Services.csproj", "{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenForm.Library.DomainModel.Interfaces", "..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj", "{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Library", "Informedica.GenImport.Library\Informedica.GenImport.Library.csproj", "{E29A9DB3-9FA2-4627-B2CC-58792AF61951}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenImport.vsmdi
@@ -59,6 +63,14 @@ Global
 		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E29A9DB3-9FA2-4627-B2CC-58792AF61951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E29A9DB3-9FA2-4627-B2CC-58792AF61951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E29A9DB3-9FA2-4627-B2CC-58792AF61951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E29A9DB3-9FA2-4627-B2CC-58792AF61951}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

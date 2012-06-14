@@ -1,5 +1,5 @@
 ﻿using fitlibrary;
-using Informedica.GenImport.DataAccess.Model;
+using Informedica.GenImport.Library.DomainModel.Product;
 
 namespace Informedica.GenImport.Acceptance
 {
@@ -34,19 +34,7 @@ namespace Informedica.GenImport.Acceptance
 
         private Product CreateProduct()
         {
-            Product product = new Product
-                              {
-                                  ProductCode = ProductCode,
-                                  Brand = Brand,
-                                  Form = new ProductForm { ProductFormId = 1, Name = Productform },
-                                  GenericName = GenericName,
-                                  Synonyms = Synonyms,
-                                  Packing = new Packing { PackingId = 1, Name = Packing },
-                                  Quantity = Quantity,
-                                  Unit = new Unit { Name = ProductUnit, UnitId = 1 },
-                                  Substances = new[] { new Substance { SubstanceId = 1, Name = Substance, Order = 1, Quantity = SubstanceQuantity } },
-                                  SmallestDispensingUnit = SmallestDispenceUnit
-                              };
+            Product product = new Product();
             return product;
         }
     }

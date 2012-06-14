@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Informedica.GenImport.DataAccess.Model;
+using Informedica.GenImport.DataAccess;
+using Informedica.GenImport.Library.DomainModel.Product;
 using Moq;
 using System.Linq;
 
