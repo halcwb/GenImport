@@ -9,6 +9,8 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
 
         public int NmNr { get; set; }
 
+        public string NmMemo { get; set; }
+
         public string NmEtiket { get; set; }
 
         public string NmNm40 { get; set; }
