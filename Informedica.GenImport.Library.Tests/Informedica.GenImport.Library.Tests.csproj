@@ -48,6 +48,7 @@
     <Compile Include="FileLinePositionAttributeShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NaamShould.cs" />
+    <Compile Include="ReflectionUtilityShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">

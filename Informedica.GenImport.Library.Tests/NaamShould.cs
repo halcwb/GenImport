@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Informedica.GenImport.Library.DomainModel.GStandard;
+using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
 
@@ -19,13 +21,15 @@ namespace Informedica.GenImport.Library.Tests
         [TestMethod]
         public void Have_A_LinePositionAttribute_On_All_Known_Public_Properties()
         {
-            var expectedPositionsOnProperties = new Dictionary<string, int[]>{
-                                                                                 {"MutKod", new[]{5, 5}},
-                                                                                 {"NmNr", new[]{6, 12}},
-                                                                                 {"NmMemo", new[]{13, 18}},
-                                                                                 {"NmEtiket", new[]{19, 45}},
-                                                                                 {"NmNm40", new[]{46, 85}},
-                                                                                 {"NmNaam", new[]{86, 135}},
+            var naam = new Naam();
+
+            var expectedPositionsOnProperties = new Dictionary<MemberInfo, int[]>{
+                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.MutKod), new[]{5, 5}},
+                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmNr), new[]{6, 12}},
+                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmMemo), new[]{13, 18}},
+                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmEtiket), new[]{19, 45}},
+                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmNm40), new[]{46, 85}},
+                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmNaam), new[]{86, 135}},
                                                                              };
 
             Assert.AreEqual(expectedPositionsOnProperties.Count, _naamType.GetProperties(TestBindingFlags).Count(),
@@ -37,23 +41,16 @@ namespace Informedica.GenImport.Library.Tests
             }
         }
 
-        private void CheckIfPropertyHasLinePositionAttribute(KeyValuePair<string, int[]> expectedPositionsOnProperty)
+        private static void CheckIfPropertyHasLinePositionAttribute(KeyValuePair<MemberInfo, int[]> expectedPositionsOnProperty)
         {
-            var propertyInfo = _naamType.GetProperty(expectedPositionsOnProperty.Key, BindingFlags.Public | BindingFlags.Instance);
+            var propertyInfo = expectedPositionsOnProperty.Key;
             int expectedStartPosition = expectedPositionsOnProperty.Value[0];
             int expectedEndPosition = expectedPositionsOnProperty.Value[1];
-            var attribute = GetAttribute<FileLinePositionAttribute>(propertyInfo);
+            var attribute = ReflectionUtility.GetAttribute<FileLinePositionAttribute>(propertyInfo);
 
             Assert.IsNotNull(attribute, "Property should have a LinePositionAttribute");
             Assert.AreEqual(expectedStartPosition, attribute.StartPosition);
             Assert.AreEqual(expectedEndPosition, attribute.EndPosition);
-        }
-
-        private static TAttribute GetAttribute<TAttribute>(MemberInfo member)
-             where TAttribute : Attribute
-        {
-            if (member == null) throw new ArgumentNullException("member");
-            return member.GetCustomAttributes(typeof(TAttribute), false).SingleOrDefault() as TAttribute;
         }
     }
 }
