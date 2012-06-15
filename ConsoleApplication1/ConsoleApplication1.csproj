@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{D22DF759-CF74-4AC6-B802-876774D7AAB2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Informedica.GenImport.Library</RootNamespace>
-    <AssemblyName>Informedica.GenImport.Library</AssemblyName>
+    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <AssemblyName>ConsoleApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,32 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainModel\GStandard\Artikel.cs" />
-    <Compile Include="DomainModel\GStandard\Interfaces\IArtikel.cs" />
-    <Compile Include="DomainModel\GStandard\Interfaces\INaam.cs" />
-    <Compile Include="DomainModel\GStandard\MutKod.cs" />
-    <Compile Include="DomainModel\GStandard\Naam.cs" />
-    <Compile Include="DomainModel\Product\Brand.cs" />
-    <Compile Include="DomainModel\Product\Package.cs" />
-    <Compile Include="DomainModel\Product\Product.cs" />
-    <Compile Include="DomainModel\Product\ProductSubstance.cs" />
-    <Compile Include="DomainModel\Product\Route.cs" />
-    <Compile Include="DomainModel\Product\Shape.cs" />
-    <Compile Include="DomainModel\Product\Substance.cs" />
-    <Compile Include="DomainModel\Product\SubstanceGroup.cs" />
-    <Compile Include="DomainModel\Product\Unit.cs" />
-    <Compile Include="DomainModel\Product\UnitGroup.cs" />
-    <Compile Include="DomainModel\Product\UnitValue.cs" />
-    <Compile Include="FileLinePositionAttribute.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
-      <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
-      <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
+    <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">
+      <Project>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</Project>
+      <Name>Informedica.GenImport.Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

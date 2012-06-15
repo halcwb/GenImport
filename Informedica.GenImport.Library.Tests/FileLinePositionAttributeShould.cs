@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.DataAccess.Tests
+namespace Informedica.GenImport.Library.Tests
 {
     [TestClass]
-    public class LinePositionAttributeShould
+    public class FileLinePositionAttributeShould
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
