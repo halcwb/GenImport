@@ -5,9 +5,9 @@
     /// </summary>
     public enum MutKod
     {
-        NoChanges = 0,
-        RemoveRecord = 1,
-        ChangeRecord = 3,
-        AddRecord = 3
+        RecordNotChanged = 0,
+        RecordDeleted = 1,
+        RecordUpdated = 3,
+        RecordAdded = 3
     }
 }

@@ -1,9 +1,7 @@
 ﻿namespace Informedica.GenImport.Library.DomainModel.GStandard.Interfaces
 {
-    public interface INaam
+    public interface INaam : IGStandardModel
     {
-        
-
         /// <summary>
         /// Mutatiekode
         /// </summary>
@@ -12,6 +10,10 @@
         /// Naamnummer
         /// </summary>
         int NmNr { get; set; }
+        /// <summary>
+        /// Memokode
+        /// </summary>
+        string NmMemo { get; set; }
         /// <summary>
         /// Etiketnaam
         /// </summary>
