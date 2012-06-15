@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using Informedica.GenImport.Library.DomainModel.GStandard;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,9 +8,6 @@ using System.Reflection;
 
 namespace Informedica.GenImport.Library.Tests
 {
-    /// <summary>
-    /// Summary description for UnitTest1
-    /// </summary>
     [TestClass]
     public class NaamShould
     {
@@ -22,15 +18,15 @@ namespace Informedica.GenImport.Library.Tests
         public void Have_A_LinePositionAttribute_On_All_Known_Public_Properties()
         {
             var naam = new Naam();
-
-            var expectedPositionsOnProperties = new Dictionary<MemberInfo, int[]>{
-                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.MutKod), new[]{5, 5}},
-                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmNr), new[]{6, 12}},
-                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmMemo), new[]{13, 18}},
-                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmEtiket), new[]{19, 45}},
-                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmNm40), new[]{46, 85}},
-                                                                                 {ReflectionUtility.GetMemberInfo(() => naam.NmNaam), new[]{86, 135}},
-                                                                             };
+            var expectedPositionsOnProperties = new Dictionary<MemberInfo, int[]>
+            {
+                {ReflectionUtility.GetMemberInfo(() => naam.MutKod), new[]{5, 5}},
+                {ReflectionUtility.GetMemberInfo(() => naam.NmNr), new[]{6, 12}},
+                {ReflectionUtility.GetMemberInfo(() => naam.NmMemo), new[]{13, 18}},
+                {ReflectionUtility.GetMemberInfo(() => naam.NmEtiket), new[]{19, 45}},
+                {ReflectionUtility.GetMemberInfo(() => naam.NmNm40), new[]{46, 85}},
+                {ReflectionUtility.GetMemberInfo(() => naam.NmNaam), new[]{86, 135}},
+            };
 
             Assert.AreEqual(expectedPositionsOnProperties.Count, _naamType.GetProperties(TestBindingFlags).Count(),
                             "All properties must be tested on LinePositionAttribute");
