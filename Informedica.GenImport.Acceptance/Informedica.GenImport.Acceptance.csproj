@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
+      <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
+      <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenImport.DataAccess\Informedica.GenImport.DataAccess.csproj">
       <Project>{1C415EAC-FEA9-45FD-9102-2289EA610E8F}</Project>
       <Name>Informedica.GenImport.DataAccess</Name>

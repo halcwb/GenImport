@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModel\GStandard\Artikel.cs" />
+    <Compile Include="DomainModel\GStandard\Interfaces\IArtikel.cs" />
+    <Compile Include="DomainModel\GStandard\Interfaces\INaam.cs" />
+    <Compile Include="DomainModel\GStandard\MutKod.cs" />
+    <Compile Include="DomainModel\GStandard\Naam.cs" />
     <Compile Include="DomainModel\Product\Brand.cs" />
     <Compile Include="DomainModel\Product\Package.cs" />
     <Compile Include="DomainModel\Product\Product.cs" />
@@ -54,8 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DomainModel\GStandard\" />
-    <Folder Include="DomainModel\Interfaces\" />
+    <Folder Include="Mappings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">

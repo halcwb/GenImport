@@ -10,5 +10,11 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
+
+        public int AtNmNr
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
     }
 }

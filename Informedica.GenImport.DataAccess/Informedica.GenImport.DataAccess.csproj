@@ -41,12 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDatabaseService.cs" />
+    <Compile Include="FileLinePositionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

@@ -45,7 +45,14 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinePositionAttributeShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Informedica.GenImport.DataAccess\Informedica.GenImport.DataAccess.csproj">
+      <Project>{1C415EAC-FEA9-45FD-9102-2289EA610E8F}</Project>
+      <Name>Informedica.GenImport.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
