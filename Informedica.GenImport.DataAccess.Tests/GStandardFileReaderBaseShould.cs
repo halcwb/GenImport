@@ -53,7 +53,8 @@ namespace Informedica.GenImport.DataAccess.Tests
             gStandardFileReaderBaseMock.ParseLineToModel(line);
         }
 
-        [TestMethod]
+        //TODO add test
+        //[TestMethod]
         public void Skip_FileLine_And_Log_When_Exception_Is_Thrown_On_FileLine()
         {
             //TODO create logic

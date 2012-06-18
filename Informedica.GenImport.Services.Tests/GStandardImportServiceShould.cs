@@ -7,24 +7,25 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.Services.Tests
 {
+    //TODO add tests
     [TestClass]
     public class GStandardImportServiceShould
     {
-        [TestMethod]
+        //[TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throw_ArgumentNullException_If_Constructor_Is_Called_With_Database_Directory_Null()
         {
 
         }
 
-        [TestMethod]
+        //[TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
         public void Throw_DirectoryNotFoundException_If_Constructor_Is_Called_With_Invalid_Database_Directory()
         {
 
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Start_Watching_Database_Directory_For_Changes_When_Started()
         {
             IImportService importService = new GStandardImportService(@"c:\temp");
@@ -32,7 +33,7 @@ namespace Informedica.GenImport.Services.Tests
             Assert.IsTrue(false);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Stop_Watching_Database_Directory_For_Changes_When_Stopped()
         {
             IImportService importService = new GStandardImportService(@"c:\temp");
