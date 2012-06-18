@@ -45,6 +45,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtikelShould.cs" />
+    <Compile Include="AttributeCheck.cs" />
     <Compile Include="FileLinePositionAttributeShould.cs" />
     <Compile Include="MathUtilsShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

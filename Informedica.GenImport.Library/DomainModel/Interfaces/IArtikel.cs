@@ -9,6 +9,10 @@ namespace Informedica.GenImport.Library.DomainModel.Interfaces
         /// </summary>
         MutKod MutKod { get; set; }
         /// <summary>
+        /// ZI-nummer
+        /// </summary>
+        int AtKode { get; set; }
+        /// <summary>
         /// HandelsProduktKode
         /// </summary>
         int HpKode { get; set; }

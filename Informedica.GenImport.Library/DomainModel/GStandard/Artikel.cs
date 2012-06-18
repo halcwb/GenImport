@@ -8,6 +8,12 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
         
         public MutKod MutKod { get; set; }
 
+        public int AtKode
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
         public int HpKode
         {
             get { throw new NotImplementedException(); }
