@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileReaderBase.cs" />
-    <Compile Include="GStandardFileReaderBase.cs" />
+    <Compile Include="GStandard\GStandardFileAttribute.cs" />
+    <Compile Include="GStandard\GStandardFileReaderBase.cs" />
     <Compile Include="IDatabaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

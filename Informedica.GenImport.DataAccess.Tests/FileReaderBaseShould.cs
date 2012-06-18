@@ -21,22 +21,21 @@ namespace Informedica.GenImport.DataAccess.Tests
         {
             protected override ModelMock ParseLineToModel(string line)
             {
-                return new ModelMock{Line = line};
+                return new ModelMock { Line = line };
             }
         }
         #endregion
 
         [TestMethod]
-        public void Should_Read_Multiple_Lines_From_Stream()
+        public void Should_Read_Lines_From_Stream_And_Parse_To_Model()
         {
             const int expectedLineCount = 3;
             string data = "line 1" + Environment.NewLine;
             data += "line 2" + Environment.NewLine;
             data += "line 3";
 
-            byte[] dataBytes = UTF8Encoding.Default.GetBytes(data);
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             MemoryStream memoryStream = new MemoryStream(dataBytes);
-
             FileReaderBaseMock fileReaderBaseMock = new FileReaderBaseMock();
             IEnumerable<ModelMock> lines = fileReaderBaseMock.ReadLines(memoryStream);
 

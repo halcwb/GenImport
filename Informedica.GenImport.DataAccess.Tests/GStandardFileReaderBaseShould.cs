@@ -1,4 +1,10 @@
-﻿using Informedica.GenImport.Library.DomainModel.GStandard;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using Informedica.GenImport.DataAccess.GStandard;
+using Informedica.GenImport.Library.DomainModel.GStandard;
 using Informedica.GenImport.Library.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -53,9 +59,24 @@ namespace Informedica.GenImport.DataAccess.Tests
             gStandardFileReaderBaseMock.ParseLineToModel(line);
         }
 
-        //TODO add test
-        //[TestMethod]
-        public void Skip_FileLine_And_Log_When_Exception_Is_Thrown_On_FileLine()
+        [TestMethod]
+        public void Skip_FileLine_When_CannotParseLineException_Is_Thrown_On_FileLine()
+        {
+            const int expectedLineCount = 1;
+            string data = @"002000000005ABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000" + Environment.NewLine;
+            data += @"00200000000ZABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000";
+
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            MemoryStream memoryStream = new MemoryStream(dataBytes);
+            GStandardFileReaderBaseMock fileReaderBaseMock = new GStandardFileReaderBaseMock();
+            IEnumerable<Naam> lines = fileReaderBaseMock.ReadLines(memoryStream);
+
+            Assert.IsNotNull(lines);
+            Assert.AreEqual(expectedLineCount, lines.Count());
+        }
+
+        [TestMethod]
+        public void Log_When_CannotParseLineException_Is_Thrown_On_FileLine()
         {
             //TODO create logic
             Assert.Fail();

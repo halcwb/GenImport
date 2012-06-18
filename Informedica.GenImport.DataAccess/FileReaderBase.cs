@@ -1,24 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using Informedica.GenForm.DomainModel.Interfaces;
-using Informedica.GenImport.Library.DomainModel;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
+using Informedica.GenImport.Library.Exceptions;
 
 namespace Informedica.GenImport.DataAccess
 {
-    public abstract class FileReaderBase<TModel> 
-        where TModel : IModel
+    public abstract class FileReaderBase<TModel>
+        where TModel : class, IModel
     {
-        
-        public IEnumerable<TModel> ReadLines(Stream inputStream)
+        public virtual IEnumerable<TModel> ReadLines(Stream inputStream)
         {
-            
-            throw new NotImplementedException();
+            using (StreamReader streamReader = new StreamReader(inputStream))
+            {
+                string line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    TModel model = TryParseLine(line);
+                    if(model != null)
+                    {
+                        yield return model;
+                    }
+                }
+            }
         }
-        
+
+        private TModel TryParseLine(string line)
+        {
+            TModel model = null;
+            try
+            {
+                model = ParseLineToModel(line);
+            }
+            catch (CannotParseLineException ex)
+            {
+                //TODO log
+                Debug.WriteLine(string.Format("Cannot parse line to model. Reason: {0}", ex.StackTrace));
+            }
+            return model;
+        }
+
         protected abstract TModel ParseLineToModel(string line);
     }
 }

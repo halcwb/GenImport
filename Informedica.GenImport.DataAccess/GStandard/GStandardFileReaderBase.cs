@@ -1,19 +1,15 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Globalization;
+using System.Reflection;
 using Informedica.GenImport.Library;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
 using Informedica.GenImport.Library.Reflection;
-using System.Reflection;
 
-namespace Informedica.GenImport.DataAccess
+namespace Informedica.GenImport.DataAccess.GStandard
 {
     public abstract class GStandardFileReaderBase<TModel> : FileReaderBase<TModel>
-        where TModel : IGStandardModel, new()
+        where TModel : class, IGStandardModel, new()
     {
-
-
         protected override TModel ParseLineToModel(string line)
         {
             try
