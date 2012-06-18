@@ -46,8 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileSerializerBaseShould.cs" />
-    <Compile Include="GStandardFileAttributeShould.cs" />
     <Compile Include="GStandardFileSerializerBaseShould.cs" />
+    <Compile Include="GStandardNamenFileSerializerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
