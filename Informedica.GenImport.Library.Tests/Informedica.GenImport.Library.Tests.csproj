@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileLinePositionAttributeShould.cs" />
+    <Compile Include="MathUtilsShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NaamShould.cs" />
     <Compile Include="ReflectionUtilityShould.cs" />

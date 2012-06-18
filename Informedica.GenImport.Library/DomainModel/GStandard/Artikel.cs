@@ -5,6 +5,9 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
 {
     public class Artikel : IArtikel
     {
+        
+        public MutKod MutKod { get; set; }
+
         public int HpKode
         {
             get { throw new NotImplementedException(); }
