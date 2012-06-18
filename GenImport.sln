@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Libra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Library.Tests", "Informedica.GenImport.Library.Tests\Informedica.GenImport.Library.Tests.csproj", "{B03A2E8D-836B-47B9-8FDB-ED593101A973}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{34FCDA00-F550-41EF-A609-F0E381A600BF}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenImport.vsmdi
@@ -144,5 +146,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB71C04A-3359-4F7F-9030-F78C3FE4C760} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
+		{B03A2E8D-836B-47B9-8FDB-ED593101A973} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
+		{25F6E816-6C6B-4A89-BCB0-9EC45552C155} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
+		{2127E5FF-CB20-4AAD-9681-6312B386D5C5} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
+		{03C9FA43-68D0-4086-B378-9B1CCD9FFA83} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 	EndGlobalSection
 EndGlobal

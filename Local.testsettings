@@ -1,10 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <TestSettings name="Local" id="fb30524c-08a6-4c9d-a065-725b58ce999b" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Description>These are default test settings for a local test run.</Description>
-  <Deployment enabled="false" />
   <Execution>
-    <TestTypeSpecific />
-    <AgentRule name="Execution Agents">
+    <TestTypeSpecific>
+      <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+        <AssemblyResolution>
+          <TestDirectory useLoadContext="true" />
+        </AssemblyResolution>
+      </UnitTestRunConfig>
+    </TestTypeSpecific>
+    <AgentRule name="LocalMachineDefaultRole">
+      <DataCollectors>
+        <DataCollector uri="datacollector://microsoft/CodeCoverage/1.0" assemblyQualifiedName="Microsoft.VisualStudio.TestTools.CodeCoverage.CoveragePlugIn, Microsoft.VisualStudio.QualityTools.Plugins.CodeCoverage, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" friendlyName="Code Coverage">
+          <Configuration>
+            <CodeCoverage xmlns="">
+              <Regular>
+                <CodeCoverageItem binaryFile="Informedica.GenImport.Services\bin\Debug\Informedica.GenImport.Services.dll" pdbFile="Informedica.GenImport.Services\bin\Debug\Informedica.GenImport.Services.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Informedica.GenImport.Library\bin\Debug\Informedica.GenImport.Library.dll" pdbFile="Informedica.GenImport.Library\bin\Debug\Informedica.GenImport.Library.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="Informedica.GenImport.DataAccess\bin\Debug\Informedica.GenImport.DataAccess.dll" pdbFile="Informedica.GenImport.DataAccess\bin\Debug\Informedica.GenImport.DataAccess.pdb" instrumentInPlace="true" />
+              </Regular>
+            </CodeCoverage>
+          </Configuration>
+        </DataCollector>
+      </DataCollectors>
     </AgentRule>
   </Execution>
 </TestSettings>
