@@ -1,5 +1,5 @@
 ﻿using System;
-using Informedica.GenImport.Library.DomainModel.GStandard.Interfaces;
+using Informedica.GenImport.Library.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.Library.DomainModel.GStandard
 {

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileReaderBase.cs" />
     <Compile Include="GStandardFileReaderBase.cs" />
     <Compile Include="IDatabaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

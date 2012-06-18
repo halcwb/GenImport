@@ -45,6 +45,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileReaderBaseShould.cs" />
     <Compile Include="GStandardFileReaderBaseShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

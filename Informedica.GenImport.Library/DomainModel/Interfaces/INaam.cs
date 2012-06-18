@@ -1,4 +1,6 @@
-﻿namespace Informedica.GenImport.Library.DomainModel.GStandard.Interfaces
+﻿using Informedica.GenImport.Library.DomainModel.GStandard;
+
+namespace Informedica.GenImport.Library.DomainModel.Interfaces
 {
     public interface INaam : IGStandardModel
     {

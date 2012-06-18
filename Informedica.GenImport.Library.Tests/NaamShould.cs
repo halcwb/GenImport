@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Informedica.GenImport.Library.DomainModel.GStandard;
-using Informedica.GenImport.Library.DomainModel.GStandard.Interfaces;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;

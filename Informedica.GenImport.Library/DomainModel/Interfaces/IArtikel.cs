@@ -1,4 +1,4 @@
-﻿namespace Informedica.GenImport.Library.DomainModel.GStandard.Interfaces
+﻿namespace Informedica.GenImport.Library.DomainModel.Interfaces
 {
     public interface IArtikel : IGStandardModel
     {

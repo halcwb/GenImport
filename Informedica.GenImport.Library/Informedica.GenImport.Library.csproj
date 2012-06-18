@@ -41,11 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\GStandard\Artikel.cs" />
-    <Compile Include="DomainModel\GStandard\Interfaces\IArtikel.cs" />
-    <Compile Include="DomainModel\GStandard\Interfaces\IGStandardModel.cs" />
-    <Compile Include="DomainModel\GStandard\Interfaces\INaam.cs" />
     <Compile Include="DomainModel\GStandard\MutKod.cs" />
     <Compile Include="DomainModel\GStandard\Naam.cs" />
+    <Compile Include="DomainModel\Interfaces\IArtikel.cs" />
+    <Compile Include="DomainModel\Interfaces\IGStandardModel.cs" />
+    <Compile Include="DomainModel\Interfaces\IModel.cs" />
+    <Compile Include="DomainModel\Interfaces\INaam.cs" />
     <Compile Include="DomainModel\Product\Brand.cs" />
     <Compile Include="DomainModel\Product\Package.cs" />
     <Compile Include="DomainModel\Product\Product.cs" />
