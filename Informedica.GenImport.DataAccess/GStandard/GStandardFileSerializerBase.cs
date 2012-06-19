@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Reflection;
-using Informedica.GenImport.Library;
 using Informedica.GenImport.Library.Attributes;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
 using Informedica.GenImport.Library.Reflection;
+using Informedica.GenImport.Library.Validation;
 
 namespace Informedica.GenImport.DataAccess.GStandard
 {
@@ -21,6 +21,9 @@ namespace Informedica.GenImport.DataAccess.GStandard
                     object value = GetValue(properyInfo, line);
                     properyInfo.SetValue(model, value, null);
                 }
+
+                //TODO when to validate model? And what do we do with the result(s)?
+                Validator.Validate(model);
 
                 return model;
             }

@@ -11,9 +11,9 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
         [FileLinePosition(6, 13)]
         [Modulo11]
         public int AtKode { get; set; }
-
-        [Modulo11]
+        
         [FileLinePosition(14, 21)]
+        [Modulo11]
         public int HpKode { get; set; }
 
         [FileLinePosition(22, 28)]

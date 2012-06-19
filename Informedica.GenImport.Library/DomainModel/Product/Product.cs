@@ -15,10 +15,7 @@ namespace Informedica.GenImport.Library.DomainModel.Product
             get { throw new NotImplementedException(); }
         }
 
-        public string ProductCode
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public string ProductCode { get; set; }
 
         public string GenericName
         {
