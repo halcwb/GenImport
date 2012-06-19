@@ -1,4 +1,5 @@
 ﻿using System;
+using Informedica.GenImport.Library.Attributes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.Library.Tests

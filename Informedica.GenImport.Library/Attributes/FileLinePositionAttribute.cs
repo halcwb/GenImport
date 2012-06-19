@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Informedica.GenImport.Library
+namespace Informedica.GenImport.Library.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class FileLinePositionAttribute : Attribute

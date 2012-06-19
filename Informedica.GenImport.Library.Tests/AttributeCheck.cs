@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using Informedica.GenImport.Library.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

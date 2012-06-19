@@ -1,29 +1,20 @@
-﻿using System;
+﻿using Informedica.GenImport.Library.Attributes;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.Library.DomainModel.GStandard
 {
     public class Artikel : IArtikel
     {
-        
+        [FileLinePosition(5, 5)]
         public MutKod MutKod { get; set; }
 
-        public int AtKode
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        [FileLinePosition(6, 13)]
+        public int AtKode { get; set; }
 
-        public int HpKode
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        [FileLinePosition(14, 21)]
+        public int HpKode { get; set; }
 
-        public int AtNmNr
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        [FileLinePosition(22, 28)]
+        public int AtNmNr { get; set; }
     }
 }

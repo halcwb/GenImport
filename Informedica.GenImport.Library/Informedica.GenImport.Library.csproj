@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\FileLinePositionAttribute.cs" />
+    <Compile Include="Attributes\Modulo11Attribute.cs" />
     <Compile Include="DomainModel\GStandard\Artikel.cs" />
     <Compile Include="DomainModel\GStandard\MutKod.cs" />
     <Compile Include="DomainModel\GStandard\Naam.cs" />
@@ -59,10 +61,11 @@
     <Compile Include="DomainModel\Product\UnitGroup.cs" />
     <Compile Include="DomainModel\Product\UnitValue.cs" />
     <Compile Include="Exceptions\CannotParseLineException.cs" />
-    <Compile Include="FileLinePositionAttribute.cs" />
     <Compile Include="Utilities\MathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\ReflectionUtility.cs" />
+    <Compile Include="Validation\IValidationAttribute.cs" />
+    <Compile Include="Validation\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mappings\" />

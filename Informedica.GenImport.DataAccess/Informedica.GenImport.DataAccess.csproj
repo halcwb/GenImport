@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileSerializerBase.cs" />
+    <Compile Include="GStandard\GStandardArtikelenFileSerializer.cs" />
     <Compile Include="GStandard\GStandardFileSerializerBase.cs" />
     <Compile Include="GStandard\GStandardNamenFileSerializer.cs" />
+    <Compile Include="GStandard\Interfaces\IGStandardArtikelenFileSerializer.cs" />
     <Compile Include="GStandard\Interfaces\IGStandardNamenFileSerializer.cs" />
     <Compile Include="IFileSerializerBase.cs" />
     <Compile Include="GStandard\Interfaces\IGStandardFileSerializerBase.cs" />

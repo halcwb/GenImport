@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Informedica.GenImport.Library;
+using Informedica.GenImport.Library.Attributes;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
 using Informedica.GenImport.Library.Reflection;

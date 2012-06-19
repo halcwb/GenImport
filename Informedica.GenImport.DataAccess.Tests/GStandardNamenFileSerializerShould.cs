@@ -14,22 +14,18 @@ namespace Informedica.GenImport.DataAccess.Tests
     public class GStandardNamenFileSerializerShould
     {
         [TestMethod]
-        public void Read_All_Lines()
+        public void Parse_All_Lines_To_Model()
         {
             const int expectedLineCount = 5;
             string data =
                 @"002000000001AAMBZ AAMBEIENZETPIL VOGEL       AAMBEIENZETPIL VOGEL                    AAMBEIENZETPIL VOGEL                              0000000000000000000000000" +
-                Environment.NewLine;
-            data +=
+                Environment.NewLine +
                 @"002000000002ABBOI2ABBOKINASE 250.000IE INJPDRABBOKINASE                              ABBOKINASE INJECTIEPOEDER FLACON 250.000IE        0000000000000000000000000" +
-                Environment.NewLine;
-            data +=
+                Environment.NewLine +
                 @"002000000003ABBOT2ABBOTICINE 200MG KAUWTABLETABBOTICINE                              ABBOTICINE KAUWTABLET 200MG                       0000000000000000000000000" +
-                Environment.NewLine;
-            data +=
+                Environment.NewLine +
                 @"002000000005ABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000" +
-                Environment.NewLine;
-            data +=
+                Environment.NewLine +
                 @"002000000007ABC V6ABC VERB NR7  6,85MX3,75CM ABC VERBAND                             ABC VERBAND NR7  6,85MX3,75CM                     0000000000000000000000000" +
                 Environment.NewLine;
 
@@ -46,8 +42,10 @@ namespace Informedica.GenImport.DataAccess.Tests
         public void Skip_Line_When_CannotParseLineException_Is_Thrown()
         {
             const int expectedLineCount = 1;
-            string data = @"002000000005ABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000" + Environment.NewLine;
-            data += @"00200000000ZABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000";
+            string data =
+                @"002000000005ABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000" +
+                Environment.NewLine +
+                @"00200000000ZABC V5ABC VERB NR2  5MX2,5CM     ABC VERBAND                             ABC VERBAND NR2  5,00MX2,50CM                     0000000000000000000000000";
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             MemoryStream memoryStream = new MemoryStream(dataBytes);

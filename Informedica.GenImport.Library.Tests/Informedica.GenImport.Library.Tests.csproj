@@ -49,9 +49,11 @@
     <Compile Include="AttributeCheck.cs" />
     <Compile Include="FileLinePositionAttributeShould.cs" />
     <Compile Include="MathUtilsShould.cs" />
+    <Compile Include="Modulo11AttributeShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NaamShould.cs" />
     <Compile Include="ReflectionUtilityShould.cs" />
+    <Compile Include="ValidatorShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">

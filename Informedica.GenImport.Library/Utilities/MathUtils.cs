@@ -4,7 +4,7 @@ namespace Informedica.GenImport.Library.Utilities
 {
     public class MathUtils
     {
-        public static bool IsValidMod11(int value)
+        public static bool IsValidModulo11(int value)
         {
             short intLength = IntLength(value);
 
