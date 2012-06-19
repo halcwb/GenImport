@@ -9,8 +9,10 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
         public MutKod MutKod { get; set; }
 
         [FileLinePosition(6, 13)]
+        [Modulo11]
         public int AtKode { get; set; }
 
+        [Modulo11]
         [FileLinePosition(14, 21)]
         public int HpKode { get; set; }
 

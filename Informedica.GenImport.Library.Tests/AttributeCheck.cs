@@ -19,5 +19,12 @@ namespace Informedica.GenImport.Library.Tests
             Assert.AreEqual(expectedStartPosition, attribute.StartPosition);
             Assert.AreEqual(expectedEndPosition, attribute.EndPosition);
         }
+
+        internal static void CheckIfPropertyHasModulo11Attribute(MemberInfo memberInfo)
+        {
+            var attribute = ReflectionUtility.GetAttribute<FileLinePositionAttribute>(memberInfo);
+
+            Assert.IsNotNull(attribute, "Property should have a Modulo11Attribute");
+        }
     }
 }
