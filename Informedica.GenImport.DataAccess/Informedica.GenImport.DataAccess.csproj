@@ -44,14 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileSerializerBase.cs" />
-    <Compile Include="GStandard\GStandardArtikelenFileSerializer.cs" />
+    <Compile Include="GStandard\ArtikelenFileSerializer.cs" />
     <Compile Include="GStandard\GStandardFileSerializerBase.cs" />
-    <Compile Include="GStandard\GStandardNamenFileSerializer.cs" />
-    <Compile Include="GStandard\Interfaces\IGStandardArtikelenFileSerializer.cs" />
-    <Compile Include="GStandard\Interfaces\IGStandardNamenFileSerializer.cs" />
+    <Compile Include="GStandard\NamenFileSerializer.cs" />
+    <Compile Include="GStandard\ThesauriTotaalFileSerializer.cs" />
     <Compile Include="IFileSerializerBase.cs" />
-    <Compile Include="GStandard\Interfaces\IGStandardFileSerializerBase.cs" />
-    <Compile Include="IDatabaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructureMap\GStandardFileSerializerRegistry.cs" />
   </ItemGroup>

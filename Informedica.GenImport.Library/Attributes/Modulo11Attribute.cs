@@ -22,7 +22,7 @@ namespace Informedica.GenImport.Library.Attributes
         private static void Validate(object o, PropertyInfo propertyInfo, IList<string> errors)
         {
             object value = propertyInfo.GetValue(o, null);
-            if (!MathUtils.IsValidModulo11((int)value))
+            if (!MathUtility.IsValidModulo11((int)value))
             {
                 errors.Add(string.Format(ValidationMessage, propertyInfo.Name, value));
             }

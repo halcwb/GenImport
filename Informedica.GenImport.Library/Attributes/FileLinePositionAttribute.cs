@@ -2,7 +2,7 @@
 
 namespace Informedica.GenImport.Library.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class FileLinePositionAttribute : Attribute
     {
         public int StartPosition { get; set; }

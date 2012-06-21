@@ -15,7 +15,7 @@ namespace Informedica.GenImport.Library.Tests
             int expectedEndPosition = expectedPositionsOnProperty.Value[1];
             var attribute = ReflectionUtility.GetAttribute<FileLinePositionAttribute>(propertyInfo);
 
-            Assert.IsNotNull(attribute, "Property should have a LinePositionAttribute");
+            Assert.IsNotNull(attribute, string.Format("Property {0} should have a LinePositionAttribute", propertyInfo.Name));
             Assert.AreEqual(expectedStartPosition, attribute.StartPosition);
             Assert.AreEqual(expectedEndPosition, attribute.EndPosition);
         }

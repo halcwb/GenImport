@@ -49,6 +49,7 @@
     <Compile Include="GStandardArtikelenFileSerializerShould.cs" />
     <Compile Include="GStandardFileSerializerBaseShould.cs" />
     <Compile Include="GStandardNamenFileSerializerShould.cs" />
+    <Compile Include="GstandardThesauriTotaalFileSerializerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

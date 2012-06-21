@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseServiceMock.cs" />
     <Compile Include="EchoUtility.cs" />
     <Compile Include="ImportGStandardTextFilesScenarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

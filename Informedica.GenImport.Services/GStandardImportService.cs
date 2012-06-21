@@ -1,14 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Informedica.GenImport.DataAccess;
+using Informedica.GenImport.Library.DomainModel.GStandard;
+using Informedica.GenImport.Library.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.Services
 {
     public class GStandardImportService : IImportService
     {
-        public GStandardImportService(string databasePath)
+        private readonly IFileSerializerBase<IArtikel> _artikelenFileSerializer;
+        private readonly IFileSerializerBase<INaam> _namenFileSerializer;
+        private readonly string _databasePath;
+
+        public GStandardImportService(IFileSerializerBase<IArtikel> artikelenFileSerializer, IFileSerializerBase<INaam> namenFileSerializer,
+            string databasePath)
         {
+            _artikelenFileSerializer = artikelenFileSerializer;
+            _namenFileSerializer = namenFileSerializer;
+            _databasePath = databasePath;
             throw new NotImplementedException();
         }
 

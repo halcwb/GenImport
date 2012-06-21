@@ -1,10 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using System.Collections.Generic;
 using System.Linq;
 using Informedica.GenImport.DataAccess.GStandard;
-using Informedica.GenImport.DataAccess.GStandard.Interfaces;
 using Informedica.GenImport.Library.DomainModel.GStandard;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,7 +12,33 @@ namespace Informedica.GenImport.DataAccess.Tests
     public class GStandardArtikelenFileSerializerShould
     {
         [TestMethod]
-        public void Parse_All_Lines_To_Model()
+        public void Be_Able_To_Parse_A_Given_Line_To_An_Artikel_Model()
+        {
+            var expected = new Artikel
+            {
+                AtKode = 12101354,
+                AtNmNr = 5423,
+                HpKode = 39527,
+                MutKod = MutKod.RecordNotChanged
+            };
+            const string data =
+                @"000401210135400039527000542300001200000010090490000200404900000600 00000000   V 00000 0000020051990000000000021566       0900800000090088070000000000000000000000000009100000007547169000000000000000000000000000000000109200301062012           00000000000000000528                    00000000000000000000002750  00000000000";
+
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            var memoryStream = new MemoryStream(dataBytes);
+            var serializer = new ArtikelenFileSerializer();
+            var lines = serializer.ReadLines(memoryStream);
+
+            var model = lines.FirstOrDefault();
+            Assert.IsNotNull(model);
+            Assert.AreEqual(expected.AtKode, model.AtKode);
+            Assert.AreEqual(expected.AtNmNr, model.AtNmNr);
+            Assert.AreEqual(expected.HpKode, model.HpKode);
+            Assert.AreEqual(expected.MutKod, model.MutKod);
+        }
+
+        [TestMethod]
+        public void Be_Able_To_Parse_5_Lines_To_Artikel_Models()
         {
             const int expectedLineCount = 5;
             string data =
@@ -29,16 +53,16 @@ namespace Informedica.GenImport.DataAccess.Tests
                 @"000401210418300202886000104600020000000010090490000100404900020000U31122012R  V 00000 00000041019720000005333            0844300000084438070000000000000000000000011781111000000000000000002760000027600000000311220110109200301062012XXXXXXXXXXX00000027600000000276                    00000000000000013805001218  00000000000";
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
-            MemoryStream memoryStream = new MemoryStream(dataBytes);
-            IGStandardArtikelenFileSerializer serializer = new GStandardArtikelenFileSerializer();
-            IEnumerable<Artikel> lines = serializer.ReadLines(memoryStream);
+            var memoryStream = new MemoryStream(dataBytes);
+            var serializer = new ArtikelenFileSerializer();
+            var lines = serializer.ReadLines(memoryStream);
 
             Assert.IsNotNull(lines);
             Assert.AreEqual(expectedLineCount, lines.Count());
         }
 
         [TestMethod]
-        public void Skip_Line_When_CannotParseLineException_Is_Thrown()
+        public void Skip_One_Of_Two_Lines_When_CannotParseLineException_Is_Thrown_On_One_Line()
         {
             const int expectedLineCount = 1;
             string data =
@@ -47,9 +71,9 @@ namespace Informedica.GenImport.DataAccess.Tests
                 @"000401210135400039527000542300001200000010090490000200404900000600 00000000   V 00000 0000020051990000000000021566       0900800000090088070000000000000000000000000009100000007547169000000000000000000000000000000000109200301062012           00000000000000000528                    00000000000000000000002750  00000000000";
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
-            MemoryStream memoryStream = new MemoryStream(dataBytes);
-            IGStandardArtikelenFileSerializer serializer = new GStandardArtikelenFileSerializer();
-            IEnumerable<Artikel> lines = serializer.ReadLines(memoryStream);
+            var memoryStream = new MemoryStream(dataBytes);
+            var serializer = new ArtikelenFileSerializer();
+            var lines = serializer.ReadLines(memoryStream);
 
             Assert.IsNotNull(lines);
             Assert.AreEqual(expectedLineCount, lines.Count());

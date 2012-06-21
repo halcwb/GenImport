@@ -43,7 +43,7 @@ namespace Informedica.GenImport.DataAccess.Tests
         #endregion
 
         [TestMethod]
-        public void Be_Able_To_Parse_A_FileLine_To_The_GStandard_Model()
+        public void Be_Able_To_Parse_A_Given_FileLine_To_The_GStandard_Model()
         {
             const string line = "11ABCD";
             const int expectedId = 1;
@@ -69,7 +69,7 @@ namespace Informedica.GenImport.DataAccess.Tests
         }
 
         [TestMethod]
-        public void Skip_FileLine_When_CannotParseLineException_Is_Thrown()
+        public void Skip_One_Of_Two_Lines_When_CannotParseLineException_Is_Thrown_On_One_Line()
         {
             const int expectedLineCount = 1;
             string data = "11ABCD" + Environment.NewLine;

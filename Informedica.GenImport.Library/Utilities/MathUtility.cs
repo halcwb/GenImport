@@ -2,7 +2,7 @@
 
 namespace Informedica.GenImport.Library.Utilities
 {
-    public class MathUtils
+    public class MathUtility
     {
         public static bool IsValidModulo11(int value)
         {
