@@ -5,7 +5,7 @@ using Informedica.GenImport.Library.Reflection;
 using Informedica.GenImport.Library.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.Library.Tests
+namespace Informedica.GenImport.Library.Tests.Attributes
 {
     [TestClass]
     public class Modulo11AttributeShould

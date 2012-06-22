@@ -43,18 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\ConvertToBooleanAttribute.cs" />
+    <Compile Include="Attributes\ConvertToDecimalAttribute.cs" />
     <Compile Include="Attributes\FileLinePositionAttribute.cs" />
     <Compile Include="Attributes\Modulo11Attribute.cs" />
     <Compile Include="DomainModel\GStandard\Artikel.cs" />
     <Compile Include="DomainModel\GStandard\MutKod.cs" />
     <Compile Include="DomainModel\GStandard\Naam.cs" />
     <Compile Include="DomainModel\GStandard\RelatieTussenNaam.cs" />
+    <Compile Include="DomainModel\GStandard\Samenstelling.cs" />
     <Compile Include="DomainModel\GStandard\ThesauriTotaal.cs" />
     <Compile Include="DomainModel\Interfaces\IArtikel.cs" />
     <Compile Include="DomainModel\Interfaces\IGStandardModel.cs" />
     <Compile Include="DomainModel\Interfaces\IModel.cs" />
     <Compile Include="DomainModel\Interfaces\INaam.cs" />
     <Compile Include="DomainModel\Interfaces\IRelatieTussenNaam.cs" />
+    <Compile Include="DomainModel\Interfaces\ISamenstelling.cs" />
     <Compile Include="DomainModel\Interfaces\IThesauriTotaal.cs" />
     <Compile Include="DomainModel\Product\Brand.cs" />
     <Compile Include="DomainModel\Product\Package.cs" />

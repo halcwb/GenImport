@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Informedica.GenImport.Library.Tests
 {
     [TestClass]
-    public class MathUtilsShould
+    public class MathUtilityShould
     {
         [TestMethod]
         public void Return_True_With_ValidateModulo11_On_These_Numbers()

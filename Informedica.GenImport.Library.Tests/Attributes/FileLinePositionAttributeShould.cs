@@ -2,7 +2,7 @@
 using Informedica.GenImport.Library.Attributes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.Library.Tests
+namespace Informedica.GenImport.Library.Tests.Attributes
 {
     [TestClass]
     public class FileLinePositionAttributeShould
