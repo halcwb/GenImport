@@ -7,6 +7,24 @@ namespace Informedica.GenImport.Library.Tests
     [TestClass]
     public class ReflectionUtilityShould
     {
+        #region Helpers
+        private class TestAttribute : Attribute
+        {
+        }
+
+        private class TestClass
+        {
+            [Test]
+            public string TestProperty { get; set; }
+
+            public string TestPropertyWithout { get; set; }
+
+            public static void TestMethod()
+            {
+            }
+        }
+        #endregion
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Throw_ArgumentNullException_When_GetAttribute_Is_Called_With_Member_Null()
@@ -52,18 +70,27 @@ namespace Informedica.GenImport.Library.Tests
             Assert.IsNotNull(methodInfo);
         }
 
-        private class TestAttribute : Attribute
+        [TestMethod]
+        public void Return_True_When_HasAttribute_Is_Called_And_Attribute_Exists_On_MemberInfo()
         {
+            var testClass = new TestClass();
+            var memberInfo = ReflectionUtility.GetMemberInfo(() => testClass.TestProperty);
+            Assert.IsTrue(ReflectionUtility.HasAttribute<TestAttribute>(memberInfo));
         }
 
-        private class TestClass
+        [TestMethod]
+        public void Return_Fals_When_HasAttribute_Is_Called_And_Attribute_Does_Not_Exist_On_MemberInfo()
         {
-            [Test]
-            public string TestProperty { get; set; }
+            var testClass = new TestClass();
+            var memberInfo = ReflectionUtility.GetMemberInfo(() => testClass.TestPropertyWithout);
+            Assert.IsFalse(ReflectionUtility.HasAttribute<TestAttribute>(memberInfo));
+        }
 
-            public static void TestMethod()
-            {
-            }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Throw_ArgumentNullException_When_HasAttribute_Is_Called_With_Null()
+        {
+            ReflectionUtility.HasAttribute<TestAttribute>(null);
         }
     }
 }

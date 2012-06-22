@@ -35,10 +35,20 @@ namespace Informedica.GenImport.DataAccess.GStandard
 
         private static object GetValue(PropertyInfo properyInfo, string line)
         {
-            var attribute = ReflectionUtility.GetAttribute<FileLinePositionAttribute>(properyInfo);
+            var positionAttribute = ReflectionUtility.GetAttribute<FileLinePositionAttribute>(properyInfo);
 
-            string text = line.Substring(attribute.StartPosition - 1,
-                                         attribute.EndPosition - attribute.StartPosition + 1).Trim();
+            string text = line.Substring(positionAttribute.StartPosition - 1,
+                                         positionAttribute.EndPosition - positionAttribute.StartPosition + 1).Trim();
+
+            if(ReflectionUtility.HasAttribute<ConvertToBooleanAttribute>(properyInfo))
+            {
+                //TODO
+            }
+            if(ReflectionUtility.HasAttribute<ConvertToDecimalAttribute>(properyInfo))
+            {
+                //TODO
+            }
+
 
             return properyInfo.PropertyType.IsEnum
                        ? Enum.Parse(properyInfo.PropertyType, text)

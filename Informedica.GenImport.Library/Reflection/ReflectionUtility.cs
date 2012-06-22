@@ -14,6 +14,13 @@ namespace Informedica.GenImport.Library.Reflection
             return member.GetCustomAttributes(typeof(TAttribute), true).SingleOrDefault() as TAttribute;
         }
 
+        public static bool HasAttribute<TAttribute>(MemberInfo member)
+             where TAttribute : Attribute
+        {
+            if (member == null) throw new ArgumentNullException("member");
+            return member.GetCustomAttributes(typeof(TAttribute), true).Any();
+        }
+
         public static MemberInfo GetMemberInfo<T>(Expression<Func<T>> expression)
         {
             if (expression == null) throw new ArgumentNullException("expression");
