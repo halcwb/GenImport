@@ -52,7 +52,7 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         [TestMethod]
         public void Have_A_Valid_LinePositionAttribute_On_GnGnK_Property_With_Position_24_29()
         {
-            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().Code);
+            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().GnGnK);
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 24, 29),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
@@ -90,9 +90,9 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         }
 
         [TestMethod]
-        public void Have_A_Valid_LinePositionAttribute_On_StHhoev_Property_With_Position_58_69()
+        public void Have_A_Valid_LinePositionAttribute_On_StHoev_Property_With_Position_58_69()
         {
-            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StHhoev);
+            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StHoev);
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 58, 69),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
@@ -106,7 +106,7 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         }
 
         [TestMethod]
-        public void Have_A_Valid_LinePositionAttribute_On_StEenh_Property_With_Position_70_73()
+        public void Have_A_Valid_LinePositionAttribute_On_StEenh_Property_With_Position_74_79()
         {
             var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StEenh);
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 74, 79),
@@ -116,7 +116,7 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         [TestMethod]
         public void Have_A_Valid_LinePositionAttribute_On_StAdd_Property_With_Position_80_80()
         {
-            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StEenh);
+            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StAdd);
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 80, 80),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
@@ -149,6 +149,13 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
 
         #region ConvertToDecimalAttribute
         [TestMethod]
+        public void Have_A_ConvertToDecimalAttribute_On_2_Known_Properties()
+        {
+            const int expectedCount = 2;
+            Assert.IsTrue(AttributeTestUtility.HasAttributeCount<Samenstelling, ConvertToDecimalAttribute>(expectedCount));
+        }
+
+        [TestMethod]
         public void Have_A_Valid_ConvertToDecimalAttribute_On_GnHoev_Property()
         {
             var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().GnHoev);
@@ -157,9 +164,9 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         }
 
         [TestMethod]
-        public void Have_A_Valid_ConvertToDecimalAttribute_On_StHhoev_Property()
+        public void Have_A_Valid_ConvertToDecimalAttribute_On_StHoev_Property()
         {
-            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StHhoev);
+            var info = ReflectionUtility.GetMemberInfo(() => new Samenstelling().StHoev);
             Assert.IsTrue(AttributeTestUtility.HasValidConvertToDecimalAttributeOnProperty(info, 3),
                           string.Format(AttributeTestUtility.HasNoOrInvalidConvertToDecimalAttributeMessage, info.Name));
         }

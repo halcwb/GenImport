@@ -44,7 +44,7 @@ namespace Informedica.GenImport.Library.DomainModel.Interfaces
         /// <summary>
         /// Hoeveelheid stamnaam
         /// </summary>
-        decimal StHhoev { get; set; }
+        decimal StHoev { get; set; }
         /// <summary>
         /// Thesaurusverwijzig eenh. hoeveelh. stamnaam
         /// </summary>
@@ -56,7 +56,6 @@ namespace Informedica.GenImport.Library.DomainModel.Interfaces
         /// <summary>
         /// Sterktes mogen worden opgeteld J/N
         /// </summary>
-        [ConvertToBoolean("J", "N")]
         bool StAdd { get; set; }
     }
 }

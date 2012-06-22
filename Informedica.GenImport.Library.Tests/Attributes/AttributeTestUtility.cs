@@ -24,7 +24,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
 
         internal static bool HasModulo11AttributeOnProperty(MemberInfo memberInfo)
         {
-            var attribute = ReflectionUtility.GetAttribute<FileLinePositionAttribute>(memberInfo);
+            var attribute = ReflectionUtility.GetAttribute<Modulo11Attribute>(memberInfo);
             return attribute != null;
         }
 
