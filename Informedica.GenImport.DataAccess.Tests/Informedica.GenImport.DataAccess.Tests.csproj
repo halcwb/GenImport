@@ -46,10 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileSerializerBaseShould.cs" />
-    <Compile Include="GStandardArtikelenFileSerializerShould.cs" />
+    <Compile Include="ArtikelenFileSerializerShould.cs" />
     <Compile Include="GStandardFileSerializerBaseShould.cs" />
-    <Compile Include="GStandardNamenFileSerializerShould.cs" />
-    <Compile Include="GstandardThesauriTotaalFileSerializerShould.cs" />
+    <Compile Include="NamenFileSerializerShould.cs" />
+    <Compile Include="RelatiesTussenNamenFileSerializerShould.cs" />
+    <Compile Include="ThesauriTotaalFileSerializerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

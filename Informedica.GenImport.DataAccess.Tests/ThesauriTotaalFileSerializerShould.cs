@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Informedica.GenImport.DataAccess.Tests
 {
     [TestClass]
-    public class GstandardThesauriTotaalFileSerializerShould
+    public class ThesauriTotaalFileSerializerShould
     {
         [TestMethod]
         public void Be_Able_To_Parse_A_Given_Line_To_A_ThesauriTotaal_Model()

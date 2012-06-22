@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Collections.Generic;
 using System.Linq;
 using Informedica.GenImport.Library.Attributes;
 using Informedica.GenImport.Library.DomainModel.GStandard;
@@ -12,48 +11,75 @@ namespace Informedica.GenImport.Library.Tests
     [TestClass]
     public class ArtikelShould
     {
-        private readonly Type _artikelType = typeof(Artikel);
-        private const BindingFlags TestBindingFlags = BindingFlags.Public | BindingFlags.Instance;
-
         [TestMethod]
-        public void Have_A_LinePositionAttribute_On_All_Known_Properties()
+        public void Have_A_LinePositionAttribute_On_4_Known_Properties()
         {
-            var artikel = new Artikel();
-            var expectedPositionsOnProperties = new Dictionary<MemberInfo, int[]>
-            {
-                {ReflectionUtility.GetMemberInfo(() => artikel.MutKod), new[]{5, 5}},
-                {ReflectionUtility.GetMemberInfo(() => artikel.AtKode), new[]{6, 13}},
-                {ReflectionUtility.GetMemberInfo(() => artikel.HpKode), new[]{14, 21}},
-                {ReflectionUtility.GetMemberInfo(() => artikel.AtNmNr), new[]{22, 28}},
-            };
-
-            Assert.AreEqual(expectedPositionsOnProperties.Count, _artikelType.GetProperties(TestBindingFlags).Count(),
-                            "All properties must be tested on LinePositionAttribute");
-
-            foreach (var expectedPositionsOnProperty in expectedPositionsOnProperties)
-            {
-                AttributeCheck.CheckIfPropertyHasLinePositionAttribute(expectedPositionsOnProperty);
-            }
+            Type type = typeof(Artikel);
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            const int expectedCount = 4;
+            Assert.AreEqual(expectedCount, type.GetProperties(flags).Count(),
+                            "All properties must be tested on LinePositionAttribute.");
         }
 
         [TestMethod]
-        public void Have_A_Modulo11Attribute_On_Known_Properties()
+        public void Have_A_Valid_LinePositionAttribute_On_MutKod_Property_With_Position_5_5()
         {
-            var artikel = new Artikel();
-            var expectedProperties = new[]{
-                                              ReflectionUtility.GetMemberInfo(() => artikel.AtKode),
-                                              ReflectionUtility.GetMemberInfo(() => artikel.HpKode)
-                                          };
+            var info = ReflectionUtility.GetMemberInfo(() => new Artikel().MutKod);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 5, 5),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
 
-            Assert.AreEqual(expectedProperties.Count(),
-                            _artikelType.GetProperties(TestBindingFlags).Sum(
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_AtKode_Property_With_Position_6_13()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new Artikel().AtKode);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 6, 13),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_HpKode_Property_With_Position_14_21()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new Artikel().HpKode);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 14, 21),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_AtNmNr_Property_With_Position_22_28()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new Artikel().AtNmNr);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 22, 28),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Modulo11Attribute_On_2_Properties()
+        {
+            Type type = typeof(Artikel);
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            const int expectedCount = 2;
+            
+            Assert.AreEqual(expectedCount,
+                            type.GetProperties(flags).Sum(
                                 a => a.GetCustomAttributes(typeof (Modulo11Attribute), true).Count()),
                             "Only expected properties must have a Modulo11Attribute.");
+        }
 
-            foreach (var expectedProperty in expectedProperties)
-            {
-                AttributeCheck.CheckIfPropertyHasModulo11Attribute(expectedProperty);
-            }
+        [TestMethod]
+        public void Have_A_Modulo11Attribute_On_AtKode_Property()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new Artikel().AtKode);
+            Assert.IsTrue(AttributeCheck.HasModulo11AttributeOnProperty(info),
+                          string.Format(AttributeCheck.HasNoModulo11AttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Modulo11Attribute_On_HpKode_Property()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new Artikel().HpKode);
+            Assert.IsTrue(AttributeCheck.HasModulo11AttributeOnProperty(info),
+                          string.Format(AttributeCheck.HasNoModulo11AttributeMessage, info.Name));
         }
     }
 }

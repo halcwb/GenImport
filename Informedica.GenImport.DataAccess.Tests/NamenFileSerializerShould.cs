@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Informedica.GenImport.DataAccess.Tests
 {
     [TestClass]
-    public class GStandardNamenFileSerializerShould
+    public class NamenFileSerializerShould
     {
         [TestMethod]
         public void Be_Able_To_Parse_A_Given_Line_To_A_Naam_Model()

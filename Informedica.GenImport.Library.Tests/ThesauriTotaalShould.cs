@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Collections.Generic;
 using System.Linq;
 using Informedica.GenImport.Library.DomainModel.GStandard;
 using Informedica.GenImport.Library.Reflection;
@@ -11,38 +10,126 @@ namespace Informedica.GenImport.Library.Tests
     [TestClass]
     public class ThesauriTotaalShould
     {
-        private readonly Type _naamType = typeof(ThesauriTotaal);
-        private const BindingFlags TestBindingFlags = BindingFlags.Public | BindingFlags.Instance;
+        [TestMethod]
+        public void Have_A_LinePositionAttribute_On_14_Known_Properties()
+        {
+            Type type = typeof(ThesauriTotaal);
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            const int expectedCount = 14;
+            Assert.AreEqual(expectedCount, type.GetProperties(flags).Count(),
+                            "All properties must be tested on LinePositionAttribute.");
+        }
 
         [TestMethod]
-        public void Have_A_LinePositionAttribute_On_All_Known_Public_Properties()
+        public void Have_A_Valid_LinePositionAttribute_On_MutKod_Property_With_Position_5_5()
         {
-            var thesauriTotaal = new ThesauriTotaal();
-            var expectedPositionsOnProperties = new Dictionary<MemberInfo, int[]>
-            {
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.MutKod), new[]{5, 5}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.TsNr), new[]{6, 9}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.TsItNr), new[]{10, 15}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThItMk), new[]{16, 17}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThNm4), new[]{18, 21}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThNm15), new[]{22, 36}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThNm25), new[]{37, 61}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThNm50), new[]{62, 111}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThAKd1), new[]{112, 112}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThAKd2), new[]{113, 113}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThAKd3), new[]{114, 114}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThAKd4), new[]{115, 115}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThAKd5), new[]{116, 116}},
-                {ReflectionUtility.GetMemberInfo(() => thesauriTotaal.ThAKd6), new[]{117, 117}},
-            };
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().MutKod);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 5, 5),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
 
-            Assert.AreEqual(expectedPositionsOnProperties.Count, _naamType.GetProperties(TestBindingFlags).Count(),
-                            "All properties must be tested on LinePositionAttribute");
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_TsNr_Property_With_Position_6_9()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().TsNr);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 6, 9),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
 
-            foreach (var expectedPositionsOnProperty in expectedPositionsOnProperties)
-            {
-                AttributeCheck.CheckIfPropertyHasLinePositionAttribute(expectedPositionsOnProperty);
-            }
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_TsItNr_Property_With_Position_10_15()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().TsItNr);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 10, 15),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThItMk_Property_With_Position_16_17()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThItMk);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 16, 17),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThNm4_Property_With_Position_18_21()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThNm4);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 18, 21),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThNm15_Property_With_Position_22_36()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThNm15);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 22, 36),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThNm25_Property_With_Position_37_61()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThNm25);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 37, 61),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThNm50_Property_With_Position_62_111()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThNm50);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 62, 111),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThAKd1_Property_With_Position_112_112()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThAKd1);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 112, 112),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThAKd2_Property_With_Position_113_113()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThAKd2);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 113, 113),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThAKd3_Property_With_Position_114_114()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThAKd3);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 114, 114),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThAKd4_Property_With_Position_115_115()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThAKd4);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 115, 115),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThAKd5_Property_With_Position_116_116()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThAKd5);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 116, 116),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
+        }
+
+        [TestMethod]
+        public void Have_A_Valid_LinePositionAttribute_On_ThAKd6_Property_With_Position_117_117()
+        {
+            var info = ReflectionUtility.GetMemberInfo(() => new ThesauriTotaal().ThAKd6);
+            Assert.IsTrue(AttributeCheck.HasValidLinePositionAttributeOnProperty(info, 117, 117),
+                          string.Format(AttributeCheck.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
     }
 }

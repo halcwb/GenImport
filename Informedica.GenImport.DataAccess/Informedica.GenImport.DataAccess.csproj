@@ -47,12 +47,16 @@
     <Compile Include="GStandard\ArtikelenFileSerializer.cs" />
     <Compile Include="GStandard\GStandardFileSerializerBase.cs" />
     <Compile Include="GStandard\NamenFileSerializer.cs" />
+    <Compile Include="GStandard\RelatiesTussenNamenFileSerializer.cs" />
     <Compile Include="GStandard\ThesauriTotaalFileSerializer.cs" />
     <Compile Include="IFileSerializerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructureMap\GStandardFileSerializerRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataAccess.StructureMap.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +72,6 @@
       <Name>Informedica.GenImport.Library</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

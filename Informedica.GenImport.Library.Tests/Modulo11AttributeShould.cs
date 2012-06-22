@@ -16,7 +16,7 @@ namespace Informedica.GenImport.Library.Tests
         }
 
         [TestMethod]
-        public void Validate_And_Give_No_Errors()
+        public void Validate_And_Give_No_Error_On_Module11_With_Number_22934()
         {
             Modulo11ObjectMock objectMock = new Modulo11ObjectMock { Modulo11 = 22934 };
             IList<string> errors = new List<string>();
@@ -28,7 +28,7 @@ namespace Informedica.GenImport.Library.Tests
         }
 
         [TestMethod]
-        public void Validate_And_Give_Errors()
+        public void Validate_And_Give_An_Error_On_Modulo11_With_Number_2293()
         {
             Modulo11ObjectMock objectMock = new Modulo11ObjectMock { Modulo11 = 2293 };
             IList<string> errors = new List<string>();
