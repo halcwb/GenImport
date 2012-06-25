@@ -30,14 +30,14 @@ namespace Informedica.GenImport.Library.Tests.Attributes
 
         internal static bool HasValidConvertToBooleanAttributeOnProperty(MemberInfo memberInfo, string expectedTrueString, string expectedFalseString)
         {
-            var attribute = ReflectionUtility.GetAttribute<ConvertToBooleanAttribute>(memberInfo);
+            var attribute = ReflectionUtility.GetAttribute<BooleanFormatAttribute>(memberInfo);
             return attribute != null && expectedTrueString == attribute.TrueString &&
                    expectedFalseString == attribute.FalseString;
         }
 
         internal static bool HasValidConvertToDecimalAttributeOnProperty(MemberInfo memberInfo, int expectedPrecision)
         {
-            var attribute = ReflectionUtility.GetAttribute<ConvertToDecimalAttribute>(memberInfo);
+            var attribute = ReflectionUtility.GetAttribute<DecimalFormatAttribute>(memberInfo);
             return attribute != null && expectedPrecision == attribute.Precision;
         }
 

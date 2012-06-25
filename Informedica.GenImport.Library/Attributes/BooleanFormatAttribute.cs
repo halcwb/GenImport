@@ -3,12 +3,12 @@
 namespace Informedica.GenImport.Library.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class ConvertToBooleanAttribute : Attribute
+    public class BooleanFormatAttribute : Attribute
     {
         public string TrueString { get; set; }
         public string FalseString { get; set; }
 
-        public ConvertToBooleanAttribute(string trueString, string falseString)
+        public BooleanFormatAttribute(string trueString, string falseString)
         {
             TrueString = trueString;
             FalseString = falseString;

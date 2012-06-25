@@ -11,7 +11,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Throw_ArgumentOutOfRangeException_When_Precision_Less_Than_0()
         {
-            new ConvertToDecimalAttribute(-1);
+            new DecimalFormatAttribute(-1);
         }
 
         [TestMethod]
@@ -21,7 +21,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
             const decimal expectedResult = 1234567.890m;
 
             decimal result;
-            var attribute = new ConvertToDecimalAttribute(3);
+            var attribute = new DecimalFormatAttribute(3);
             
             Assert.IsTrue(attribute.TryParse(decimalString, out result));
             Assert.AreEqual(expectedResult, result);
@@ -34,7 +34,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
             const decimal expectedResult = 0;
 
             decimal result;
-            var attribute = new ConvertToDecimalAttribute(3);
+            var attribute = new DecimalFormatAttribute(3);
 
             Assert.IsFalse(attribute.TryParse(decimalString, out result));
             Assert.AreEqual(expectedResult, result);

@@ -40,19 +40,39 @@ namespace Informedica.GenImport.DataAccess.GStandard
             string text = line.Substring(positionAttribute.StartPosition - 1,
                                          positionAttribute.EndPosition - positionAttribute.StartPosition + 1).Trim();
 
-            if(ReflectionUtility.HasAttribute<ConvertToBooleanAttribute>(properyInfo))
+            if(ReflectionUtility.HasAttribute<BooleanFormatAttribute>(properyInfo))
             {
-                //TODO
-            }
-            if(ReflectionUtility.HasAttribute<ConvertToDecimalAttribute>(properyInfo))
-            {
-                //TODO
+                return TryGetBoolean(properyInfo, text);
             }
 
+            if(ReflectionUtility.HasAttribute<DecimalFormatAttribute>(properyInfo))
+            {
+                return TryGetDecimal(properyInfo, text);
+            }
 
             return properyInfo.PropertyType.IsEnum
                        ? Enum.Parse(properyInfo.PropertyType, text)
                        : Convert.ChangeType(text, properyInfo.PropertyType);
+        }
+        
+        private static bool TryGetBoolean(PropertyInfo properyInfo, string text)
+        {
+            bool result;
+            if(ReflectionUtility.GetAttribute<BooleanFormatAttribute>(properyInfo).TryParse(text, out result))
+            {
+                return result;
+            }
+            throw new CannotParseLineException();
+        }
+
+        private static decimal TryGetDecimal(PropertyInfo properyInfo, string text)
+        {
+            decimal result;
+            if (ReflectionUtility.GetAttribute<DecimalFormatAttribute>(properyInfo).TryParse(text, out result))
+            {
+                return result;
+            }
+            throw new CannotParseLineException();
         }
     }
 }

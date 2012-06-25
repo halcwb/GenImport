@@ -9,7 +9,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
         [TestMethod]
         public void Be_Able_To_Parse_A_FalseString_To_False()
         {
-            var attribute = new ConvertToBooleanAttribute("J", "N");
+            var attribute = new BooleanFormatAttribute("J", "N");
             bool result;
 
             Assert.IsTrue(attribute.TryParse("N", out result));
@@ -19,7 +19,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
         [TestMethod]
         public void Be_Able_To_Parse_A_TrueString_To_True()
         {
-            var attribute = new ConvertToBooleanAttribute("J", "N");
+            var attribute = new BooleanFormatAttribute("J", "N");
             bool result;
 
             Assert.IsTrue(attribute.TryParse("J", out result));
@@ -29,7 +29,7 @@ namespace Informedica.GenImport.Library.Tests.Attributes
         [TestMethod]
         public void Not_Be_Able_To_Parse_A_Wrong_String()
         {
-            var attribute = new ConvertToBooleanAttribute("J", "N");
+            var attribute = new BooleanFormatAttribute("J", "N");
             bool result;
 
             Assert.IsFalse(attribute.TryParse("A", out result));

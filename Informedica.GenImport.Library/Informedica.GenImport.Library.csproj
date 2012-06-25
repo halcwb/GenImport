@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\ConvertToBooleanAttribute.cs" />
-    <Compile Include="Attributes\ConvertToDecimalAttribute.cs" />
+    <Compile Include="Attributes\BooleanFormatAttribute.cs" />
+    <Compile Include="Attributes\DecimalFormatAttribute.cs" />
     <Compile Include="Attributes\FileLinePositionAttribute.cs" />
     <Compile Include="Attributes\Modulo11Attribute.cs" />
     <Compile Include="DomainModel\GStandard\Artikel.cs" />

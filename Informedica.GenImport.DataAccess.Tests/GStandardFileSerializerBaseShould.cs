@@ -31,6 +31,14 @@ namespace Informedica.GenImport.DataAccess.Tests
 
             [FileLinePosition(3, 6)]
             public string Name { get; set; }
+
+            [FileLinePosition(7,12)]
+            [DecimalFormat(3)]
+            public decimal Decimal { get; set; }
+
+            [FileLinePosition(13,13)]
+            [BooleanFormat("J", "N")]
+            public bool Boolean { get; set; }
         }
 
         private class GStandardFileSerializerMock : GStandardFileSerializerBase<GStandardModelMock>
@@ -45,7 +53,7 @@ namespace Informedica.GenImport.DataAccess.Tests
         [TestMethod]
         public void Be_Able_To_Parse_A_Given_FileLine_To_The_GStandard_Model()
         {
-            const string line = "11ABCD";
+            const string line = "11ABCD123456J";
             const int expectedId = 1;
             const EnumMock expectedEnum = EnumMock.A;
             const string expectedName = "ABCD";
@@ -62,7 +70,7 @@ namespace Informedica.GenImport.DataAccess.Tests
         [ExpectedException(typeof(CannotParseLineException))]
         public void Throw_CannotParseLineException_When_MockEnum_Cannot_Be_Parsed()
         {
-            const string line = "1XABCD";
+            const string line = "1XABCD123456J";
 
             var gStandardFileSerializerMock = new GStandardFileSerializerMock();
             gStandardFileSerializerMock.ParseLineToModel(line);
@@ -72,7 +80,7 @@ namespace Informedica.GenImport.DataAccess.Tests
         public void Skip_One_Of_Two_Lines_When_CannotParseLineException_Is_Thrown_On_One_Line()
         {
             const int expectedLineCount = 1;
-            string data = "11ABCD" + Environment.NewLine;
+            string data = "11ABCD123456J" + Environment.NewLine;
             data += "XABCD";
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
@@ -80,7 +88,6 @@ namespace Informedica.GenImport.DataAccess.Tests
             GStandardFileSerializerMock fileSerializerMock = new GStandardFileSerializerMock();
             IEnumerable<GStandardModelMock> lines = fileSerializerMock.ReadLines(memoryStream);
 
-            Assert.IsNotNull(lines);
             Assert.AreEqual(expectedLineCount, lines.Count());
         }
 
@@ -89,6 +96,59 @@ namespace Informedica.GenImport.DataAccess.Tests
         {
             //TODO create logic
             Assert.Fail();
+        }
+
+        [TestMethod]
+        public void Convert_A_String_To_Boolean_When_A_BooleanFormatAttribute_Is_Present_On_A_Property()
+        {
+            const string data = "11ABCD123456J";
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            MemoryStream memoryStream = new MemoryStream(dataBytes);
+            
+            GStandardFileSerializerMock fileSerializerMock = new GStandardFileSerializerMock();
+            GStandardModelMock line = fileSerializerMock.ReadLines(memoryStream).FirstOrDefault();
+
+            Assert.IsTrue(line.Boolean);
+        }
+
+        [TestMethod]
+        public void Not_Be_Able_To_Convert_When_BooleanFormatAttribute_Is_Present_On_A_Property_But_String_Format_Is_Incorrect()
+        {
+            const string data = "11ABCD123456O";
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            MemoryStream memoryStream = new MemoryStream(dataBytes);
+
+            GStandardFileSerializerMock fileSerializerMock = new GStandardFileSerializerMock();
+            GStandardModelMock line = fileSerializerMock.ReadLines(memoryStream).FirstOrDefault();
+
+            Assert.IsNull(line);
+        }
+
+        [TestMethod]
+        public void Convert_A_String_To_Decimal_When_A_DecimalFormatAttribute_Is_Present_On_A_Property()
+        {
+            const decimal expectedDecimal = 123.456m;
+            const string data = "11ABCD123456J";
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            MemoryStream memoryStream = new MemoryStream(dataBytes);
+
+            GStandardFileSerializerMock fileSerializerMock = new GStandardFileSerializerMock();
+            GStandardModelMock line = fileSerializerMock.ReadLines(memoryStream).FirstOrDefault();
+
+            Assert.AreEqual(expectedDecimal, line.Decimal);
+        }
+
+        [TestMethod]
+        public void Not_Be_Able_To_Convert_When_DecimalFormatAttribute_Is_Present_On_A_Property_But_String_Format_Is_Incorrect()
+        {
+            const string data = "11ABCDA23456J";
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            MemoryStream memoryStream = new MemoryStream(dataBytes);
+
+            GStandardFileSerializerMock fileSerializerMock = new GStandardFileSerializerMock();
+            GStandardModelMock line = fileSerializerMock.ReadLines(memoryStream).FirstOrDefault();
+
+            Assert.IsNull(line);
         }
     }
 }

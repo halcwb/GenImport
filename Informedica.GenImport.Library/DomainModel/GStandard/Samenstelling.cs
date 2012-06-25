@@ -16,7 +16,7 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
         [FileLinePosition(24, 29)]
         [Modulo11]
         public int GnGnK { get; set; }
-        [ConvertToDecimal(3)]
+        [DecimalFormat(3)]
         [FileLinePosition(30, 41)]
         public decimal GnHoev { get; set; }
         [FileLinePosition(42, 45)]
@@ -26,14 +26,14 @@ namespace Informedica.GenImport.Library.DomainModel.GStandard
         [FileLinePosition(52, 57)]
         [Modulo11]
         public int GnStam { get; set; }
-        [ConvertToDecimal(3)]
+        [DecimalFormat(3)]
         [FileLinePosition(58, 69)]
         public decimal StHoev { get; set; }
         [FileLinePosition(70, 73)]
         public int TsStEh { get; set; }
         [FileLinePosition(74, 79)]
         public int StEenh { get; set; }
-        [ConvertToBoolean("J", "N")]
+        [BooleanFormat("J", "N")]
         [FileLinePosition(80, 80)]
         public bool StAdd { get; set; }
     }

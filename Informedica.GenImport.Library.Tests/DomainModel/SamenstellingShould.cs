@@ -152,7 +152,7 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         public void Have_A_ConvertToDecimalAttribute_On_2_Known_Properties()
         {
             const int expectedCount = 2;
-            Assert.IsTrue(AttributeTestUtility.HasAttributeCount<Samenstelling, ConvertToDecimalAttribute>(expectedCount));
+            Assert.IsTrue(AttributeTestUtility.HasAttributeCount<Samenstelling, DecimalFormatAttribute>(expectedCount));
         }
 
         [TestMethod]
@@ -177,7 +177,7 @@ namespace Informedica.GenImport.Library.Tests.DomainModel
         public void Have_A_ConvertToBooleanAttribute_On_1_Property()
         {
             const int expectedCount = 1;
-            Assert.IsTrue(AttributeTestUtility.HasAttributeCount<Samenstelling, ConvertToBooleanAttribute>(expectedCount));
+            Assert.IsTrue(AttributeTestUtility.HasAttributeCount<Samenstelling, BooleanFormatAttribute>(expectedCount));
         }
         
         [TestMethod]

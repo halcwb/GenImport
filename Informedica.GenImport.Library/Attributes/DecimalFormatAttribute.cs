@@ -3,11 +3,11 @@
 namespace Informedica.GenImport.Library.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class ConvertToDecimalAttribute : Attribute
+    public class DecimalFormatAttribute : Attribute
     {
         public int Precision { get; set; }
 
-        public ConvertToDecimalAttribute(int precision)
+        public DecimalFormatAttribute(int precision)
         {
             if (precision < 0) throw new ArgumentOutOfRangeException("precision", "Can't be less than 0.");
             Precision = precision;
