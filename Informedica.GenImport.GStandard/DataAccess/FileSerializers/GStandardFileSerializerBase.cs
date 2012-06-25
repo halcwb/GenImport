@@ -12,7 +12,6 @@ namespace Informedica.GenImport.GStandard.DataAccess.FileSerializers
     public abstract class GStandardFileSerializerBase<TModel> : FileSerializerBase<TModel>
         where TModel : class, IGStandardModel, new()
     {
-
         //TODO make this: bool TryParseLineToModel(string line, out TModel model)
         protected override TModel ParseLineToModel(string line)
         {
@@ -24,7 +23,7 @@ namespace Informedica.GenImport.GStandard.DataAccess.FileSerializers
             try
             {
                 TModel model = new TModel();
-                foreach (var properyInfo in typeof(TModel).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                foreach (var properyInfo in ReflectionUtility.GetProperties<FileLinePositionAttribute>(typeof(TModel)))
                 {
                     object value = GetValue(properyInfo, line);
                     properyInfo.SetValue(model, value, null);

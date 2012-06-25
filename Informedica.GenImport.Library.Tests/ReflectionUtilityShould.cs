@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace Informedica.GenImport.Library.Tests
 {
@@ -91,6 +93,17 @@ namespace Informedica.GenImport.Library.Tests
         public void Throw_ArgumentNullException_When_HasAttribute_Is_Called_With_Null()
         {
             ReflectionUtility.HasAttribute<TestAttribute>(null);
+        }
+
+        [TestMethod]
+        public void Return_One_Property_When_GetProperties_With_AttributeType_TestAttribute_Is_Called()
+        {
+            const int expectedCount = 1;
+            var type = typeof (TestClass);
+
+            var properties = ReflectionUtility.GetProperties<TestAttribute>(type);
+            
+            Assert.AreEqual(expectedCount, properties.Count());
         }
     }
 }

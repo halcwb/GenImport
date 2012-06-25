@@ -34,5 +34,12 @@ namespace Informedica.GenImport.Library.Reflection
             MethodCallExpression body = (MethodCallExpression)expression.Body;
             return body.Method;
         }
+
+        public static PropertyInfo[] GetProperties<TAttribute>(Type type)
+            where TAttribute : Attribute
+        {
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            return type.GetProperties(flags).Where(HasAttribute<TAttribute>).ToArray();
+        }
     }
 }
