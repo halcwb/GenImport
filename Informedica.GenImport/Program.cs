@@ -5,9 +5,6 @@ using Bootstrap;
 using Bootstrap.AutoMapper;
 using Bootstrap.StructureMap;
 using Informedica.GenImport.DataAccess;
-using Informedica.GenImport.DataAccess.StructureMap;
-using Informedica.GenImport.Library.AutoMapper;
-using Informedica.GenImport.Library.DomainModel.Interfaces;
 using StructureMap;
 
 namespace Informedica.GenImport

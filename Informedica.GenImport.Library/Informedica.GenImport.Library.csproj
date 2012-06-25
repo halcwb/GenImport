@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.2.1.267\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,23 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\BooleanFormatAttribute.cs" />
-    <Compile Include="Attributes\DecimalFormatAttribute.cs" />
-    <Compile Include="Attributes\FileLinePositionAttribute.cs" />
-    <Compile Include="Attributes\Modulo11Attribute.cs" />
-    <Compile Include="DomainModel\GStandard\Artikel.cs" />
-    <Compile Include="DomainModel\GStandard\MutKod.cs" />
-    <Compile Include="DomainModel\GStandard\Naam.cs" />
-    <Compile Include="DomainModel\GStandard\RelatieTussenNaam.cs" />
-    <Compile Include="DomainModel\GStandard\Samenstelling.cs" />
-    <Compile Include="DomainModel\GStandard\ThesauriTotaal.cs" />
-    <Compile Include="DomainModel\Interfaces\IArtikel.cs" />
-    <Compile Include="DomainModel\Interfaces\IGStandardModel.cs" />
     <Compile Include="DomainModel\Interfaces\IModel.cs" />
-    <Compile Include="DomainModel\Interfaces\INaam.cs" />
-    <Compile Include="DomainModel\Interfaces\IRelatieTussenNaam.cs" />
-    <Compile Include="DomainModel\Interfaces\ISamenstelling.cs" />
-    <Compile Include="DomainModel\Interfaces\IThesauriTotaal.cs" />
     <Compile Include="DomainModel\Product\Brand.cs" />
     <Compile Include="DomainModel\Product\Package.cs" />
     <Compile Include="DomainModel\Product\Product.cs" />
@@ -72,7 +53,6 @@
     <Compile Include="DomainModel\Product\UnitGroup.cs" />
     <Compile Include="DomainModel\Product\UnitValue.cs" />
     <Compile Include="Exceptions\CannotParseLineException.cs" />
-    <Compile Include="AutoMapper\ModelMappingProfile.cs" />
     <Compile Include="Utilities\MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\ReflectionUtility.cs" />
@@ -80,14 +60,16 @@
     <Compile Include="Validation\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\EntityRepository\Informedica.EntityRepository\Informedica.EntityRepository.csproj">
+      <Project>{E3780309-03FF-43DC-A134-828269F2008C}</Project>
+      <Name>Informedica.EntityRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
       <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
       <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
