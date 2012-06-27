@@ -45,12 +45,16 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileLinePositionAttributeShould.cs" />
+    <Compile Include="MathUtilityShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NaamShould.cs" />
     <Compile Include="ReflectionUtilityShould.cs" />
+    <Compile Include="ValidatorShould.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
+      <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
+      <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">
       <Project>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</Project>
       <Name>Informedica.GenImport.Library</Name>

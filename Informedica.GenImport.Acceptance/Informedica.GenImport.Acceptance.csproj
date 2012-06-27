@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseServiceMock.cs" />
     <Compile Include="EchoUtility.cs" />
     <Compile Include="ImportGStandardTextFilesScenarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Resource Include="GStandardTestFiles\BST004T" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">

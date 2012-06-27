@@ -11,7 +11,14 @@ namespace Informedica.GenImport.Library.Reflection
              where TAttribute : Attribute
         {
             if (member == null) throw new ArgumentNullException("member");
-            return member.GetCustomAttributes(typeof(TAttribute), false).SingleOrDefault() as TAttribute;
+            return member.GetCustomAttributes(typeof(TAttribute), true).SingleOrDefault() as TAttribute;
+        }
+
+        public static bool HasAttribute<TAttribute>(MemberInfo member)
+             where TAttribute : Attribute
+        {
+            if (member == null) throw new ArgumentNullException("member");
+            return member.GetCustomAttributes(typeof(TAttribute), true).Any();
         }
 
         public static MemberInfo GetMemberInfo<T>(Expression<Func<T>> expression)
@@ -26,6 +33,13 @@ namespace Informedica.GenImport.Library.Reflection
             if (expression == null) throw new ArgumentNullException("expression");
             MethodCallExpression body = (MethodCallExpression)expression.Body;
             return body.Method;
+        }
+
+        public static PropertyInfo[] GetProperties<TType, TAttribute>()
+            where TAttribute : Attribute
+        {
+            const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance;
+            return typeof(TType).GetProperties(flags).Where(HasAttribute<TAttribute>).ToArray();
         }
     }
 }

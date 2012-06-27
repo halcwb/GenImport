@@ -19,6 +19,8 @@ namespace Informedica.GenImport.Acceptance
 
         public bool CanReadProductsFromGStandardFilesInDirectory(string directory)
         {
+
+
             return false;
         }
 

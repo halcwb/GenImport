@@ -40,24 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GStandardFileReaderBase.cs" />
-    <Compile Include="IDatabaseService.cs" />
+    <Compile Include="FileSerializerBase.cs" />
+    <Compile Include="IFileSerializerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
-      <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
-      <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">
       <Project>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</Project>
       <Name>Informedica.GenImport.Library</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

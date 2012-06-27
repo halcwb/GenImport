@@ -28,17 +28,17 @@ namespace Informedica.GenImport.Services.Tests
         //[TestMethod]
         public void Start_Watching_Database_Directory_For_Changes_When_Started()
         {
-            IImportService importService = new GStandardImportService(@"c:\temp");
-            importService.Start();
-            Assert.IsTrue(false);
+            //IImportService importService = new GStandardImportService(@"c:\temp");
+            //importService.Start();
+            //Assert.IsTrue(false);
         }
 
         //[TestMethod]
         public void Stop_Watching_Database_Directory_For_Changes_When_Stopped()
         {
-            IImportService importService = new GStandardImportService(@"c:\temp");
-            importService.Stop();
-            Assert.IsTrue(false);
+            //IImportService importService = new GStandardImportService(@"c:\temp");
+            //importService.Stop();
+            //Assert.IsTrue(false);
         }
     }
 }
