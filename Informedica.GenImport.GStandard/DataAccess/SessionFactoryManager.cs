@@ -1,6 +1,5 @@
 ﻿using FluentNHibernate.Cfg;
 using Informedica.DataAccess.Configurations;
-using Informedica.DataAccess.Databases;
 using Informedica.GenImport.GStandard.Mappings;
 using NHibernate;
 using NHibernate.Cfg;
