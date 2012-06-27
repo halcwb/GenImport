@@ -2,11 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using Informedica.GenImport.GStandard.DataAccess.FileSerializers;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.GStandard.Tests.DataAccess
+namespace Informedica.GenImport.GStandard.Tests.IO
 {
     [TestClass]
     public class ArtikelenFileSerializerShould

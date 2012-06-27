@@ -3,25 +3,25 @@
 namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {
     /// <summary>
-    /// Contract for a line in G-Standard file 004.
+    /// Contract for a line in G-Standard file 050.
     /// </summary>
-    public interface IArtikel : IGStandardModel
+    public interface IPrescriptieProduct : IGStandardModel
     {
         /// <summary>
         /// Mutatiekode
         /// </summary>
         MutKod MutKod { get; set; }
         /// <summary>
-        /// ZI-nummer
+        /// PRK-code
         /// </summary>
-        int AtKode { get; set; }
+        int PrKode { get; set; }
         /// <summary>
-        /// HandelsProduktKode
+        /// Naamnummer prescriptie product
         /// </summary>
-        int HpKode { get; set; }
+        int PrNmNr { get; set; }
         /// <summary>
-        /// Artikelnaamnummer
+        /// Verwijzing naar kenmerken bestand
         /// </summary>
-        int AtNmNr { get; set; }
+        string PrKBst { get; set; }
     }
 }

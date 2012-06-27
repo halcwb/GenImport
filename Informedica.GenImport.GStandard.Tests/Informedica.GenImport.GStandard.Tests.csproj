@@ -53,13 +53,17 @@
     <Compile Include="Attributes\ConvertToDecimalAttributeShould.cs" />
     <Compile Include="Attributes\FileLinePositionAttributeShould.cs" />
     <Compile Include="Attributes\Modulo11AttributeShould.cs" />
-    <Compile Include="DataAccess\ArtikelenFileSerializerShould.cs" />
-    <Compile Include="DataAccess\GStandardFileSerializerBaseShould.cs" />
-    <Compile Include="DataAccess\NamenFileSerializerShould.cs" />
-    <Compile Include="DataAccess\RelatiesTussenNamenFileSerializerShould.cs" />
-    <Compile Include="DataAccess\ThesauriTotaalFileSerializerShould.cs" />
+    <Compile Include="IO\ArtikelenFileSerializerShould.cs" />
+    <Compile Include="IO\GStandardFileSerializerBaseShould.cs" />
+    <Compile Include="IO\NamenFileSerializerShould.cs" />
+    <Compile Include="IO\RelatiesTussenNamenFileSerializerShould.cs" />
+    <Compile Include="IO\ThesauriTotaalFileSerializerShould.cs" />
     <Compile Include="DomainModel\ArtikelShould.cs" />
+    <Compile Include="DomainModel\GeneriekeSamenstellingShould.cs" />
+    <Compile Include="DomainModel\GeneriekProductShould.cs" />
+    <Compile Include="DomainModel\HandelsProductShould.cs" />
     <Compile Include="DomainModel\NaamShould.cs" />
+    <Compile Include="DomainModel\PrescriptieProductShould.cs" />
     <Compile Include="DomainModel\RelatieTussenNaamShould.cs" />
     <Compile Include="DomainModel\SamenstellingShould.cs" />
     <Compile Include="DomainModel\ThesauriTotaalShould.cs" />
@@ -89,6 +93,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

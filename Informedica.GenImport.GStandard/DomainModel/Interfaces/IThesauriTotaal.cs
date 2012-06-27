@@ -1,5 +1,10 @@
-﻿namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
+﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+
+namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {
+    /// <summary>
+    /// Contract for a line in G-Standard file 902.
+    /// </summary>
     public interface IThesauriTotaal : IGStandardModel
     {
         /// <summary>
@@ -9,7 +14,7 @@
         /// <summary>
         /// Thesaurusnummer (in nieuwe thesauri)
         /// </summary>
-        int TsNr { get; set; }
+        short TsNr { get; set; }
         /// <summary>
         /// Thesaurus itemnummer (in nieuwe thesauri)
         /// </summary>

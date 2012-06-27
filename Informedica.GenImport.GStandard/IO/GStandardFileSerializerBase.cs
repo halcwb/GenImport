@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
-using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.GStandard.Attributes;
+using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
 using Informedica.GenImport.Library.Reflection;
 using Informedica.GenImport.Library.Validation;
 
-namespace Informedica.GenImport.GStandard.DataAccess.FileSerializers
+namespace Informedica.GenImport.GStandard.IO
 {
     public abstract class GStandardFileSerializerBase<TModel> : FileSerializerBase<TModel>
         where TModel : class, IGStandardModel, new()
@@ -23,7 +23,7 @@ namespace Informedica.GenImport.GStandard.DataAccess.FileSerializers
             try
             {
                 TModel model = new TModel();
-                foreach (var properyInfo in ReflectionUtility.GetProperties<FileLinePositionAttribute>(typeof(TModel)))
+                foreach (var properyInfo in ReflectionUtility.GetProperties<TModel, FileLinePositionAttribute>())
                 {
                     object value = GetValue(properyInfo, line);
                     properyInfo.SetValue(model, value, null);

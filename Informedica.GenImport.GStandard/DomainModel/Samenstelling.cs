@@ -1,40 +1,96 @@
-﻿using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.GStandard.Attributes;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
     public class Samenstelling : ISamenstelling
     {
+        #region Implementation of ISamenstelling
+
+        /// <summary>
+        /// Mutatiekode
+        /// </summary>
         [FileLinePosition(5, 5)]
-        public MutKod MutKod { get; set; }
+        public virtual MutKod MutKod { get; set; }
+
+        /// <summary>
+        /// Thesaurus verwijzing soort code
+        /// </summary>
         [FileLinePosition(6, 9)]
-        public int ThsrTc { get; set; }
+        public virtual short ThsrTc { get; set; }
+
+        /// <summary>
+        /// Soort code
+        /// </summary>
         [FileLinePosition(10, 15)]
-        public int SrtCde { get; set; }
+        public virtual int SrtCde { get; set; }
+
+        /// <summary>
+        /// Code
+        /// </summary>
         [FileLinePosition(16, 23)]
-        public int Code { get; set; }
+        public virtual int Code { get; set; }
+
+        /// <summary>
+        /// GeneriekeNaamKode (GNK)
+        /// </summary>
         [FileLinePosition(24, 29)]
         [Modulo11]
-        public int GnGnK { get; set; }
+        public virtual int GnGnK { get; set; }
+
+        /// <summary>
+        /// Hoeveelheid generiek naam
+        /// </summary>
         [DecimalFormat(3)]
         [FileLinePosition(30, 41)]
-        public decimal GnHoev { get; set; }
+        public virtual decimal GnHoev { get; set; }
+
+        /// <summary>
+        /// Thesaurusverwijzig eenh. hoeveelh. generiek naam
+        /// </summary>
         [FileLinePosition(42, 45)]
-        public int TsGneH { get; set; }
+        public virtual short TsGneH { get; set; }
+
+        /// <summary>
+        /// Eenheid hoeveelheid generieke naam
+        /// </summary>
         [FileLinePosition(46, 51)]
-        public int GnEenh { get; set; }
+        public virtual int GnEenh { get; set; }
+
+        /// <summary>
+        /// Stamnaamcode (SNK)
+        /// </summary>
         [FileLinePosition(52, 57)]
         [Modulo11]
-        public int GnStam { get; set; }
+        public virtual int GnStam { get; set; }
+
+        /// <summary>
+        /// Hoeveelheid stamnaam
+        /// </summary>
         [DecimalFormat(3)]
         [FileLinePosition(58, 69)]
-        public decimal StHoev { get; set; }
+        public virtual decimal StHoev { get; set; }
+
+        /// <summary>
+        /// Thesaurusverwijzig eenh. hoeveelh. stamnaam
+        /// </summary>
         [FileLinePosition(70, 73)]
-        public int TsStEh { get; set; }
+        public virtual short TsStEh { get; set; }
+
+        /// <summary>
+        /// Eenheid hoeveelheid stamnaam
+        /// </summary>
         [FileLinePosition(74, 79)]
-        public int StEenh { get; set; }
+        public virtual int StEenh { get; set; }
+
+        /// <summary>
+        /// Sterktes mogen worden opgeteld J/N
+        /// </summary>
         [BooleanFormat("J", "N")]
         [FileLinePosition(80, 80)]
-        public bool StAdd { get; set; }
+        public virtual bool StAdd { get; set; }
+
+        #endregion
     }
 }

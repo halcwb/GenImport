@@ -47,6 +47,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataAccess\Informedica.DataAccess\Informedica.DataAccess.csproj">
+      <Project>{A7844906-1F6F-4AD9-BA9A-D70E501CDC98}</Project>
+      <Name>Informedica.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenImport.GStandard\Informedica.GenImport.GStandard.csproj">
+      <Project>{D2D059C9-14E8-48C0-97AF-95D38AA90947}</Project>
+      <Name>Informedica.GenImport.GStandard</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

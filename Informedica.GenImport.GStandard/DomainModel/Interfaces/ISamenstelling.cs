@@ -1,5 +1,10 @@
-﻿namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
+﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+
+namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {
+    /// <summary>
+    /// Contract for a line in G-Standard file 731.
+    /// </summary>
     public interface ISamenstelling : IGStandardModel
     {
         /// <summary>
@@ -9,7 +14,7 @@
         /// <summary>
         /// Thesaurus verwijzing soort code
         /// </summary>
-        int ThsrTc { get; set; }
+        short ThsrTc { get; set; }
         /// <summary>
         /// Soort code
         /// </summary>
@@ -29,7 +34,7 @@
         /// <summary>
         /// Thesaurusverwijzig eenh. hoeveelh. generiek naam
         /// </summary>
-        int TsGneH { get; set; }
+        short TsGneH { get; set; }
         /// <summary>
         /// Eenheid hoeveelheid generieke naam
         /// </summary>
@@ -45,7 +50,7 @@
         /// <summary>
         /// Thesaurusverwijzig eenh. hoeveelh. stamnaam
         /// </summary>
-        int TsStEh { get; set; }
+        short TsStEh { get; set; }
         /// <summary>
         /// Eenheid hoeveelheid stamnaam
         /// </summary>

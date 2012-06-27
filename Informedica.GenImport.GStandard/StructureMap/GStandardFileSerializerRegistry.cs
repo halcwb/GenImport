@@ -1,6 +1,6 @@
 ﻿using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.DataAccess;
-using Informedica.GenImport.GStandard.DataAccess.FileSerializers;
+using Informedica.GenImport.GStandard.IO;
 using StructureMap.Configuration.DSL;
 
 namespace Informedica.GenImport.GStandard.StructureMap

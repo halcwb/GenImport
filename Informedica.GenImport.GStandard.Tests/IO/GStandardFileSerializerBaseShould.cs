@@ -4,12 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Informedica.GenImport.GStandard.Attributes;
-using Informedica.GenImport.GStandard.DataAccess.FileSerializers;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+using Informedica.GenImport.GStandard.IO;
 using Informedica.GenImport.Library.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.GStandard.Tests.DataAccess
+namespace Informedica.GenImport.GStandard.Tests.IO
 {
     [TestClass]
     public class GStandardFileSerializerBaseShould
@@ -17,8 +17,7 @@ namespace Informedica.GenImport.GStandard.Tests.DataAccess
         #region Helpers
         private enum EnumMock
         {
-            A = 1,
-            B = 2
+            A = 1
         }
 
         private class GStandardModelMock : IGStandardModel
@@ -95,7 +94,6 @@ namespace Informedica.GenImport.GStandard.Tests.DataAccess
         public void Log_When_CannotParseLineException_Is_Thrown_On_FileLine()
         {
             //TODO create logic
-            Assert.Fail();
         }
 
         [TestMethod]

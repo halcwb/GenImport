@@ -99,9 +99,8 @@ namespace Informedica.GenImport.Library.Tests
         public void Return_One_Property_When_GetProperties_With_AttributeType_TestAttribute_Is_Called()
         {
             const int expectedCount = 1;
-            var type = typeof (TestClass);
 
-            var properties = ReflectionUtility.GetProperties<TestAttribute>(type);
+            var properties = ReflectionUtility.GetProperties<TestClass, TestAttribute>();
             
             Assert.AreEqual(expectedCount, properties.Count());
         }

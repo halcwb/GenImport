@@ -1,4 +1,4 @@
-﻿namespace Informedica.GenImport.GStandard.DomainModel
+﻿namespace Informedica.GenImport.GStandard.DomainModel.Enums
 {
     /// <summary>
     /// Mutatiekode

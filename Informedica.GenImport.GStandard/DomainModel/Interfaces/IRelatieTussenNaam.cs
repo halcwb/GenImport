@@ -1,5 +1,10 @@
-﻿namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
+﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+
+namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {
+    /// <summary>
+    /// Contract for a line in G-Standard file 025.
+    /// </summary>
     public interface IRelatieTussenNaam : IGStandardModel
     {
         /// <summary>
