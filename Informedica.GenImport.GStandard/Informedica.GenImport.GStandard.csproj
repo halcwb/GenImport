@@ -66,9 +66,11 @@
     <Compile Include="DomainModel\Entity.cs" />
     <Compile Include="DomainModel\Enums\StofAanduiding.cs" />
     <Compile Include="DomainModel\Equality\NaamComparer.cs" />
+    <Compile Include="DomainModel\GeneriekeNaam.cs" />
     <Compile Include="DomainModel\GeneriekeSamenstelling.cs" />
     <Compile Include="DomainModel\GeneriekProduct.cs" />
     <Compile Include="DomainModel\HandelsProduct.cs" />
+    <Compile Include="DomainModel\Interfaces\IGeneriekeNaam.cs" />
     <Compile Include="DomainModel\Interfaces\IGeneriekeSamenstelling.cs" />
     <Compile Include="DomainModel\Interfaces\IGeneriekProduct.cs" />
     <Compile Include="DomainModel\Interfaces\IArtikel.cs" />

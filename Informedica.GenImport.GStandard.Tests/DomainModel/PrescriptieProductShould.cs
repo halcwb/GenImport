@@ -10,6 +10,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
     public class PrescriptieProductShould
     {
         #region LinePositionAttribute
+
         [TestMethod]
         public void Have_A_LinePositionAttribute_On_4_Properties()
         {
@@ -48,9 +49,11 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 21, 30),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
+
         #endregion
 
         #region Modulo11Attribute
+
         [TestMethod]
         public void Have_A_Modulo11Attribute_On_1_Property()
         {
@@ -65,6 +68,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasModulo11AttributeOnProperty(info),
                           string.Format(AttributeTestUtility.HasNoModulo11AttributeMessage, info.Name));
         }
+
         #endregion
     }
 }

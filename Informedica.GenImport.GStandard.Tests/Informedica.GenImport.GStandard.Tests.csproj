@@ -77,6 +77,7 @@
     <Compile Include="Attributes\ConvertToDecimalAttributeShould.cs" />
     <Compile Include="Attributes\FileLinePositionAttributeShould.cs" />
     <Compile Include="Attributes\Modulo11AttributeShould.cs" />
+    <Compile Include="DomainModel\GeneriekeNaamShould.cs" />
     <Compile Include="GStandardImportServiceShould.cs" />
     <Compile Include="IO\ArtikelenFileSerializerShould.cs" />
     <Compile Include="IO\GeneriekeSamenstellingFileSerializerShould.cs" />
