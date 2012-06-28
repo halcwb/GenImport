@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.GStandard.Attributes;
@@ -13,10 +14,12 @@ namespace Informedica.GenImport.GStandard.IO
         where TModel : class, IGStandardModel, new()
     {
         //TODO make this: bool TryParseLineToModel(string line, out TModel model)
+        //TODO add PostSharp
         protected override TModel ParseLineToModel(string line)
         {
             if (line.IndexOf((char)26) > 0)
             {
+                Debugger.Break();
                 //TODO: last line, just skip
             }
 

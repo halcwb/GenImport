@@ -1,14 +1,14 @@
 ﻿namespace Informedica.GenImport.GStandard.DomainModel.Enums
 {
-    public enum StofAanduiding
+    public enum StofAanduiding : byte
     {
         /// <summary>
         /// Hulp
         /// </summary>
-        H,
+        H = 0,
         /// <summary>
         /// Werkzaam
         /// </summary>
-        W
+        W = 1
     }
 }

@@ -84,7 +84,9 @@
     <Compile Include="DomainModel\RelatieTussenNaam.cs" />
     <Compile Include="DomainModel\Samenstelling.cs" />
     <Compile Include="DomainModel\ThesauriTotaal.cs" />
+    <Compile Include="GStandardImportService.cs" />
     <Compile Include="IO\ArtikelenFileSerializer.cs" />
+    <Compile Include="IO\GeneriekeSamenstellingFileSerializer.cs" />
     <Compile Include="IO\GStandardFileSerializerBase.cs" />
     <Compile Include="IO\NamenFileSerializer.cs" />
     <Compile Include="IO\RelatiesTussenNamenFileSerializer.cs" />
@@ -114,6 +116,10 @@
     <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">
       <Project>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</Project>
       <Name>Informedica.GenImport.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenImport.Services\Informedica.GenImport.Services.csproj">
+      <Project>{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}</Project>
+      <Name>Informedica.GenImport.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

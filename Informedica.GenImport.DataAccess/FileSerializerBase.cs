@@ -41,5 +41,10 @@ namespace Informedica.GenImport.DataAccess
         }
 
         protected abstract TModel ParseLineToModel(string line);
+        
+        IEnumerable<IModel> IFileSerializerBase.ReadLines(Stream inputStream)
+        {
+            return ReadLines(inputStream);
+        }
     }
 }

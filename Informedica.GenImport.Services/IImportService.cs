@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Informedica.GenImport.Services
+﻿namespace Informedica.GenImport.Services
 {
     public interface IImportService
     {

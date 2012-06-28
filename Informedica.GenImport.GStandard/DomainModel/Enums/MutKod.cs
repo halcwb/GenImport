@@ -3,7 +3,7 @@
     /// <summary>
     /// Mutatiekode
     /// </summary>
-    public enum MutKod
+    public enum MutKod : byte
     {
         RecordNotChanged = 0,
         RecordDeleted = 1,
