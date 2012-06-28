@@ -93,7 +93,8 @@
     <Compile Include="DomainModel\RelatieTussenNaamShould.cs" />
     <Compile Include="DomainModel\SamenstellingShould.cs" />
     <Compile Include="DomainModel\ThesauriTotaalShould.cs" />
-    <Compile Include="Mappings\NaamMappingShould.cs" />
+    <Compile Include="Mappings\GeneriekeSamenstellingMapShould.cs" />
+    <Compile Include="Mappings\NaamMapShould.cs" />
     <Compile Include="ModelMappingProfileShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestSessionContext.cs" />

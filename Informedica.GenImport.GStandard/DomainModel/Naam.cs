@@ -1,12 +1,11 @@
 ﻿using System;
-using Informedica.EntityRepository.Entities;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.GStandard.Attributes;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class Naam : Entity<Naam, int>, INaam
+    public class Naam : Entity<Naam>, INaam
     {
         #region Implementation of INaam
 

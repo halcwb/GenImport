@@ -5,12 +5,12 @@ namespace Informedica.GenImport.GStandard.Attributes
     [AttributeUsage(AttributeTargets.Property)]
     public class DecimalFormatAttribute : Attribute
     {
-        public int Precision { get; set; }
+        public int Scale { get; set; }
 
-        public DecimalFormatAttribute(int precision)
+        public DecimalFormatAttribute(int scale)
         {
-            if (precision < 0) throw new ArgumentOutOfRangeException("precision", "Can't be less than 0.");
-            Precision = precision;
+            if (scale < 0) throw new ArgumentOutOfRangeException("scale", "Can't be less than 0.");
+            Scale = scale;
         }
 
         public bool TryParse(string value, out decimal result)
@@ -20,7 +20,7 @@ namespace Informedica.GenImport.GStandard.Attributes
             bool parsed = Int32.TryParse(value, out intResult);
             if (parsed)
             {
-                result = intResult / (decimal)(Math.Pow(10, Precision));
+                result = intResult / (decimal)(Math.Pow(10, Scale));
             }
             return parsed;
         }

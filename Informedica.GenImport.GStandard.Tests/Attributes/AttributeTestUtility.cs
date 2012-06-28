@@ -38,7 +38,7 @@ namespace Informedica.GenImport.GStandard.Tests.Attributes
         internal static bool HasValidConvertToDecimalAttributeOnProperty(MemberInfo memberInfo, int expectedPrecision)
         {
             var attribute = ReflectionUtility.GetAttribute<DecimalFormatAttribute>(memberInfo);
-            return attribute != null && expectedPrecision == attribute.Precision;
+            return attribute != null && expectedPrecision == attribute.Scale;
         }
 
         internal static bool HasAttributeCount<TModel, TAttribute>(int expectedCount)

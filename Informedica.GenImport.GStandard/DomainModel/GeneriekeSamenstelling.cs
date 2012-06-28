@@ -1,10 +1,11 @@
-﻿using Informedica.GenImport.GStandard.Attributes;
+﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class GeneriekeSamenstelling : IGeneriekeSamenstelling
+    public class GeneriekeSamenstelling : Entity<GeneriekeSamenstelling>, IGeneriekeSamenstelling
     {
         #region Implementation of IGeneriekeSamenstelling
 
@@ -25,7 +26,11 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(7, 14)]
         [Modulo11]
-        public virtual int GsKode { get; set; }
+        public virtual int GsKode
+        {
+            get { return Id; }
+            set { Id = value; }
+        }
 
         /// <summary>
         /// Volledige generieke naam kode
@@ -54,5 +59,10 @@ namespace Informedica.GenImport.GStandard.DomainModel
         public virtual short XpEhHv { get; set; }
 
         #endregion
+
+        public override bool IsIdentical(GeneriekeSamenstelling entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

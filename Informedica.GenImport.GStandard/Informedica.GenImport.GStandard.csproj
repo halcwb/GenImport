@@ -63,6 +63,7 @@
     <Compile Include="AutoMapper\ModelMappingProfile.cs" />
     <Compile Include="DataAccess\SessionFactoryManager.cs" />
     <Compile Include="DomainModel\Artikel.cs" />
+    <Compile Include="DomainModel\Entity.cs" />
     <Compile Include="DomainModel\Enums\StofAanduiding.cs" />
     <Compile Include="DomainModel\Equality\NaamComparer.cs" />
     <Compile Include="DomainModel\GeneriekeSamenstelling.cs" />
@@ -91,6 +92,8 @@
     <Compile Include="IO\NamenFileSerializer.cs" />
     <Compile Include="IO\RelatiesTussenNamenFileSerializer.cs" />
     <Compile Include="IO\ThesauriTotaalFileSerializer.cs" />
+    <Compile Include="Mappings\EntityMap.cs" />
+    <Compile Include="Mappings\GeneriekeSamenstellingMap.cs" />
     <Compile Include="Mappings\NaamMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NaamRepository.cs" />
