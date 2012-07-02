@@ -35,9 +35,9 @@ namespace Informedica.GenImport.GStandard.Services
             }
         }
 
-        protected virtual void ProcessFile(Stream stream, IFileSerializerBase<TModel> fileSerializer, Action<TModel> processLineAction)
+        protected virtual void ProcessFile(Stream stream, Action<TModel> processLineAction)
         {
-            var lines = fileSerializer.ReadLines(stream);
+            var lines = FileSerializer.ReadLines(stream);
             foreach (var model in lines)
             {
                 processLineAction(model);

@@ -18,7 +18,7 @@ namespace Informedica.GenImport.GStandard.Services
         {
             var query = CurrentSession.CreateSQLQuery(
                 "INSERT INTO GeneriekeNaam (GnGnK, MutKod, GnGnAm) VALUES (:GnGnK, :MutKod, :GnGnAm)");
-            ProcessFile(stream, FileSerializer, n => query.SetInt32("GnGnK", n.GnGnK)
+            ProcessFile(stream, n => query.SetInt32("GnGnK", n.GnGnK)
                                                          .SetByte("MutKod", (byte)n.MutKod)
                                                          .SetString("GnGnAm", n.GnGnAm)
                                                          .ExecuteUpdate());
