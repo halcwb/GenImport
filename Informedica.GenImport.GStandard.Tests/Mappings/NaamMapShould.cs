@@ -17,7 +17,6 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
                 .CheckProperty(b => b.NmMemo, "memo")
                 .CheckProperty(b => b.NmNaam, "naam")
                 .CheckProperty(b => b.NmNm40, "naam40")
-                .CheckProperty(b => b.Id, 1)
                 .VerifyTheMappings();
         }
     }

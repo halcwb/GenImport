@@ -87,6 +87,7 @@
     <Compile Include="DomainModel\RelatieTussenNaam.cs" />
     <Compile Include="DomainModel\Samenstelling.cs" />
     <Compile Include="DomainModel\ThesauriTotaal.cs" />
+    <Compile Include="Repositories\GeneriekeNaamRepository.cs" />
     <Compile Include="Repositories\GeneriekeSamenstellingRepository.cs" />
     <Compile Include="Services\GeneriekeNamenImportService.cs" />
     <Compile Include="Services\GeneriekeSamenstellingenImportService.cs" />

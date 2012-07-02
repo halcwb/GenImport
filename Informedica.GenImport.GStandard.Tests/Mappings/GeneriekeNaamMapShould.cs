@@ -16,7 +16,6 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)
                 .CheckProperty(b => b.GnGnAm, "Generieke Naam")
                 .CheckProperty(b => b.GnGnK, id)
-                .CheckProperty(b => b.Id, id)
                 .VerifyTheMappings();
         }
     }
