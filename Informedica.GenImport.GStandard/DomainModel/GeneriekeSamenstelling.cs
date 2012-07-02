@@ -26,11 +26,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(7, 14)]
         [Modulo11]
-        public virtual int GsKode
-        {
-            get { return Id; }
-            set { Id = value; }
-        }
+        public virtual int GsKode { get; set; }
 
         /// <summary>
         /// Volledige generieke naam kode
@@ -57,6 +53,11 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(36, 38)]
         public virtual short XpEhHv { get; set; }
+
+        /// <summary>
+        /// Generieke naam via GnNkPk
+        /// </summary>
+        public virtual IGeneriekeNaam GeneriekeNaam { get; set; }
 
         #endregion
 

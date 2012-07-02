@@ -19,11 +19,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// Naamnummer
         /// </summary>
         [FileLinePosition(6, 12)]
-        public virtual int NmNr
-        {
-            get { return base.Id; }
-            set { base.Id = value; }
-        }
+        public virtual int NmNr { get; set; }
 
         /// <summary>
         /// Memokode

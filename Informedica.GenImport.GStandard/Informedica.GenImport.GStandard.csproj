@@ -87,18 +87,24 @@
     <Compile Include="DomainModel\RelatieTussenNaam.cs" />
     <Compile Include="DomainModel\Samenstelling.cs" />
     <Compile Include="DomainModel\ThesauriTotaal.cs" />
-    <Compile Include="GStandardImportService.cs" />
+    <Compile Include="Repositories\GeneriekeSamenstellingRepository.cs" />
+    <Compile Include="Services\GeneriekeNamenImportService.cs" />
+    <Compile Include="Services\GeneriekeSamenstellingenImportService.cs" />
     <Compile Include="IO\ArtikelenFileSerializer.cs" />
+    <Compile Include="IO\GeneriekeNamenFileSerializer.cs" />
     <Compile Include="IO\GeneriekeSamenstellingFileSerializer.cs" />
     <Compile Include="IO\GStandardFileSerializerBase.cs" />
     <Compile Include="IO\NamenFileSerializer.cs" />
     <Compile Include="IO\RelatiesTussenNamenFileSerializer.cs" />
     <Compile Include="IO\ThesauriTotaalFileSerializer.cs" />
-    <Compile Include="Mappings\EntityMap.cs" />
+    <Compile Include="Mappings\GeneriekeNaamMap.cs" />
     <Compile Include="Mappings\GeneriekeSamenstellingMap.cs" />
     <Compile Include="Mappings\NaamMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NaamRepository.cs" />
+    <Compile Include="Services\GStandardImportServiceBase.cs" />
+    <Compile Include="Services\IGStandardImportService.cs" />
+    <Compile Include="Services\NamenImportService.cs" />
     <Compile Include="StructureMap\GStandardFileSerializerRegistry.cs" />
   </ItemGroup>
   <ItemGroup>

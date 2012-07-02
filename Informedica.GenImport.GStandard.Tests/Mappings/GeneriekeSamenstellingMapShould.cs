@@ -12,14 +12,13 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
         public void Correctly_Map_GeneriekeSamenstelling()
         {
             new PersistenceSpecification<GeneriekeSamenstelling>(CurrentSession)
-                .CheckProperty(b => b.Id, 1)
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)
                 .CheckProperty(b => b.GnMomH, 123456745.456m)
                 .CheckProperty(b => b.GnMwHs, StofAanduiding.H)
-                .CheckProperty(b => b.GnNkPk, 1)
                 .CheckProperty(b => b.GsKode, 1)
                 .CheckProperty(b => b.XnMomE, (short)1)
                 .CheckProperty(b => b.XpEhHv, (short)1)
+                .CheckReference(b => b.GeneriekeNaam, new GeneriekeNaam { GnGnAm = "a", GnGnK = 1, MutKod = MutKod.RecordNotChanged } )
                 .VerifyTheMappings();
         }
     }

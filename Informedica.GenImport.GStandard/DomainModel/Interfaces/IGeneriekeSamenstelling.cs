@@ -35,5 +35,10 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
         /// Basiseenheid product kode
         /// </summary>
         short XpEhHv { get; set; }
+        
+        /// <summary>
+        /// Generieke naam via GnNkPk
+        /// </summary>
+        IGeneriekeNaam GeneriekeNaam { get; set; }
     }
 }

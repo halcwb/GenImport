@@ -1,10 +1,11 @@
-﻿using Informedica.GenImport.GStandard.Attributes;
+﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class GeneriekeNaam : IGeneriekeNaam
+    public class GeneriekeNaam : Entity<GeneriekeNaam>, IGeneriekeNaam
     {
         #region Implementation of IGeneriekeNaam
 
@@ -12,20 +13,29 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// Mutatiekode
         /// </summary>
         [FileLinePosition(5, 5)]
-        public MutKod MutKod { get; set; }
+        public virtual MutKod MutKod { get; set; }
 
         /// <summary>
         /// GeneriekeNaamKode (GNK)
         /// </summary>
         [FileLinePosition(6, 11)]
         [Modulo11]
-        public int GnGnK { get; set; }
+        public virtual int GnGnK { get; set; }
 
         /// <summary>
         /// Generieke naam
         /// </summary>
         [FileLinePosition(12, 61)]
-        public string GnGnAm { get; set; }
+        public virtual string GnGnAm { get; set; }
+
+        #endregion
+
+        #region Overrides of Entity<GeneriekeNaam,int>
+
+        public override bool IsIdentical(GeneriekeNaam entity)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }
