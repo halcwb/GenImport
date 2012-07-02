@@ -1,10 +1,11 @@
-﻿using Informedica.GenImport.GStandard.Attributes;
+﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class PrescriptieProduct : IPrescriptieProduct
+    public class PrescriptieProduct : Entity<PrescriptieProduct>, IPrescriptieProduct
     {
         #region Implementation of IPrescriptieProduct
 
@@ -32,6 +33,15 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(21, 30)]
         public virtual string PrKBst { get; set; }
+
+        #endregion
+
+        #region Overrides of Entity<PrescriptieProduct,int>
+
+        public override bool IsIdentical(PrescriptieProduct entity)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

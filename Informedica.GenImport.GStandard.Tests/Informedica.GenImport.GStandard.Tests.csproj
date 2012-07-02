@@ -102,6 +102,7 @@
     <Compile Include="Services\GeneriekeNamenImportServiceShould.cs" />
     <Compile Include="Services\GeneriekeSamenstellingImportServiceShould.cs" />
     <Compile Include="Services\NamenImportServiceShould.cs" />
+    <Compile Include="Services\PrescriptieProductenImportServiceShould.cs" />
     <Compile Include="TestSessionContext.cs" />
   </ItemGroup>
   <ItemGroup>
