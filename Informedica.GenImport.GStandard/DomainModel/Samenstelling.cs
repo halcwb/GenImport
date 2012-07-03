@@ -1,10 +1,11 @@
-﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+﻿using System;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.GStandard.Attributes;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class Samenstelling : ISamenstelling
+    public class Samenstelling : Entity<Samenstelling>, ISamenstelling
     {
         #region Implementation of ISamenstelling
 
@@ -92,5 +93,10 @@ namespace Informedica.GenImport.GStandard.DomainModel
         public virtual bool StAdd { get; set; }
 
         #endregion
+
+        public override bool IsIdentical(Samenstelling entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

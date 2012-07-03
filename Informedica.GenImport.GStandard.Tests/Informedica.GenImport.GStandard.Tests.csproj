@@ -99,6 +99,7 @@
     <Compile Include="Mappings\HandelsProductMapShould.cs" />
     <Compile Include="Mappings\NaamMapShould.cs" />
     <Compile Include="Mappings\PrescriptieProductMapShould.cs" />
+    <Compile Include="Mappings\SamenstellingMapShould.cs" />
     <Compile Include="ModelMappingProfileShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GeneriekeNamenImportServiceShould.cs" />
