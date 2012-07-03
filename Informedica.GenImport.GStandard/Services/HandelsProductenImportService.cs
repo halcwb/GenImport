@@ -9,7 +9,8 @@ namespace Informedica.GenImport.GStandard.Services
 {
     public class HandelsProductenImportService : GStandardImportServiceBase<IHandelsProduct>
     {
-        public HandelsProductenImportService(string databaseFilePath, IFileSerializerBase<IHandelsProduct> fileSerializer, ISessionFactory sessionFactory) : base(databaseFilePath, fileSerializer, sessionFactory)
+        public HandelsProductenImportService(string databaseFilePath, IFileSerializerBase<IHandelsProduct> fileSerializer, ISessionFactory sessionFactory)
+            : base(databaseFilePath, fileSerializer, sessionFactory)
         {
         }
 
@@ -17,7 +18,17 @@ namespace Informedica.GenImport.GStandard.Services
 
         public override void Import(Stream stream)
         {
-            throw new NotImplementedException();
+            var query =
+                CurrentSession.CreateSQLQuery(
+                    "INSERT INTO HandelsProduct (HpKode, MutKod, FsNaam, MsNaam, HpNamN, TsEmbM, XsEmbM) VALUES (:HpKode, :MutKod, :FsNaam, :MsNaam, :HpNamN, :TsEmbM, :XsEmbM)");
+            ProcessFile(stream, n => query.SetInt32("HpKode", n.HpKode)
+                                         .SetByte("MutKod", (byte)n.MutKod)
+                                         .SetString("FsNaam", n.FsNaam)
+                                         .SetString("MsNaam", n.MsNaam)
+                                         .SetInt32("HpNamN", n.HpNamN)
+                                         .SetInt16("TsEmbM", n.TsEmbM)
+                                         .SetInt32("XsEmbM", n.XsEmbM)
+                                         .ExecuteUpdate());
         }
 
         #endregion
