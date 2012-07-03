@@ -33,7 +33,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
         #endregion
 
         [TestMethod]
-        public void Import_The_PrescriptieProducten_From_A_Stream_And_Create_Entities_In_The_Database()
+        public void Import_The_Samenstellingen_From_A_Stream_And_Create_Entities_In_The_Database()
         {
             const int expectedCount = 1;
             var lines = new List<ISamenstelling>{
