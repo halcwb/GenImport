@@ -87,9 +87,11 @@
     <Compile Include="DomainModel\RelatieTussenNaam.cs" />
     <Compile Include="DomainModel\Samenstelling.cs" />
     <Compile Include="DomainModel\ThesauriTotaal.cs" />
+    <Compile Include="Mappings\HandelsProductMap.cs" />
     <Compile Include="Mappings\PrescriptieProductMap.cs" />
     <Compile Include="Repositories\GeneriekeNaamRepository.cs" />
     <Compile Include="Repositories\GeneriekeSamenstellingRepository.cs" />
+    <Compile Include="Repositories\HandelsProductRepository.cs" />
     <Compile Include="Repositories\PrescriptieProductRepository.cs" />
     <Compile Include="Services\GeneriekeNamenImportService.cs" />
     <Compile Include="Services\GeneriekeSamenstellingenImportService.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\NaamRepository.cs" />
     <Compile Include="Services\GStandardImportServiceBase.cs" />
+    <Compile Include="Services\HandelsProductenImportService.cs" />
     <Compile Include="Services\IGStandardImportService.cs" />
     <Compile Include="Services\NamenImportService.cs" />
     <Compile Include="Services\PrescriptieProductenImportService.cs" />

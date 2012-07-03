@@ -1,10 +1,11 @@
-﻿using Informedica.GenImport.GStandard.Attributes;
+﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class HandelsProduct : IHandelsProduct
+    public class HandelsProduct : Entity<HandelsProduct>, IHandelsProduct
     {
         #region Implementation of IHandelsProduct
 
@@ -50,6 +51,15 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(270, 275)]
         public virtual int XsEmbM { get; set; }
+
+        #endregion
+
+        #region Overrides of Entity<HandelsProduct,int>
+
+        public override bool IsIdentical(HandelsProduct entity)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }
