@@ -9,7 +9,7 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
     public class SamenstellingMapShould : TestSessionContext
     {
         [TestMethod]
-        public void Correctly_Map_SamenstellingMap()
+        public void Correctly_Map_Samenstelling()
         {
             new PersistenceSpecification<Samenstelling>(CurrentSession)
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)

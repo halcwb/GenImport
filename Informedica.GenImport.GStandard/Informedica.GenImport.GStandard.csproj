@@ -89,6 +89,7 @@
     <Compile Include="DomainModel\ThesauriTotaal.cs" />
     <Compile Include="Mappings\HandelsProductMap.cs" />
     <Compile Include="Mappings\PrescriptieProductMap.cs" />
+    <Compile Include="Mappings\SamenstellingMap.cs" />
     <Compile Include="Repositories\GeneriekeNaamRepository.cs" />
     <Compile Include="Repositories\GeneriekeSamenstellingRepository.cs" />
     <Compile Include="Repositories\HandelsProductRepository.cs" />
