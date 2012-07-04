@@ -8,6 +8,7 @@ using NHibernate;
 namespace Informedica.GenImport.GStandard.Repositories
 {
     // ToDo make repository of type INaam
+    //TODO do this for all repositories, interface instead of class.
     public class NameRepository : NHibernateRepository<Name, int>
     {
         // ToDo move Comparer to constructor and make it IEqualityComparer<INaam>

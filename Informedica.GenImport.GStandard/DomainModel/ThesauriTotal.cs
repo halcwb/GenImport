@@ -1,10 +1,11 @@
-﻿using Informedica.GenImport.GStandard.Attributes;
+﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class ThesauriTotal : IThesauriTotal
+    public class ThesauriTotal : Entity<ThesauriTotal>, IThesauriTotal
     {
         #region Implementation of IThesauriTotaal
 
@@ -91,6 +92,15 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(117, 117)]
         public virtual string ThAKd6 { get; set; }
+
+        #endregion
+
+        #region Overrides of Entity<ThesauriTotal,int>
+
+        public override bool IsIdentical(ThesauriTotal entity)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

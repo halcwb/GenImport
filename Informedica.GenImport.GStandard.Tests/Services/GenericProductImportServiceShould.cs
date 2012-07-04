@@ -61,7 +61,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
 
             new ImportServiceMock("", fileSerializerMock.Object, sessionFactory).Import(new MemoryStream());
 
-            Assert.AreEqual(expectedCount, new GenericNameRepository(sessionFactory).Count);
+            Assert.AreEqual(expectedCount, new GenericProductRepository(sessionFactory).Count);
         }
     }
 }

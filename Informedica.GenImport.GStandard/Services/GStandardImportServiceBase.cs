@@ -20,6 +20,7 @@ namespace Informedica.GenImport.GStandard.Services
 
         protected bool StopImport { get; private set; }
 
+        //TODO use Repository<TEnt, TId> instead of ISessionFactory
         protected GStandardImportServiceBase(string databaseFilePath, IFileSerializerBase<TModel> fileSerializer, ISessionFactory sessionFactory)
         {
             DatabaseFilePath = databaseFilePath;

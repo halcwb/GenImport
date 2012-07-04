@@ -104,6 +104,7 @@
     <Compile Include="Repositories\CommercialProductRepository.cs" />
     <Compile Include="Repositories\PrescriptionProductRepository.cs" />
     <Compile Include="Repositories\CompositionRepository.cs" />
+    <Compile Include="Repositories\ThesauriTotalRepository.cs" />
     <Compile Include="Services\GenericNameImportService.cs" />
     <Compile Include="Services\GenericProductImportService.cs" />
     <Compile Include="Services\GenericCompositionImportService.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Services\NameImportService.cs" />
     <Compile Include="Services\PrescriptionProductImportService.cs" />
     <Compile Include="Services\CompositionImportService.cs" />
+    <Compile Include="Services\ThesauriTotalImportService.cs" />
     <Compile Include="StructureMap\GStandardFileSerializerRegistry.cs" />
   </ItemGroup>
   <ItemGroup>

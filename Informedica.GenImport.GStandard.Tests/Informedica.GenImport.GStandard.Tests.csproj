@@ -101,6 +101,7 @@
     <Compile Include="Mappings\NameMapShould.cs" />
     <Compile Include="Mappings\PrescriptionProductMapShould.cs" />
     <Compile Include="Mappings\CompositionMapShould.cs" />
+    <Compile Include="Mappings\ThesauriTotalMapShould.cs" />
     <Compile Include="ModelMappingProfileShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GenericNameImportServiceShould.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Services\NameImportServiceShould.cs" />
     <Compile Include="Services\PrescriptionProductImportServiceShould.cs" />
     <Compile Include="Services\CompositionImportServiceShould.cs" />
+    <Compile Include="Services\ThesauriTotalImportServiceShould.cs" />
     <Compile Include="TestSessionContext.cs" />
   </ItemGroup>
   <ItemGroup>
