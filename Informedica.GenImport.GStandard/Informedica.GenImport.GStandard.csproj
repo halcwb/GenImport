@@ -95,6 +95,7 @@
     <Compile Include="Files\ThesauriTotalFileSerializer.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
     <Compile Include="Mappings\CommercialProductMap.cs" />
+    <Compile Include="Mappings\GenericProductMap.cs" />
     <Compile Include="Mappings\PrescriptionProductMap.cs" />
     <Compile Include="Mappings\CompositionMap.cs" />
     <Compile Include="Repositories\GenericNameRepository.cs" />

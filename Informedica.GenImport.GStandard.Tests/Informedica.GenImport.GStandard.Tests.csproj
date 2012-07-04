@@ -97,7 +97,7 @@
     <Compile Include="Mappings\GenericNameMapShould.cs" />
     <Compile Include="Mappings\GenericCompositionMapShould.cs" />
     <Compile Include="Mappings\CommercialProductMapShould.cs" />
-    <Compile Include="Mappings\GenericProductShould.cs" />
+    <Compile Include="Mappings\GenericProductMapShould.cs" />
     <Compile Include="Mappings\NameMapShould.cs" />
     <Compile Include="Mappings\PrescriptionProductMapShould.cs" />
     <Compile Include="Mappings\CompositionMapShould.cs" />

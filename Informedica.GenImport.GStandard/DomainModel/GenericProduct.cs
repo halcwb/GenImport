@@ -33,7 +33,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// Farmaceutische vorm thesaurusnummer
         /// </summary>
         [FileLinePosition(22, 24)]
-        public short ThKtVr { get; set; }
+        public virtual short ThKtVr { get; set; }
 
         /// <summary>
         /// Farmaceutische vorm code

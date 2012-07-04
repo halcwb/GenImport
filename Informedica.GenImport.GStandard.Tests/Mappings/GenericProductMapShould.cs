@@ -10,15 +10,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Informedica.GenImport.GStandard.Tests.Mappings
 {
     [TestClass]
-    public class GenericProductShould : TestSessionContext
+    public class GenericProductMapShould : TestSessionContext
     {
         [TestMethod]
         public void Correctly_Map_GenericProduct()
         {
             new PersistenceSpecification<GenericProduct>(CurrentSession)
+                .CheckProperty(b => b.Id, 1)
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)
                 .CheckProperty(b => b.GpInSt, "A")
-                .CheckProperty(b => b.GpKode, 1)
                 .CheckProperty(b => b.GpKtVr, (short)1)
                 .CheckProperty(b => b.GpKTwg, (short)1)
                 .CheckProperty(b => b.GpNmNr, 1)
