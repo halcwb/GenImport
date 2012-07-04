@@ -20,7 +20,11 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(6, 11)]
         [Modulo11]
-        public virtual int GnGnK { get; set; }
+        public virtual int GnGnK
+        {
+            get { return Id; }
+            set { Id = value; }
+        }
 
         /// <summary>
         /// Generieke naam

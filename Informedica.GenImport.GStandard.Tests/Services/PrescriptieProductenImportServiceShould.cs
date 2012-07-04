@@ -40,7 +40,6 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                                          new PrescriptieProduct{
                                                                                    MutKod = MutKod.RecordNotChanged,
                                                                                    PrKode = 1,
-                                                                                   PrKBst = "",
                                                                                    PrNmNr = 1
                                                                                }
                                                      };

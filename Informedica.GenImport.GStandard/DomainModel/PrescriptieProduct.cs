@@ -20,19 +20,17 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(6, 13)]
         [Modulo11]
-        public virtual int PrKode { get; set; }
+        public virtual int PrKode
+        {
+            get { return Id; }
+            set { Id = value; }
+        }
 
         /// <summary>
         /// Naamnummer prescriptie product
         /// </summary>
         [FileLinePosition(14, 20)]
         public virtual int PrNmNr { get; set; }
-
-        /// <summary>
-        /// Verwijzing naar kenmerken bestand
-        /// </summary>
-        [FileLinePosition(21, 30)]
-        public virtual string PrKBst { get; set; }
 
         #endregion
 

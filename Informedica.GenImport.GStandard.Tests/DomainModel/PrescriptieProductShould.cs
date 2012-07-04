@@ -12,9 +12,9 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
         #region LinePositionAttribute
 
         [TestMethod]
-        public void Have_A_LinePositionAttribute_On_4_Properties()
+        public void Have_A_LinePositionAttribute_On_3_Properties()
         {
-            const int expectedCount = 4;
+            const int expectedCount = 3;
             Assert.IsTrue(AttributeTestUtility.HasAttributeCount<PrescriptieProduct, FileLinePositionAttribute>(expectedCount));
         }
 
@@ -39,14 +39,6 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
         {
             var info = ReflectionUtility.GetMemberInfo(() => new PrescriptieProduct().PrNmNr);
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 14, 20),
-                          string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
-        }
-
-        [TestMethod]
-        public void Have_A_Valid_LinePositionAttribute_On_PrKBst_Property_With_Position_21_30()
-        {
-            var info = ReflectionUtility.GetMemberInfo(() => new PrescriptieProduct().PrKBst);
-            Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 21, 30),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
 

@@ -1,4 +1,5 @@
-﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+﻿using Informedica.EntityRepository.Entities;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
 
 namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {
@@ -35,10 +36,5 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
         /// Basiseenheid product kode
         /// </summary>
         short XpEhHv { get; set; }
-        
-        /// <summary>
-        /// Generieke naam via GnNkPk
-        /// </summary>
-        IGeneriekeNaam GeneriekeNaam { get; set; }
     }
 }

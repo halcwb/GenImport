@@ -1,4 +1,5 @@
-﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+﻿using Informedica.EntityRepository.Entities;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
 
 namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {

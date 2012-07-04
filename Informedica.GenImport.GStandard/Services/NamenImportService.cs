@@ -18,7 +18,7 @@ namespace Informedica.GenImport.GStandard.Services
         {
             var query =
                 CurrentSession.CreateSQLQuery(
-                    "INSERT INTO Naam (NmNr, MutKod, NmMemo, NmEtiket, NmNm40, NmNaam) VALUES (:NmNr, :MutKod, :NmMemo, :NmEtiket, :NmNm40, :NmNaam)");
+                    "INSERT INTO Naam (Id, MutKod, NmMemo, NmEtiket, NmNm40, NmNaam) VALUES (:NmNr, :MutKod, :NmMemo, :NmEtiket, :NmNm40, :NmNaam)");
             ProcessFile(stream, n => query.SetInt32("NmNr", n.NmNr)
                                                                .SetByte("MutKod", (byte)n.MutKod)
                                                                .SetString("NmMemo", n.NmMemo)

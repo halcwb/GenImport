@@ -11,11 +11,10 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
         [TestMethod]
         public void Correctly_Map_GeneriekeNaam()
         {
-            const int id = 1;
             new PersistenceSpecification<GeneriekeNaam>(CurrentSession)
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)
                 .CheckProperty(b => b.GnGnAm, "Generieke Naam")
-                .CheckProperty(b => b.GnGnK, id)
+                .CheckProperty(b => b.Id, 1)
                 .VerifyTheMappings();
         }
     }

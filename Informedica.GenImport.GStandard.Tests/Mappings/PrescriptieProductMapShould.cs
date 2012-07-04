@@ -13,7 +13,6 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
         {
             new PersistenceSpecification<PrescriptieProduct>(CurrentSession)
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)
-                .CheckProperty(b => b.PrKBst, "")
                 .CheckProperty(b => b.PrKode, 1)
                 .CheckProperty(b => b.PrNmNr, 1)
                 .VerifyTheMappings();

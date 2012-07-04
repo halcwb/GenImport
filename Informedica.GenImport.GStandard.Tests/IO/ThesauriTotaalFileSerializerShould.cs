@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Informedica.GenImport.GStandard.DomainModel;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
-using Informedica.GenImport.GStandard.IO;
+using Informedica.GenImport.GStandard.Files.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.GStandard.Tests.IO

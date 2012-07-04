@@ -11,15 +11,14 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
         [TestMethod]
         public void Correctly_Map_HandelsProduct()
         {
-            const int id = 1;
             new PersistenceSpecification<HandelsProduct>(CurrentSession)
+                .CheckProperty(b => b.Id, 1)
                 .CheckProperty(b => b.MutKod, MutKod.RecordNotChanged)
                 .CheckProperty(b => b.FsNaam, "Firma stam naam")
-                .CheckProperty(b => b.HpKode, id)
-                .CheckProperty(b=>b.HpNamN, 1)
-                .CheckProperty(b=>b.MsNaam, "Merk stam naam")
-                .CheckProperty(b=>b.TsEmbM, (short)1)
-                .CheckProperty(b=>b.XsEmbM, 1)
+                .CheckProperty(b => b.HpNamN, 1)
+                .CheckProperty(b => b.MsNaam, "Merk stam naam")
+                .CheckProperty(b => b.TsEmbM, (short)1)
+                .CheckProperty(b => b.XsEmbM, 1)
                 .VerifyTheMappings();
         }
     }

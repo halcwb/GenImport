@@ -8,7 +8,7 @@ using Informedica.GenImport.Library.Exceptions;
 using Informedica.GenImport.Library.Reflection;
 using Informedica.GenImport.Library.Validation;
 
-namespace Informedica.GenImport.GStandard.IO
+namespace Informedica.GenImport.GStandard.Files.Serialization
 {
     public abstract class GStandardFileSerializerBase<TModel> : FileSerializerBase<TModel>
         where TModel : class, IGStandardModel, new()

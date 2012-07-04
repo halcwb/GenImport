@@ -3,7 +3,7 @@
 namespace Informedica.GenImport.GStandard.DomainModel
 {
     public abstract class Entity<TEnt> : Entity<TEnt, int>
-        where TEnt:class, IEntity<TEnt, int>
+        where TEnt : class, IEntity<TEnt, int>
     {
     }
 }

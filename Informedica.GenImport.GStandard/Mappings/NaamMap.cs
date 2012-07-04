@@ -1,14 +1,11 @@
-﻿using FluentNHibernate.Mapping;
-using Informedica.GenImport.GStandard.DomainModel;
+﻿using Informedica.GenImport.GStandard.DomainModel;
 
 namespace Informedica.GenImport.GStandard.Mappings
 {
-    public sealed class NaamMap : ClassMap<Naam>
+    public sealed class NaamMap : EntityMap<Naam>
     {
         public NaamMap()
         {
-            Id(x => x.NmNr);
-
             Map(x => x.MutKod).Not.Nullable().CustomType<byte>();
             Map(x => x.NmMemo).Not.Nullable().Length(6);
             Map(x => x.NmEtiket).Not.Nullable().Length(27).Unique();

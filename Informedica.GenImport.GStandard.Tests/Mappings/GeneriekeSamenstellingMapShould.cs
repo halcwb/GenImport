@@ -1,6 +1,7 @@
 ﻿using FluentNHibernate.Testing;
 using Informedica.GenImport.GStandard.DomainModel;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.GStandard.Tests.Mappings
@@ -18,7 +19,7 @@ namespace Informedica.GenImport.GStandard.Tests.Mappings
                 .CheckProperty(b => b.GsKode, 1)
                 .CheckProperty(b => b.XnMomE, (short)1)
                 .CheckProperty(b => b.XpEhHv, (short)1)
-                .CheckReference(b => b.GeneriekeNaam, new GeneriekeNaam { GnGnAm = "a", GnGnK = 1, MutKod = MutKod.RecordNotChanged } )
+                .CheckProperty(b => b.GnNkPk, 1)
                 .VerifyTheMappings();
         }
     }

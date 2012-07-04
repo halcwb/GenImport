@@ -1,7 +1,7 @@
 ﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
-using Informedica.GenImport.GStandard.Attributes;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
@@ -19,7 +19,11 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// Naamnummer
         /// </summary>
         [FileLinePosition(6, 12)]
-        public virtual int NmNr { get; set; }
+        public virtual int NmNr
+        {
+            get { return Id; } 
+            set { Id = value; }
+        }
 
         /// <summary>
         /// Memokode

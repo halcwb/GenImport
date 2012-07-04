@@ -19,9 +19,5 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
         /// Naamnummer prescriptie product
         /// </summary>
         int PrNmNr { get; set; }
-        /// <summary>
-        /// Verwijzing naar kenmerken bestand
-        /// </summary>
-        string PrKBst { get; set; }
     }
 }

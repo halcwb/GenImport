@@ -1,6 +1,6 @@
-﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+﻿using Informedica.GenImport.GStandard.Attributes;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
-using Informedica.GenImport.GStandard.Attributes;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
