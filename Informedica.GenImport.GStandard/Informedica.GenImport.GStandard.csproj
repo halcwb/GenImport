@@ -98,6 +98,7 @@
     <Compile Include="Mappings\GenericProductMap.cs" />
     <Compile Include="Mappings\PrescriptionProductMap.cs" />
     <Compile Include="Mappings\CompositionMap.cs" />
+    <Compile Include="Mappings\ThesauriTotalMap.cs" />
     <Compile Include="Repositories\GenericNameRepository.cs" />
     <Compile Include="Repositories\GenericCompositionRepository.cs" />
     <Compile Include="Repositories\GenericProductRepository.cs" />
