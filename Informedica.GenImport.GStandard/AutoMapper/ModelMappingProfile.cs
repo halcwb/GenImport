@@ -8,7 +8,7 @@ namespace Informedica.GenImport.GStandard.AutoMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<IArtikel, Product>()
+            Mapper.CreateMap<IProduct, Product>()
                 .ForMember(dest => dest.ProductCode, opt => opt.MapFrom(src => src.HpKode));
 
         }

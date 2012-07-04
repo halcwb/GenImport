@@ -16,7 +16,7 @@ namespace Informedica.GenImport.GStandard.Tests
         protected static ISessionFactory GetSessionFactory()
         {
             var config = Fluently.Configure().Database(SQLiteConfiguration.Standard.UsingFile("c:/tmp/test.db")) // InMemory())
-                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<NaamMap>())
+                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<NameMap>())
                 .CurrentSessionContext<ThreadStaticSessionContext>()
                 .ExposeConfiguration(x => x.SetProperty("prepare_sql", "true"))
                 .BuildConfiguration();

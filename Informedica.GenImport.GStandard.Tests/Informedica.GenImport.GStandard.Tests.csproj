@@ -77,37 +77,37 @@
     <Compile Include="Attributes\ConvertToDecimalAttributeShould.cs" />
     <Compile Include="Attributes\FileLinePositionAttributeShould.cs" />
     <Compile Include="Attributes\Modulo11AttributeShould.cs" />
-    <Compile Include="DomainModel\GeneriekeNaamShould.cs" />
-    <Compile Include="IO\ArtikelenFileSerializerShould.cs" />
-    <Compile Include="IO\GeneriekeNamenFileSerializerShould.cs" />
-    <Compile Include="IO\GeneriekeSamenstellingFileSerializerShould.cs" />
-    <Compile Include="IO\GStandardFileSerializerBaseShould.cs" />
-    <Compile Include="IO\NamenFileSerializerShould.cs" />
-    <Compile Include="IO\RelatiesTussenNamenFileSerializerShould.cs" />
-    <Compile Include="IO\ThesauriTotaalFileSerializerShould.cs" />
-    <Compile Include="DomainModel\ArtikelShould.cs" />
-    <Compile Include="DomainModel\GeneriekeSamenstellingShould.cs" />
-    <Compile Include="DomainModel\GeneriekProductShould.cs" />
-    <Compile Include="DomainModel\HandelsProductShould.cs" />
-    <Compile Include="DomainModel\NaamShould.cs" />
-    <Compile Include="DomainModel\PrescriptieProductShould.cs" />
-    <Compile Include="DomainModel\RelatieTussenNaamShould.cs" />
-    <Compile Include="DomainModel\SamenstellingShould.cs" />
-    <Compile Include="DomainModel\ThesauriTotaalShould.cs" />
-    <Compile Include="Mappings\GeneriekeNaamMapShould.cs" />
-    <Compile Include="Mappings\GeneriekeSamenstellingMapShould.cs" />
-    <Compile Include="Mappings\HandelsProductMapShould.cs" />
-    <Compile Include="Mappings\NaamMapShould.cs" />
-    <Compile Include="Mappings\PrescriptieProductMapShould.cs" />
-    <Compile Include="Mappings\SamenstellingMapShould.cs" />
+    <Compile Include="DomainModel\GenericNameShould.cs" />
+    <Compile Include="Files\GenericCompositionFileSerializerShould.cs" />
+    <Compile Include="Files\GenericNameFileSerializerShould.cs" />
+    <Compile Include="Files\GStandardFileSerializerBaseShould.cs" />
+    <Compile Include="Files\NameFileSerializerShould.cs" />
+    <Compile Include="Files\ProductFileSerializerShould.cs" />
+    <Compile Include="Files\RelationBetweenNameFileSerializerShould.cs" />
+    <Compile Include="Files\ThesauriTotalFileSerializerShould.cs" />
+    <Compile Include="DomainModel\ProductShould.cs" />
+    <Compile Include="DomainModel\GenericCompositionShould.cs" />
+    <Compile Include="DomainModel\GenericProductShould.cs" />
+    <Compile Include="DomainModel\CommercialProductShould.cs" />
+    <Compile Include="DomainModel\NameShould.cs" />
+    <Compile Include="DomainModel\PrescriptionProductShould.cs" />
+    <Compile Include="DomainModel\RelationBetweenNameShould.cs" />
+    <Compile Include="DomainModel\CompositionShould.cs" />
+    <Compile Include="DomainModel\ThesauriTotalShould.cs" />
+    <Compile Include="Mappings\GenericNameMapShould.cs" />
+    <Compile Include="Mappings\GenericCompositionMapShould.cs" />
+    <Compile Include="Mappings\CommercialProductMapShould.cs" />
+    <Compile Include="Mappings\NameMapShould.cs" />
+    <Compile Include="Mappings\PrescriptionProductMapShould.cs" />
+    <Compile Include="Mappings\CompositionMapShould.cs" />
     <Compile Include="ModelMappingProfileShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\GeneriekeNamenImportServiceShould.cs" />
-    <Compile Include="Services\GeneriekeSamenstellingImportServiceShould.cs" />
-    <Compile Include="Services\HandelsProductenImportServiceShould.cs" />
-    <Compile Include="Services\NamenImportServiceShould.cs" />
-    <Compile Include="Services\PrescriptieProductenImportServiceShould.cs" />
-    <Compile Include="Services\SamenstellingenImportServiceShould.cs" />
+    <Compile Include="Services\GenericNameImportServiceShould.cs" />
+    <Compile Include="Services\GenericCompositionImportServiceShould.cs" />
+    <Compile Include="Services\CommercialProductImportServiceShould.cs" />
+    <Compile Include="Services\NameImportServiceShould.cs" />
+    <Compile Include="Services\PrescriptionProductImportServiceShould.cs" />
+    <Compile Include="Services\CompositionImportServiceShould.cs" />
     <Compile Include="TestSessionContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +144,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

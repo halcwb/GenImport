@@ -10,8 +10,7 @@ namespace Informedica.GenImport.GStandard.Services
         where TModel : class, IModel
     {
         protected readonly string DatabaseFilePath;
-        protected readonly IFileSerializerBase<TModel> FileSerializer;
-        protected bool StopImport { get; private set; }
+        private readonly IFileSerializerBase<TModel> _fileSerializer;
         private readonly ISessionFactory _sessionFactory;
 
         protected ISession CurrentSession
@@ -19,10 +18,12 @@ namespace Informedica.GenImport.GStandard.Services
             get { return _sessionFactory.GetCurrentSession(); }
         }
 
+        protected bool StopImport { get; private set; }
+
         protected GStandardImportServiceBase(string databaseFilePath, IFileSerializerBase<TModel> fileSerializer, ISessionFactory sessionFactory)
         {
             DatabaseFilePath = databaseFilePath;
-            FileSerializer = fileSerializer;
+            _fileSerializer = fileSerializer;
             _sessionFactory = sessionFactory;
         }
 
@@ -37,7 +38,7 @@ namespace Informedica.GenImport.GStandard.Services
 
         protected virtual void ProcessFile(Stream stream, Action<TModel> processLineAction)
         {
-            var lines = FileSerializer.ReadLines(stream);
+            var lines = _fileSerializer.ReadLines(stream);
             foreach (var model in lines)
             {
                 processLineAction(model);

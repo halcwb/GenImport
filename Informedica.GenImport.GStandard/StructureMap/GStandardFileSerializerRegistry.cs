@@ -1,6 +1,6 @@
 ﻿using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
-using Informedica.GenImport.GStandard.Files.Serialization;
+using Informedica.GenImport.GStandard.Files;
 using StructureMap.Configuration.DSL;
 
 namespace Informedica.GenImport.GStandard.StructureMap
@@ -9,9 +9,9 @@ namespace Informedica.GenImport.GStandard.StructureMap
     {
         public GStandardFileSerializerRegistry()
         {
-            For<IFileSerializerBase<IArtikel>>().Use<ArtikelenFileSerializer>();
-            For<IFileSerializerBase<INaam>>().Use<NamenFileSerializer>();
-            For<IFileSerializerBase<IThesauriTotaal>>().Use<ThesauriTotaalFileSerializer>();
+            For<IFileSerializerBase<IProduct>>().Use<ProductFileSerializer>();
+            For<IFileSerializerBase<IName>>().Use<NameFileSerializer>();
+            For<IFileSerializerBase<IThesauriTotal>>().Use<ThesauriTotalFileSerializer>();
         }
     }
 }
