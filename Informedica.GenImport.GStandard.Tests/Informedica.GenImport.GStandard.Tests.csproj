@@ -128,10 +128,6 @@
       <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
       <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenImport.DataAccess\Informedica.GenImport.DataAccess.csproj">
-      <Project>{1C415EAC-FEA9-45FD-9102-2289EA610E8F}</Project>
-      <Name>Informedica.GenImport.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenImport.GStandard\Informedica.GenImport.GStandard.csproj">
       <Project>{D2D059C9-14E8-48C0-97AF-95D38AA90947}</Project>
       <Name>Informedica.GenImport.GStandard</Name>

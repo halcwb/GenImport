@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
-using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
 using Informedica.GenImport.Library.Reflection;
+using Informedica.GenImport.Library.Serialization;
 using Informedica.GenImport.Library.Validation;
 
-namespace Informedica.GenImport.GStandard.Files
+namespace Informedica.GenImport.GStandard.Serialization
 {
-    public abstract class GStandardFileSerializer<TModel> : FileSerializer<TModel>
+    public class GStandardFileSerializer<TModel> : FileSerializer<TModel>
         where TModel : class, IGStandardModel, new()
     {
         //TODO make this: bool TryParseLineToModel(string line, out TModel model)

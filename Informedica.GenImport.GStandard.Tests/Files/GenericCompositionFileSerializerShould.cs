@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Informedica.GenImport.GStandard.DomainModel;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
-using Informedica.GenImport.GStandard.Files;
+using Informedica.GenImport.GStandard.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.GStandard.Tests.Files
@@ -31,7 +31,7 @@ namespace Informedica.GenImport.GStandard.Tests.Files
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             var memoryStream = new MemoryStream(dataBytes);
-            var serializer = new GenericCompositionFileSerializer();
+            var serializer = new GStandardFileSerializer<GenericComposition>(); //GenericCompositionFileSerializer();
             var lines = serializer.ReadLines(memoryStream);
 
             var model = lines.FirstOrDefault();
@@ -62,7 +62,7 @@ namespace Informedica.GenImport.GStandard.Tests.Files
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             var memoryStream = new MemoryStream(dataBytes);
-            var serializer = new GenericCompositionFileSerializer();
+            var serializer = new GStandardFileSerializer<GenericComposition>(); //new GenericCompositionFileSerializer();
             var lines = serializer.ReadLines(memoryStream);
 
             Assert.IsNotNull(lines);
@@ -80,7 +80,7 @@ namespace Informedica.GenImport.GStandard.Tests.Files
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             var memoryStream = new MemoryStream(dataBytes);
-            var serializer = new GenericCompositionFileSerializer();
+            var serializer = new GStandardFileSerializer<GenericComposition>(); //new GenericCompositionFileSerializer();
             var lines = serializer.ReadLines(memoryStream);
 
             Assert.IsNotNull(lines);

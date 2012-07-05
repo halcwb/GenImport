@@ -4,7 +4,6 @@ using System.ServiceProcess;
 using Bootstrap;
 using Bootstrap.AutoMapper;
 using Bootstrap.StructureMap;
-using Informedica.GenImport.DataAccess;
 using StructureMap;
 
 namespace Informedica.GenImport

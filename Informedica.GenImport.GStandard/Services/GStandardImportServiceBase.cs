@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
+using Informedica.GenImport.Library.Serialization;
 using Informedica.GenImport.Library.Services;
 using NHibernate;
 

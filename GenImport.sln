@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.DataAccess", "Informedica.GenImport.DataAccess\Informedica.GenImport.DataAccess.csproj", "{1C415EAC-FEA9-45FD-9102-2289EA610E8F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.DataAccess.Tests", "Informedica.GenImport.DataAccess.Tests\Informedica.GenImport.DataAccess.Tests.csproj", "{EB71C04A-3359-4F7F-9030-F78C3FE4C760}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenForm.Library.DomainModel.Interfaces", "..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj", "{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}"
@@ -77,16 +75,6 @@ Global
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5}.Release|x86.ActiveCfg = Release|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{1C415EAC-FEA9-45FD-9102-2289EA610E8F}.Release|x86.ActiveCfg = Release|Any CPU
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

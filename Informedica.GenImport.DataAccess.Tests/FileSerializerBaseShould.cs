@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
+using Informedica.GenImport.Library.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.DataAccess.Tests

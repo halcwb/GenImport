@@ -4,7 +4,7 @@ using System.IO;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
 
-namespace Informedica.GenImport.DataAccess
+namespace Informedica.GenImport.Library.Serialization
 {
     public abstract class FileSerializer<TModel> : IFileSerializer<TModel>
         where TModel : class, IModel

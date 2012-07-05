@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
-using Informedica.GenImport.GStandard.Files;
+using Informedica.GenImport.GStandard.Serialization;
 using Informedica.GenImport.Library.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

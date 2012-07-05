@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+using Informedica.GenImport.Library.Serialization;
 using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Services

@@ -2,7 +2,7 @@
 using System.IO;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 
-namespace Informedica.GenImport.DataAccess
+namespace Informedica.GenImport.Library.Serialization
 {
     public interface IFileSerializer
     {

@@ -53,6 +53,8 @@
     <Compile Include="DomainModel\Product\UnitGroup.cs" />
     <Compile Include="DomainModel\Product\UnitValue.cs" />
     <Compile Include="Exceptions\CannotParseLineException.cs" />
+    <Compile Include="Serialization\FileSerializer.cs" />
+    <Compile Include="Serialization\IFileSerializer.cs" />
     <Compile Include="Services\IImportService.cs" />
     <Compile Include="Utilities\MathUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
