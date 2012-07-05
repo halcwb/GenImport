@@ -22,6 +22,7 @@ namespace Informedica.GenImport.GStandard.Services
             if (prescriptionProductImportService == null) throw new ArgumentNullException("prescriptionProductImportService");
             if (thesauriTotalImportService == null) throw new ArgumentNullException("thesauriTotalImportService");
 
+            //TODO be sure to set order according to references used by entities
             _importServices = new List<IImportService>{
                                                           commercialProductImportService,
                                                           compositionImportService,
@@ -38,8 +39,10 @@ namespace Informedica.GenImport.GStandard.Services
 
         public void Start()
         {
-            //TODO loop services   
-            throw new NotImplementedException();
+            foreach (var importService in _importServices)
+            {
+                importService.Start();
+            }
         }
 
         public void Stop()

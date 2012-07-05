@@ -134,7 +134,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                 GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                 GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                 GetMockImportService<IPrescriptionProduct>(),
-                GetMockImportService<IThesauriTotal>());
+                GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -147,7 +147,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
-                                       GetMockImportService<IThesauriTotal>());
+                                       GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -160,7 +160,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
-                                       GetMockImportService<IThesauriTotal>());
+                                       GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -173,7 +173,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericName>(() => serviceStarted = true, () => { }),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
-                                       GetMockImportService<IThesauriTotal>());
+                                       GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -186,7 +186,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericProduct>(() => serviceStarted = true, () => { }),
                                        GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
-                                       GetMockImportService<IThesauriTotal>());
+                                       GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -199,7 +199,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericProduct>(),
                                        GetMockImportService<IName>(() => serviceStarted = true, () => { }),
                                        GetMockImportService<IPrescriptionProduct>(),
-                                       GetMockImportService<IThesauriTotal>());
+                                       GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -211,7 +211,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(() => serviceStarted = true, () => { }),
-                                       GetMockImportService<IThesauriTotal>());
+                                       GetMockImportService<IThesauriTotal>()).Start();
             Assert.IsTrue(serviceStarted);
         }
 
@@ -223,7 +223,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
-                                       GetMockImportService<IThesauriTotal>(() => serviceStarted = true, () => { }));
+                                       GetMockImportService<IThesauriTotal>(() => serviceStarted = true, () => { })).Start();
             Assert.IsTrue(serviceStarted);
         }
         #endregion
