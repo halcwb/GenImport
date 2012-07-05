@@ -19,7 +19,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
 
         private class ImportServiceMock : CompositionImportService
         {
-            public ImportServiceMock(string databasePath, IFileSerializerBase<IComposition> fileSerializer, ISessionFactory sessionFactory)
+            public ImportServiceMock(string databasePath, IFileSerializer<IComposition> fileSerializer, ISessionFactory sessionFactory)
                 : base(databasePath, fileSerializer, sessionFactory)
             {
             }
@@ -54,7 +54,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
                                                                      }
                                                 };
 
-            var fileSerializerMock = new Mock<IFileSerializerBase<IComposition>>(MockBehavior.Strict);
+            var fileSerializerMock = new Mock<IFileSerializer<IComposition>>(MockBehavior.Strict);
             fileSerializerMock.Setup(s => s.ReadLines(It.IsAny<Stream>())).Returns(lines);
 
             var sessionFactory = GetSessionFactory();

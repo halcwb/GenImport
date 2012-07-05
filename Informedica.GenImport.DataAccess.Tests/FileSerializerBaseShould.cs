@@ -17,7 +17,7 @@ namespace Informedica.GenImport.DataAccess.Tests
             public string Line { get; set; }
         }
 
-        private class FileSerializerBaseMock : FileSerializerBase<ModelMock>
+        private class FileSerializerMock : FileSerializer<ModelMock>
         {
             protected override ModelMock ParseLineToModel(string line)
             {
@@ -36,8 +36,8 @@ namespace Informedica.GenImport.DataAccess.Tests
 
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             MemoryStream memoryStream = new MemoryStream(dataBytes);
-            FileSerializerBaseMock fileSerializerBaseMock = new FileSerializerBaseMock();
-            IEnumerable<ModelMock> lines = fileSerializerBaseMock.ReadLines(memoryStream);
+            FileSerializerMock fileSerializerMock = new FileSerializerMock();
+            IEnumerable<ModelMock> lines = fileSerializerMock.ReadLines(memoryStream);
 
             Assert.IsNotNull(lines);
             Assert.AreEqual(expectedLineCount, lines.Count());

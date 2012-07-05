@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using NHibernate;
@@ -8,7 +7,7 @@ namespace Informedica.GenImport.GStandard.Services
 {
     public class ThesauriTotalImportService : GStandardImportServiceBase<IThesauriTotal>
     {
-        public ThesauriTotalImportService(string databaseFilePath, IFileSerializerBase<IThesauriTotal> fileSerializer, ISessionFactory sessionFactory)
+        public ThesauriTotalImportService(string databaseFilePath, IFileSerializer<IThesauriTotal> fileSerializer, ISessionFactory sessionFactory)
             : base(databaseFilePath, fileSerializer, sessionFactory)
         {
         }

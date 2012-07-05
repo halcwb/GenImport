@@ -2,7 +2,7 @@
 
 namespace Informedica.GenImport.GStandard.Files
 {
-    public class RelationBetweenNameFileSerializer : GStandardFileSerializerBase<RelationBetweenName>
+    public class RelationBetweenNameFileSerializer : GStandardFileSerializer<RelationBetweenName>
     {
     }
 }

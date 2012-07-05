@@ -40,7 +40,7 @@ namespace Informedica.GenImport.GStandard.Tests.Files
             public bool Boolean { get; set; }
         }
 
-        private class GStandardFileSerializerMock : GStandardFileSerializerBase<GStandardModelMock>
+        private class GStandardFileSerializerMock : GStandardFileSerializer<GStandardModelMock>
         {
             public new GStandardModelMock ParseLineToModel(string line)
             {

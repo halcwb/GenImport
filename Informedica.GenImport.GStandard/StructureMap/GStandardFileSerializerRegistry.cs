@@ -9,9 +9,9 @@ namespace Informedica.GenImport.GStandard.StructureMap
     {
         public GStandardFileSerializerRegistry()
         {
-            For<IFileSerializerBase<IProduct>>().Use<ProductFileSerializer>();
-            For<IFileSerializerBase<IName>>().Use<NameFileSerializer>();
-            For<IFileSerializerBase<IThesauriTotal>>().Use<ThesauriTotalFileSerializer>();
+            For<IFileSerializer<IProduct>>().Use<ProductFileSerializer>();
+            For<IFileSerializer<IName>>().Use<NameFileSerializer>();
+            For<IFileSerializer<IThesauriTotal>>().Use<ThesauriTotalFileSerializer>();
         }
     }
 }

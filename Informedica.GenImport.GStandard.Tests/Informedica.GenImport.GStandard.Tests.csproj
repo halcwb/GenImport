@@ -108,6 +108,7 @@
     <Compile Include="Services\GenericCompositionImportServiceShould.cs" />
     <Compile Include="Services\CommercialProductImportServiceShould.cs" />
     <Compile Include="Services\GenericProductImportServiceShould.cs" />
+    <Compile Include="Services\GStandardImportServiceShould.cs" />
     <Compile Include="Services\NameImportServiceShould.cs" />
     <Compile Include="Services\PrescriptionProductImportServiceShould.cs" />
     <Compile Include="Services\CompositionImportServiceShould.cs" />
@@ -138,10 +139,6 @@
     <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">
       <Project>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</Project>
       <Name>Informedica.GenImport.Library</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenImport.Services\Informedica.GenImport.Services.csproj">
-      <Project>{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}</Project>
-      <Name>Informedica.GenImport.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

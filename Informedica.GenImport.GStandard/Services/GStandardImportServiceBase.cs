@@ -2,15 +2,16 @@
 using System.IO;
 using Informedica.GenImport.DataAccess;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
+using Informedica.GenImport.Library.Services;
 using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Services
 {
-    public abstract class GStandardImportServiceBase<TModel> : IGStandardImportService<TModel>
+    public abstract class GStandardImportServiceBase<TModel> : IImportService<TModel>
         where TModel : class, IModel
     {
         protected readonly string DatabaseFilePath;
-        private readonly IFileSerializerBase<TModel> _fileSerializer;
+        private readonly IFileSerializer<TModel> _fileSerializer;
         private readonly ISessionFactory _sessionFactory;
 
         protected ISession CurrentSession
@@ -21,7 +22,7 @@ namespace Informedica.GenImport.GStandard.Services
         protected bool StopImport { get; private set; }
 
         //TODO use Repository<TEnt, TId> instead of ISessionFactory
-        protected GStandardImportServiceBase(string databaseFilePath, IFileSerializerBase<TModel> fileSerializer, ISessionFactory sessionFactory)
+        protected GStandardImportServiceBase(string databaseFilePath, IFileSerializer<TModel> fileSerializer, ISessionFactory sessionFactory)
         {
             DatabaseFilePath = databaseFilePath;
             _fileSerializer = fileSerializer;

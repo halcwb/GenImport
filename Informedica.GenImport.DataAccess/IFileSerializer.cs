@@ -4,12 +4,12 @@ using Informedica.GenImport.Library.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.DataAccess
 {
-    public interface IFileSerializerBase
+    public interface IFileSerializer
     {
         IEnumerable<IModel> ReadLines(Stream inputStream);
     }
 
-    public interface IFileSerializerBase<out TModel> : IFileSerializerBase
+    public interface IFileSerializer<out TModel> : IFileSerializer
         where TModel : class, IModel
     {
         new IEnumerable<TModel> ReadLines(Stream inputStream);

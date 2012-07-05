@@ -6,7 +6,7 @@ using Informedica.GenImport.Library.Exceptions;
 
 namespace Informedica.GenImport.DataAccess
 {
-    public abstract class FileSerializerBase<TModel> : IFileSerializerBase<TModel>
+    public abstract class FileSerializer<TModel> : IFileSerializer<TModel>
         where TModel : class, IModel
     {
         public virtual IEnumerable<TModel> ReadLines(Stream inputStream)
@@ -42,7 +42,7 @@ namespace Informedica.GenImport.DataAccess
 
         protected abstract TModel ParseLineToModel(string line);
         
-        IEnumerable<IModel> IFileSerializerBase.ReadLines(Stream inputStream)
+        IEnumerable<IModel> IFileSerializer.ReadLines(Stream inputStream)
         {
             return ReadLines(inputStream);
         }

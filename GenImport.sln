@@ -18,10 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.DataA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.DataAccess.Tests", "Informedica.GenImport.DataAccess.Tests\Informedica.GenImport.DataAccess.Tests.csproj", "{EB71C04A-3359-4F7F-9030-F78C3FE4C760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Services.Tests", "Informedica.GenImport.Services.Tests\Informedica.GenImport.Services.Tests.csproj", "{25F6E816-6C6B-4A89-BCB0-9EC45552C155}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Services", "Informedica.GenImport.Services\Informedica.GenImport.Services.csproj", "{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenForm.Library.DomainModel.Interfaces", "..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj", "{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Library", "Informedica.GenImport.Library\Informedica.GenImport.Library.csproj", "{E29A9DB3-9FA2-4627-B2CC-58792AF61951}"
@@ -101,26 +97,6 @@ Global
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760}.Release|x86.ActiveCfg = Release|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155}.Release|x86.ActiveCfg = Release|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{30D11CEB-7F8C-4508-91B3-B6E4DC1CFA41}.Release|x86.ActiveCfg = Release|Any CPU
 		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -198,7 +174,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2127E5FF-CB20-4AAD-9681-6312B386D5C5} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 		{EB71C04A-3359-4F7F-9030-F78C3FE4C760} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
-		{25F6E816-6C6B-4A89-BCB0-9EC45552C155} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 		{B03A2E8D-836B-47B9-8FDB-ED593101A973} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 		{03C9FA43-68D0-4086-B378-9B1CCD9FFA83} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 		{CD2C6FC9-850D-4A54-98A3-CD883A8A1D9E} = {34FCDA00-F550-41EF-A609-F0E381A600BF}

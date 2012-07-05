@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileSerializerBase.cs" />
-    <Compile Include="IFileSerializerBase.cs" />
+    <Compile Include="FileSerializer.cs" />
+    <Compile Include="IFileSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

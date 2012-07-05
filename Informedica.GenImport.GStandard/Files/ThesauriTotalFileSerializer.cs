@@ -2,7 +2,7 @@
 
 namespace Informedica.GenImport.GStandard.Files
 {
-    public class ThesauriTotalFileSerializer : GStandardFileSerializerBase<ThesauriTotal>
+    public class ThesauriTotalFileSerializer : GStandardFileSerializer<ThesauriTotal>
     {
     }
 }

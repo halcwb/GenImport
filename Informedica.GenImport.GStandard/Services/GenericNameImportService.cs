@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.Services
 {
     public class GenericNameImportService : GStandardImportServiceBase<IGenericName>
     {
-        public GenericNameImportService(string databaseFileFilePath, IFileSerializerBase<IGenericName> fileSerializer, ISessionFactory sessionFactory)
+        public GenericNameImportService(string databaseFileFilePath, IFileSerializer<IGenericName> fileSerializer, ISessionFactory sessionFactory)
             : base(databaseFileFilePath, fileSerializer, sessionFactory)
         {
         }

@@ -10,7 +10,7 @@ using Informedica.GenImport.Library.Validation;
 
 namespace Informedica.GenImport.GStandard.Files
 {
-    public abstract class GStandardFileSerializerBase<TModel> : FileSerializerBase<TModel>
+    public abstract class GStandardFileSerializer<TModel> : FileSerializer<TModel>
         where TModel : class, IGStandardModel, new()
     {
         //TODO make this: bool TryParseLineToModel(string line, out TModel model)
