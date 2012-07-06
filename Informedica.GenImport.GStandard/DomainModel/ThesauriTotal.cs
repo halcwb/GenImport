@@ -61,37 +61,37 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// Aanvullende kode 1
         /// </summary>
         [FileLinePosition(112, 112)]
-        public virtual char ThAKd1 { get; set; }
+        public virtual string ThAKd1 { get; set; }
 
         /// <summary>
         /// Aanvullende kode 2
         /// </summary>
         [FileLinePosition(113, 113)]
-        public virtual char ThAKd2 { get; set; }
+        public virtual string ThAKd2 { get; set; }
 
         /// <summary>
         /// Aanvullende kode 3
         /// </summary>
         [FileLinePosition(114, 114)]
-        public virtual char ThAKd3 { get; set; }
+        public virtual string ThAKd3 { get; set; }
 
         /// <summary>
         /// Aanvullende kode 4
         /// </summary>
         [FileLinePosition(115, 115)]
-        public virtual char ThAKd4 { get; set; }
+        public virtual string ThAKd4 { get; set; }
 
         /// <summary>
         /// Aanvullende kode 5
         /// </summary>
         [FileLinePosition(116, 116)]
-        public virtual char ThAKd5 { get; set; }
+        public virtual string ThAKd5 { get; set; }
 
         /// <summary>
         /// Aanvullende kode 6
         /// </summary>
         [FileLinePosition(117, 117)]
-        public virtual char ThAKd6 { get; set; }
+        public virtual string ThAKd6 { get; set; }
 
         #endregion
 

@@ -38,12 +38,12 @@ namespace Informedica.GenImport.GStandard.Tests.Services
             const int expectedCount = 1;
             var lines = new List<IThesauriTotal>{
                                                     new ThesauriTotal{
-                                                                         ThAKd1 = 'A',
-                                                                         ThAKd2 = 'B',
-                                                                         ThAKd3 = 'C',
-                                                                         ThAKd4 = 'D',
-                                                                         ThAKd5 = 'E',
-                                                                         ThAKd6 = 'F',
+                                                                         ThAKd1 = "A",
+                                                                         ThAKd2 = "B",
+                                                                         ThAKd3 = "C",
+                                                                         ThAKd4 = "D",
+                                                                         ThAKd5 = "E",
+                                                                         ThAKd6 = "F",
                                                                          ThItMk = "ThItMk",
                                                                          ThNm15 = "ThNm15",
                                                                          ThNm25 = "ThNm25",

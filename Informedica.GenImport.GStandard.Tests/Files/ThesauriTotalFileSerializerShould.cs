@@ -25,12 +25,12 @@ namespace Informedica.GenImport.GStandard.Tests.Files
                 ThNm15 = "CENTIMETER",
                 ThNm25 = "cm",
                 ThNm50 = "CENTIMETER",
-                ThAKd1 = 'A',
-                ThAKd2 = 'B',
-                ThAKd3 = 'C',
-                ThAKd4 = 'D',
-                ThAKd5 = 'E',
-                ThAKd6 = 'F'
+                ThAKd1 = "",
+                ThAKd2 = "",
+                ThAKd3 = "",
+                ThAKd4 = "",
+                ThAKd5 = "",
+                ThAKd6 = ""
             };
             const string data = "090200001000205CMCM  CENTIMETER     cm                       CENTIMETER                                              00000000000";
 

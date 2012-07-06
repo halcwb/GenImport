@@ -42,26 +42,26 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
         /// <summary>
         /// Aanvullende kode 1
         /// </summary>
-        char ThAKd1 { get; set; }
+        string ThAKd1 { get; set; }
         /// <summary>
         /// Aanvullende kode 2
         /// </summary>
-        char ThAKd2 { get; set; }
+        string ThAKd2 { get; set; }
         /// <summary>
         /// Aanvullende kode 3
         /// </summary>
-        char ThAKd3 { get; set; }
+        string ThAKd3 { get; set; }
         /// <summary>
         /// Aanvullende kode 4
         /// </summary>
-        char ThAKd4 { get; set; }
+        string ThAKd4 { get; set; }
         /// <summary>
         /// Aanvullende kode 5
         /// </summary>
-        char ThAKd5 { get; set; }
+        string ThAKd5 { get; set; }
         /// <summary>
         /// Aanvullende kode 6
         /// </summary>
-        char ThAKd6 { get; set; }
+        string ThAKd6 { get; set; }
     }
 }
