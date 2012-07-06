@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Informedica.GenImport.GStandard.Tests.Serialization
 {
     [TestClass]
-    public class GStandardFileSerializerBaseShould
+    public class GStandardFileSerializerShould
     {
         #region Helpers
         private enum EnumMock

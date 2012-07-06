@@ -13,7 +13,7 @@ namespace Informedica.GenImport.GStandard.Tests.Serialization
     public class CommercialProductFileSerializerShould
     {
         [TestMethod]
-        public void Be_Able_To_Parse_A_Given_Line_To_A_GenericCompostion_Model()
+        public void Be_Able_To_Parse_A_Given_Line_To_A_CommercialProduct_Model()
         {
             var expected = new CommercialProduct
             {
@@ -46,7 +46,7 @@ namespace Informedica.GenImport.GStandard.Tests.Serialization
         }
 
         [TestMethod]
-        public void Be_Able_To_Parse_5_Lines_To_5_GenericCompostion_Models()
+        public void Be_Able_To_Parse_5_Lines_To_5_CommercialProduct_Models()
         {
             const int expectedLineCount = 5;
             string data =

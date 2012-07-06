@@ -79,9 +79,10 @@
     <Compile Include="Attributes\Modulo11AttributeShould.cs" />
     <Compile Include="DomainModel\GenericNameShould.cs" />
     <Compile Include="Serialization\CommercialProductFileSerializerShould.cs" />
+    <Compile Include="Serialization\CompositionFileSerializerShould.cs" />
     <Compile Include="Serialization\GenericCompositionFileSerializerShould.cs" />
     <Compile Include="Serialization\GenericNameFileSerializerShould.cs" />
-    <Compile Include="Serialization\GStandardFileSerializerBaseShould.cs" />
+    <Compile Include="Serialization\GStandardFileSerializerShould.cs" />
     <Compile Include="Serialization\NameFileSerializerShould.cs" />
     <Compile Include="Serialization\ProductFileSerializerShould.cs" />
     <Compile Include="Serialization\RelationBetweenNameFileSerializerShould.cs" />
