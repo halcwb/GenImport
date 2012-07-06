@@ -8,7 +8,6 @@ using Informedica.GenImport.GStandard.Services;
 using Informedica.GenImport.Library.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Tests.Services
 {
@@ -17,10 +16,10 @@ namespace Informedica.GenImport.GStandard.Tests.Services
     {
         #region Helpers
 
-        private class ImportServiceMock : PrescriptionProductImportService
+        private class GStandardImportServiceMock : PrescriptionProductGStandardImportService
         {
-            public ImportServiceMock(string databasePath, IFileSerializer<IPrescriptionProduct> fileSerializer, ISessionFactory sessionFactory)
-                : base(databasePath, fileSerializer, sessionFactory)
+            public GStandardImportServiceMock(string databaseFilePath, IFileSerializer<IPrescriptionProduct> fileSerializer, IRepository<IPrescriptionProduct> repository)
+                : base(databaseFilePath, fileSerializer, repository)
             {
             }
 
@@ -47,11 +46,11 @@ namespace Informedica.GenImport.GStandard.Tests.Services
             var fileSerializerMock = new Mock<IFileSerializer<IPrescriptionProduct>>(MockBehavior.Strict);
             fileSerializerMock.Setup(s => s.ReadLines(It.IsAny<Stream>())).Returns(lines);
 
-            var sessionFactory = GetSessionFactory();
+            var repository = new NHibernateRepository<IPrescriptionProduct>(GetSessionFactory(), null);
 
-            new ImportServiceMock("", fileSerializerMock.Object, sessionFactory).Import(new MemoryStream());
+            new GStandardImportServiceMock("", fileSerializerMock.Object, repository).Import(new MemoryStream());
 
-            Assert.AreEqual(expectedCount, new PrescriptionProductRepository(sessionFactory).Count);
+            Assert.AreEqual(expectedCount, repository.Count);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 {
     public class ThesauriTotal : Entity<ThesauriTotal>, IThesauriTotal
     {
-        #region Implementation of IThesauriTotaal
+        #region Implementation of IThesauriTotal
 
         /// <summary>
         /// Mutatiekode
@@ -98,6 +98,15 @@ namespace Informedica.GenImport.GStandard.DomainModel
         #region Overrides of Entity<ThesauriTotal,int>
 
         public override bool IsIdentical(ThesauriTotal entity)
+        {
+            return IsIdentical(entity);
+        }
+
+        #endregion
+
+        #region Implementation of IEntity<in IThesauriTotal,out int>
+
+        public virtual bool IsIdentical(IThesauriTotal entity)
         {
             throw new NotImplementedException();
         }

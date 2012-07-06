@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 {
     public class CommercialProduct : Entity<CommercialProduct>, ICommercialProduct
     {
-        #region Implementation of IHandelsProduct
+        #region Implementation of ICommercialProduct
 
         /// <summary>
         /// Mutatiekode
@@ -20,7 +20,11 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(6, 13)]
         [Modulo11]
-        public virtual int HpKode { get; set; }
+        public virtual int HpKode
+        {
+            get { return Id; } 
+            set { Id = value; }
+        }
 
         /// <summary>
         /// Handelsproduktnaamnummer
@@ -54,9 +58,18 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         #endregion
 
-        #region Overrides of Entity<HandelsProduct,int>
+        #region Overrides of Entity<CommercialProduct,int>
 
         public override bool IsIdentical(CommercialProduct entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Implementation of IEntity<in ICommercialProduct,out int>
+
+        public virtual bool IsIdentical(ICommercialProduct entity)
         {
             throw new NotImplementedException();
         }

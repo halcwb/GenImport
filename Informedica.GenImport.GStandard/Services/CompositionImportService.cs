@@ -1,35 +1,38 @@
 ﻿using System.IO;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+using Informedica.GenImport.GStandard.Repositories;
 using Informedica.GenImport.Library.Serialization;
-using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Services
 {
-    public class CompositionImportService : GStandardImportServiceBase<IComposition>
+    public class CompositionGStandardImportService : GStandardImportServiceBase<IComposition>
     {
-        public CompositionImportService(string databaseFilePath, IFileSerializer<IComposition> fileSerializer, ISessionFactory sessionFactory) : base(databaseFilePath, fileSerializer, sessionFactory)
+        public CompositionGStandardImportService(string databaseFilePath, IFileSerializer<IComposition> fileSerializer, IRepository<IComposition> repository)
+            : base(databaseFilePath, fileSerializer, repository)
         {
         }
 
         public override void Import(Stream stream)
         {
-            var query =
-                CurrentSession.CreateSQLQuery(
-                    "INSERT INTO Composition (MutKod, ThsrTc, Code, SrtCde, GnGnK, GnHoev, TsGneH, GnEenh, GnStam, StHoev, TsStEh, StEenh, StAdd) VALUES (:MutKod, :ThsrTc, :Code, :SrtCde, :GnGnK, :GnHoev, :TsGneH, :GnEenh, :GnStam, :StHoev, :TsStEh, :StEenh, :StAdd)");
-            ProcessFile(stream, n => query.SetByte("MutKod", (byte)n.MutKod)
-                                         .SetInt16("ThsrTc", n.ThsrTc)
-                                         .SetInt32("Code", n.Code)
-                                         .SetInt32("SrtCde", n.SrtCde)
-                                         .SetInt32("GnGnK", n.GnGnK)
-                                         .SetDecimal("GnHoev", n.GnHoev)
-                                         .SetInt16("TsGneH", n.TsGneH)
-                                         .SetInt32("GnEenh", n.GnEenh)
-                                         .SetInt32("GnStam", n.GnStam)
-                                         .SetDecimal("StHoev", n.StHoev)
-                                         .SetInt16("TsStEh", n.TsStEh)
-                                         .SetInt32("StEenh", n.StEenh)
-                                         .SetBoolean("StAdd", n.StAdd)
-                                         .ExecuteUpdate());
+            ProcessFile(stream, n => Repository.Add(n));
+
+            //var query =
+            //    CurrentSession.CreateSQLQuery(
+            //        "INSERT INTO Composition (MutKod, ThsrTc, Code, SrtCde, GnGnK, GnHoev, TsGneH, GnEenh, GnStam, StHoev, TsStEh, StEenh, StAdd) VALUES (:MutKod, :ThsrTc, :Code, :SrtCde, :GnGnK, :GnHoev, :TsGneH, :GnEenh, :GnStam, :StHoev, :TsStEh, :StEenh, :StAdd)");
+            //ProcessFile(stream, n => query.SetByte("MutKod", (byte)n.MutKod)
+            //                             .SetInt16("ThsrTc", n.ThsrTc)
+            //                             .SetInt32("Code", n.Code)
+            //                             .SetInt32("SrtCde", n.SrtCde)
+            //                             .SetInt32("GnGnK", n.GnGnK)
+            //                             .SetDecimal("GnHoev", n.GnHoev)
+            //                             .SetInt16("TsGneH", n.TsGneH)
+            //                             .SetInt32("GnEenh", n.GnEenh)
+            //                             .SetInt32("GnStam", n.GnStam)
+            //                             .SetDecimal("StHoev", n.StHoev)
+            //                             .SetInt16("TsStEh", n.TsStEh)
+            //                             .SetInt32("StEenh", n.StEenh)
+            //                             .SetBoolean("StAdd", n.StAdd)
+            //                             .ExecuteUpdate());
         }
     }
 }

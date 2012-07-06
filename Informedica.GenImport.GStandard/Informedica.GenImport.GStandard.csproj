@@ -86,6 +86,8 @@
     <Compile Include="DomainModel\RelationBetweenName.cs" />
     <Compile Include="DomainModel\Composition.cs" />
     <Compile Include="DomainModel\ThesauriTotal.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\NHibernateRepository.cs" />
     <Compile Include="Serialization\GStandardFileSerializer.cs" />
     <Compile Include="Mappings\EntityMap.cs" />
     <Compile Include="Mappings\CommercialProductMap.cs" />
@@ -93,13 +95,6 @@
     <Compile Include="Mappings\PrescriptionProductMap.cs" />
     <Compile Include="Mappings\CompositionMap.cs" />
     <Compile Include="Mappings\ThesauriTotalMap.cs" />
-    <Compile Include="Repositories\GenericNameRepository.cs" />
-    <Compile Include="Repositories\GenericCompositionRepository.cs" />
-    <Compile Include="Repositories\GenericProductRepository.cs" />
-    <Compile Include="Repositories\CommercialProductRepository.cs" />
-    <Compile Include="Repositories\PrescriptionProductRepository.cs" />
-    <Compile Include="Repositories\CompositionRepository.cs" />
-    <Compile Include="Repositories\ThesauriTotalRepository.cs" />
     <Compile Include="Services\GenericNameImportService.cs" />
     <Compile Include="Services\GenericProductImportService.cs" />
     <Compile Include="Services\GenericCompositionImportService.cs" />
@@ -107,7 +102,6 @@
     <Compile Include="Mappings\GenericCompositionMap.cs" />
     <Compile Include="Mappings\NameMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\NameRepository.cs" />
     <Compile Include="Services\GStandardImportService.cs" />
     <Compile Include="Services\GStandardImportServiceBase.cs" />
     <Compile Include="Services\CommercialProductImportService.cs" />

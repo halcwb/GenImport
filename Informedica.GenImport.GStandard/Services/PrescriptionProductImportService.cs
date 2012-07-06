@@ -1,15 +1,14 @@
 ﻿using System.IO;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+using Informedica.GenImport.GStandard.Repositories;
 using Informedica.GenImport.Library.Serialization;
-using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Services
 {
-    public class PrescriptionProductImportService : GStandardImportServiceBase<IPrescriptionProduct>
+    public class PrescriptionProductGStandardImportService : GStandardImportServiceBase<IPrescriptionProduct>
     {
-        
-        public PrescriptionProductImportService(string databaseFilePath, IFileSerializer<IPrescriptionProduct> fileSerializer, ISessionFactory sessionFactory)
-            : base(databaseFilePath, fileSerializer, sessionFactory)
+        public PrescriptionProductGStandardImportService(string databaseFilePath, IFileSerializer<IPrescriptionProduct> fileSerializer, IRepository<IPrescriptionProduct> repository)
+            : base(databaseFilePath, fileSerializer, repository)
         {
         }
 
@@ -17,13 +16,15 @@ namespace Informedica.GenImport.GStandard.Services
 
         public override void Import(Stream stream)
         {
-            var query =
-                CurrentSession.CreateSQLQuery(
-                    "INSERT INTO PrescriptionProduct (Id, MutKod, PrNmNr) VALUES (:PrKode, :MutKod, :PrNmNr)");
-            ProcessFile(stream, n => query.SetInt32("PrKode", n.PrKode)
-                                         .SetByte("MutKod", (byte)n.MutKod)
-                                         .SetInt32("PrNmNr", n.PrNmNr)
-                                         .ExecuteUpdate());
+            ProcessFile(stream, n => Repository.Add(n));
+
+            //var query =
+            //    CurrentSession.CreateSQLQuery(
+            //        "INSERT INTO PrescriptionProduct (Id, MutKod, PrNmNr) VALUES (:PrKode, :MutKod, :PrNmNr)");
+            //ProcessFile(stream, n => query.SetInt32("PrKode", n.PrKode)
+            //                             .SetByte("MutKod", (byte)n.MutKod)
+            //                             .SetInt32("PrNmNr", n.PrNmNr)
+            //                             .ExecuteUpdate());
         }
 
         #endregion

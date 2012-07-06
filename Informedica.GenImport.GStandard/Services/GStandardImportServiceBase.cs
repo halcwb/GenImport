@@ -1,32 +1,26 @@
 ﻿using System;
 using System.IO;
-using Informedica.GenImport.Library.DomainModel.Interfaces;
+using Informedica.GenImport.GStandard.Repositories;
+using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Serialization;
 using Informedica.GenImport.Library.Services;
-using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Services
 {
     public abstract class GStandardImportServiceBase<TModel> : IImportService<TModel>
-        where TModel : class, IModel
+        where TModel : class, IGStandardModel<TModel>
     {
         protected readonly string DatabaseFilePath;
         private readonly IFileSerializer<TModel> _fileSerializer;
-        private readonly ISessionFactory _sessionFactory;
-
-        protected ISession CurrentSession
-        {
-            get { return _sessionFactory.GetCurrentSession(); }
-        }
+        protected readonly IRepository<TModel> Repository;
 
         protected bool StopImport { get; private set; }
 
-        //TODO use Repository<TEnt, TId> instead of ISessionFactory
-        protected GStandardImportServiceBase(string databaseFilePath, IFileSerializer<TModel> fileSerializer, ISessionFactory sessionFactory)
+        protected GStandardImportServiceBase(string databaseFilePath, IFileSerializer<TModel> fileSerializer, IRepository<TModel> repository)
         {
             DatabaseFilePath = databaseFilePath;
             _fileSerializer = fileSerializer;
-            _sessionFactory = sessionFactory;
+            Repository = repository;
         }
 
         private void OpenFileAndProcess(string fileName, Action<Stream> streamAction)

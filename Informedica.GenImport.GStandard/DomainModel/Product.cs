@@ -1,12 +1,13 @@
-﻿using Informedica.GenImport.GStandard.Attributes;
+﻿using System;
+using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel
 {
-    public class Product : IProduct
+    public class Product : Entity<Product>, IProduct
     {
-        #region Implementation of IArtikel
+        #region Implementation of IProduct
 
         /// <summary>
         /// Mutatiekode
@@ -33,6 +34,24 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(22, 28)]
         public virtual int AtNmNr { get; set; }
+
+        #endregion
+
+        #region Overrides of Entity<Product,int>
+
+        public override bool IsIdentical(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Implementation of IEntity<in IProduct,out int>
+
+        public bool IsIdentical(IProduct entity)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 using Informedica.EntityRepository.Entities;
-using Informedica.GenImport.GStandard.DomainModel;
 
 namespace Informedica.GenImport.GStandard.Mappings
 {

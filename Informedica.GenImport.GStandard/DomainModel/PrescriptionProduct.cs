@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 {
     public class PrescriptionProduct : Entity<PrescriptionProduct>, IPrescriptionProduct
     {
-        #region Implementation of IPrescriptieProduct
+        #region Implementation of IPrescriptionProduct
 
         /// <summary>
         /// Mutatiekode
@@ -37,6 +37,15 @@ namespace Informedica.GenImport.GStandard.DomainModel
         #region Overrides of Entity<PrescriptieProduct,int>
 
         public override bool IsIdentical(PrescriptionProduct entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Implementation of IEntity<in IPrescriptionProduct,out int>
+
+        public virtual bool IsIdentical(IPrescriptionProduct entity)
         {
             throw new NotImplementedException();
         }

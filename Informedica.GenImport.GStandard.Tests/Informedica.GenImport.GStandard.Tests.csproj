@@ -82,6 +82,7 @@
     <Compile Include="Serialization\CompositionFileSerializerShould.cs" />
     <Compile Include="Serialization\GenericCompositionFileSerializerShould.cs" />
     <Compile Include="Serialization\GenericNameFileSerializerShould.cs" />
+    <Compile Include="Serialization\GenericProductFileSerializerShould.cs" />
     <Compile Include="Serialization\GStandardFileSerializerShould.cs" />
     <Compile Include="Serialization\NameFileSerializerShould.cs" />
     <Compile Include="Serialization\ProductFileSerializerShould.cs" />

@@ -17,10 +17,10 @@ namespace Informedica.GenImport.GStandard.Tests.Services
     {
         #region Helpers
 
-        private class ImportServiceMock : GenericProductImportService
+        private class GStandardImportServiceMock : GenericProductGStandardImportService
         {
-            public ImportServiceMock(string databasePath, IFileSerializer<IGenericProduct> fileSerializer, ISessionFactory sessionFactory)
-                : base(databasePath, fileSerializer, sessionFactory)
+            public GStandardImportServiceMock(string databaseFilePath, IFileSerializer<IGenericProduct> fileSerializer, IRepository<IGenericProduct> repository)
+                : base(databaseFilePath, fileSerializer, repository)
             {
             }
 
@@ -57,11 +57,11 @@ namespace Informedica.GenImport.GStandard.Tests.Services
             var fileSerializerMock = new Mock<IFileSerializer<IGenericProduct>>(MockBehavior.Strict);
             fileSerializerMock.Setup(s => s.ReadLines(It.IsAny<Stream>())).Returns(lines);
 
-            var sessionFactory = GetSessionFactory();
+            var repository = new NHibernateRepository<IGenericProduct>(GetSessionFactory(), null);
 
-            new ImportServiceMock("", fileSerializerMock.Object, sessionFactory).Import(new MemoryStream());
+            new GStandardImportServiceMock("", fileSerializerMock.Object, repository).Import(new MemoryStream());
 
-            Assert.AreEqual(expectedCount, new GenericProductRepository(sessionFactory).Count);
+            Assert.AreEqual(expectedCount, repository.Count);
         }
     }
 }

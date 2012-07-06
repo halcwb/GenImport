@@ -5,7 +5,7 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
     /// <summary>
     /// Contract for a line in G-Standard file 902.
     /// </summary>
-    public interface IThesauriTotal : IGStandardModel
+    public interface IThesauriTotal : IGStandardModel<IThesauriTotal>
     {
         /// <summary>
         /// Mutatiekode

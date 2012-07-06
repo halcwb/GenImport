@@ -5,7 +5,7 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
     /// <summary>
     /// Contract for a line in G-Standard file 025.
     /// </summary>
-    public interface IRelationBetweenName : IGStandardModel
+    public interface IRelationBetweenName : IGStandardModel<IRelationBetweenName>
     {
         /// <summary>
         /// Mutatiekode

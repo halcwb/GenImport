@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 {
     public class Name : Entity<Name>, IName
     {
-        #region Implementation of INaam
+        #region Implementation of IName
 
         /// <summary>
         /// Mutatiekode
@@ -54,6 +54,15 @@ namespace Informedica.GenImport.GStandard.DomainModel
         #region Overrides of Entity<Naam,int>
 
         public override bool IsIdentical(Name entity)
+        {
+            return IsIdentical(entity);
+        }
+
+        #endregion
+
+        #region Implementation of IEntity<in IName,out int>
+
+        public virtual bool IsIdentical(IName entity)
         {
             throw new NotImplementedException();
         }

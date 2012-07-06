@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 {
     public class Composition : Entity<Composition>, IComposition
     {
-        #region Implementation of ISamenstelling
+        #region Implementation of IComposition
 
         /// <summary>
         /// Mutatiekode
@@ -96,7 +96,16 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public override bool IsIdentical(Composition entity)
         {
+            return IsIdentical(entity);
+        }
+
+        #region Implementation of IEntity<in IComposition,out int>
+
+        public virtual bool IsIdentical(IComposition entity)
+        {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
