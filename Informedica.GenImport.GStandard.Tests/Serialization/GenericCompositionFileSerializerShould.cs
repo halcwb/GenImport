@@ -7,7 +7,7 @@ using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.GStandard.Tests.Files
+namespace Informedica.GenImport.GStandard.Tests.Serialization
 {
     [TestClass]
     public class GenericCompositionFileSerializerShould

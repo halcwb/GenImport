@@ -9,7 +9,7 @@ using Informedica.GenImport.GStandard.Serialization;
 using Informedica.GenImport.Library.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.GStandard.Tests.Files
+namespace Informedica.GenImport.GStandard.Tests.Serialization
 {
     [TestClass]
     public class GStandardFileSerializerBaseShould

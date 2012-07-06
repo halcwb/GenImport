@@ -7,10 +7,10 @@ using Informedica.GenImport.Library.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Informedica.GenImport.DataAccess.Tests
+namespace Informedica.GenImport.Library.Tests
 {
     [TestClass]
-    public class FileSerializerBaseShould
+    public class FileSerializerShould
     {
         #region Helpers
         private class ModelMock : IModel
