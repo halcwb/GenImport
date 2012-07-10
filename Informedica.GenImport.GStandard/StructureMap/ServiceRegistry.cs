@@ -16,20 +16,20 @@ namespace Informedica.GenImport.GStandard.StructureMap
 
             For<IImportService>().Singleton().Use<GStandardImportService>(); //singleton
 
-            For<IImportService<ICommercialProduct>>().Use<ImportService<ICommercialProduct>>()
+            For<IImportService<ICommercialProduct>>().Use<FileImportService<ICommercialProduct>>()
                 .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder,config.CommercialProductFile.FileName));
 
-            For<IImportService<IComposition>>().Use<ImportService<IComposition>>()
+            For<IImportService<IComposition>>().Use<FileImportService<IComposition>>()
                 .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.CompostionFile.FileName));
 
-            For<IImportService<IGenericComposition>>().Use<ImportService<IGenericComposition>>();
-            For<IImportService<IGenericName>>().Use<ImportService<IGenericName>>();
-            For<IImportService<IGenericProduct>>().Use<ImportService<IGenericProduct>>();
-            For<IImportService<IName>>().Use<ImportService<IName>>();
-            For<IImportService<IPrescriptionProduct>>().Use<ImportService<IPrescriptionProduct>>();
-            For<IImportService<IProduct>>().Use<ImportService<IProduct>>();
-            For<IImportService<IRelationBetweenName>>().Use<ImportService<IRelationBetweenName>>();
-            For<IImportService<IThesauriTotal>>().Use<ImportService<IThesauriTotal>>();
+            For<IImportService<IGenericComposition>>().Use<FileImportService<IGenericComposition>>();
+            For<IImportService<IGenericName>>().Use<FileImportService<IGenericName>>();
+            For<IImportService<IGenericProduct>>().Use<FileImportService<IGenericProduct>>();
+            For<IImportService<IName>>().Use<FileImportService<IName>>();
+            For<IImportService<IPrescriptionProduct>>().Use<FileImportService<IPrescriptionProduct>>();
+            For<IImportService<IProduct>>().Use<FileImportService<IProduct>>();
+            For<IImportService<IRelationBetweenName>>().Use<FileImportService<IRelationBetweenName>>();
+            For<IImportService<IThesauriTotal>>().Use<FileImportService<IThesauriTotal>>();
         }
     }
 }

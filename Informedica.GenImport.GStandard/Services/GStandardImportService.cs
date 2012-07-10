@@ -50,6 +50,11 @@ namespace Informedica.GenImport.GStandard.Services
             throw new NotImplementedException();
         }
 
+        public bool IsRunning
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         #endregion
     }
 }

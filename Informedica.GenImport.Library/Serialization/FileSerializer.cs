@@ -6,6 +6,7 @@ using Informedica.GenImport.Library.Exceptions;
 
 namespace Informedica.GenImport.Library.Serialization
 {
+    //TODO: nice to have; report progress via event
     public abstract class FileSerializer<TModel> : IFileSerializer<TModel>
         where TModel : class, IModel
     {
@@ -14,18 +15,13 @@ namespace Informedica.GenImport.Library.Serialization
             using (StreamReader streamReader = new StreamReader(inputStream))
             {
                 string line;
-                int lineNumber = 1;
                 while ((line = streamReader.ReadLine()) != null)
                 {
-#if DEBUG
-                    if(lineNumber == 34454) Debugger.Break();
-#endif
                     TModel model = TryParseLine(line);
                     if(model != null)
                     {
                         yield return model;
                     }
-                    lineNumber++;
                 }
             }
         }

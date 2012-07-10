@@ -7,53 +7,63 @@ using Informedica.GenImport.Library.Services;
 
 namespace Informedica.GenImport.GStandard.Services
 {
-    public abstract class GStandardImportServiceBase<TModel> : IImportService<TModel>
+    //TODO might want to introduce UnitOfWork
+    public class FileImportService<TModel> : IImportService<TModel>
         where TModel : class, IGStandardModel<TModel>
     {
-        protected readonly string DatabaseFilePath;
+        private readonly string _databaseFilePath;
         private readonly IFileSerializer<TModel> _fileSerializer;
-        protected readonly IRepository<TModel> Repository;
+        private readonly IRepository<TModel> _repository;
 
-        protected bool StopImport { get; private set; }
+        private bool _stopImport;
 
-        protected GStandardImportServiceBase(string databaseFilePath, IFileSerializer<TModel> fileSerializer, IRepository<TModel> repository)
+        public FileImportService(string databaseFilePath, IFileSerializer<TModel> fileSerializer, IRepository<TModel> repository)
         {
-            DatabaseFilePath = databaseFilePath;
+            _databaseFilePath = databaseFilePath;
             _fileSerializer = fileSerializer;
-            Repository = repository;
+            _repository = repository;
         }
 
         private void OpenFileAndProcess(Action<Stream> streamAction)
         {
-            using (var stream = File.OpenRead(DatabaseFilePath))
+            using (var stream = File.OpenRead(_databaseFilePath))
             {
                 streamAction(stream);
             }
         }
 
-        protected virtual void ProcessFile(Stream stream, Action<TModel> processLineAction)
+        private void ProcessFile(Stream stream, Action<TModel> processLineAction)
         {
             var lines = _fileSerializer.ReadLines(stream);
             foreach (var model in lines)
             {
                 processLineAction(model);
-                if (StopImport) break;
+                if (_stopImport) break;
             }
         }
 
-        protected abstract void Import(Stream stream);
+        protected virtual void Import(Stream stream)
+        {
+            ProcessFile(stream, n => _repository.Add(n));
+        }
 
         #region Implementation of IImportService
-        
+
         public void Start()
         {
+            IsRunning = true;
+            
             OpenFileAndProcess(Import);
+            
+            IsRunning = false;
         }
-        
+
         public void Stop()
         {
-            StopImport = true;
+            _stopImport = true;
         }
+
+        public bool IsRunning { get; private set; }
 
         #endregion
     }

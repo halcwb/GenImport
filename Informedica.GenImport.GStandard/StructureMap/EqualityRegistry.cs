@@ -9,6 +9,7 @@ namespace Informedica.GenImport.GStandard.StructureMap
     {
         public EqualityRegistry()
         {
+            For<IEqualityComparer<ICommercialProduct>>().Use<CommercialProductComparer>();
             For<IEqualityComparer<IComposition>>().Use<CompositionComparer>();
             For<IEqualityComparer<IName>>().Use<NameComparer>();
         }

@@ -6,6 +6,7 @@ namespace Informedica.GenImport.Library.Services
     {
         void Start();
         void Stop();
+        bool IsRunning { get; }
     }
 
     public interface IImportService<TModel> : IImportService
