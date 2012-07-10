@@ -148,5 +148,18 @@ namespace Informedica.GenImport.GStandard.Tests.Serialization
 
             Assert.IsNull(line);
         }
+
+        [TestMethod]
+        public void Skip_A_Line_When_It_Contains_A_Sub_Character()
+        {
+            string data = ((char)26).ToString();
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+            MemoryStream memoryStream = new MemoryStream(dataBytes);
+
+            GStandardFileSerializerMock fileSerializerMock = new GStandardFileSerializerMock();
+            GStandardModelMock line = fileSerializerMock.ReadLines(memoryStream).FirstOrDefault();
+
+            Assert.IsNull(line);
+        }
     }
 }

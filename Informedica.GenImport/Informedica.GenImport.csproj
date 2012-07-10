@@ -86,6 +86,7 @@
     <None Include="packages.config" />
     <Content Include="StructureMap.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

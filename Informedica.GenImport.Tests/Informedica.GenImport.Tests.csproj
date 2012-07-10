@@ -34,6 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +58,13 @@
       <Project>{D2D059C9-14E8-48C0-97AF-95D38AA90947}</Project>
       <Name>Informedica.GenImport.GStandard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenImport.Library\Informedica.GenImport.Library.csproj">
+      <Project>{E29A9DB3-9FA2-4627-B2CC-58792AF61951}</Project>
+      <Name>Informedica.GenImport.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

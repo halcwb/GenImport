@@ -14,13 +14,18 @@ namespace Informedica.GenImport.Library.Serialization
             using (StreamReader streamReader = new StreamReader(inputStream))
             {
                 string line;
+                int lineNumber = 1;
                 while ((line = streamReader.ReadLine()) != null)
                 {
+#if DEBUG
+                    if(lineNumber == 34454) Debugger.Break();
+#endif
                     TModel model = TryParseLine(line);
                     if(model != null)
                     {
                         yield return model;
                     }
+                    lineNumber++;
                 }
             }
         }

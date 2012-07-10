@@ -3,12 +3,14 @@ using Informedica.GenImport.GStandard.AutoMapper;
 using Informedica.GenImport.GStandard.DomainModel;
 using Informedica.GenImport.Library.DomainModel.Product;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NHibernate;
+using StructureMap;
 using Product = Informedica.GenImport.GStandard.DomainModel.Product;
 
 namespace Informedica.GenImport.GStandard.Tests
 {
     [TestClass]
-    public class ModelMappingProfileShould
+    public class ModelMappingProfileShould : TestSessionContext
     {
         public ModelMappingProfileShould()
         {

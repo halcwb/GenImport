@@ -16,7 +16,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
     {
         #region Helpers
 
-        private class GStandardImportServiceMock : PrescriptionProductGStandardImportService
+        private class GStandardImportServiceMock : ImportService<IPrescriptionProduct>
         {
             public GStandardImportServiceMock(string databaseFilePath, IFileSerializer<IPrescriptionProduct> fileSerializer, IRepository<IPrescriptionProduct> repository)
                 : base(databaseFilePath, fileSerializer, repository)

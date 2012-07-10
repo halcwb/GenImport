@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reflection;
 using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
@@ -17,11 +16,8 @@ namespace Informedica.GenImport.GStandard.Serialization
         //TODO add PostSharp
         protected override TModel ParseLineToModel(string line)
         {
-            if (line.IndexOf((char)26) > 0)
-            {
-                Debugger.Break();
-                //TODO: last line, just skip
-            }
+            //last line, just skip
+            if (line.IndexOf((char)26) >= 0) return null;
 
             try
             {

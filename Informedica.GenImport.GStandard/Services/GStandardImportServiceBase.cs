@@ -23,10 +23,9 @@ namespace Informedica.GenImport.GStandard.Services
             Repository = repository;
         }
 
-        private void OpenFileAndProcess(string fileName, Action<Stream> streamAction)
+        private void OpenFileAndProcess(Action<Stream> streamAction)
         {
-            string filePath = Path.Combine(DatabaseFilePath, fileName);
-            using (var stream = File.OpenRead(filePath))
+            using (var stream = File.OpenRead(DatabaseFilePath))
             {
                 streamAction(stream);
             }
@@ -42,13 +41,13 @@ namespace Informedica.GenImport.GStandard.Services
             }
         }
 
-        public abstract void Import(Stream stream);
+        protected abstract void Import(Stream stream);
 
         #region Implementation of IImportService
         
         public void Start()
         {
-            OpenFileAndProcess(DatabaseFilePath, Import);
+            OpenFileAndProcess(Import);
         }
         
         public void Stop()

@@ -16,7 +16,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
     {
         #region Helpers
 
-        private class GStandardImportServiceMock : ThesauriTotalGStandardImportService
+        private class GStandardImportServiceMock : ImportService<IThesauriTotal>
         {
             public GStandardImportServiceMock(string databaseFilePath, IFileSerializer<IThesauriTotal> fileSerializer, IRepository<IThesauriTotal> repository)
                 : base(databaseFilePath, fileSerializer, repository)

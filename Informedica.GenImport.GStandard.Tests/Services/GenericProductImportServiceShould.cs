@@ -8,7 +8,6 @@ using Informedica.GenImport.GStandard.Services;
 using Informedica.GenImport.Library.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Tests.Services
 {
@@ -17,7 +16,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services
     {
         #region Helpers
 
-        private class GStandardImportServiceMock : GenericProductGStandardImportService
+        private class GStandardImportServiceMock : ImportService<IGenericProduct>
         {
             public GStandardImportServiceMock(string databaseFilePath, IFileSerializer<IGenericProduct> fileSerializer, IRepository<IGenericProduct> repository)
                 : base(databaseFilePath, fileSerializer, repository)
