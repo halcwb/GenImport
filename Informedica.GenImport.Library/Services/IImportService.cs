@@ -1,11 +1,11 @@
-﻿using Informedica.GenImport.Library.DomainModel.Interfaces;
+﻿using System.Threading;
+using Informedica.GenImport.Library.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.Library.Services
 {
     public interface IImportService
     {
-        void Start();
-        void Stop();
+        void Start(CancellationToken cancellationToken);
         bool IsRunning { get; }
     }
 

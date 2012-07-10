@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using Informedica.GenImport.GStandard.Repositories;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Serialization;
@@ -14,8 +15,7 @@ namespace Informedica.GenImport.GStandard.Services
         private readonly string _databaseFilePath;
         private readonly IFileSerializer<TModel> _fileSerializer;
         private readonly IRepository<TModel> _repository;
-
-        private bool _stopImport;
+        private CancellationToken _cancellationToken;
 
         public FileImportService(string databaseFilePath, IFileSerializer<TModel> fileSerializer, IRepository<TModel> repository)
         {
@@ -38,7 +38,10 @@ namespace Informedica.GenImport.GStandard.Services
             foreach (var model in lines)
             {
                 processLineAction(model);
-                if (_stopImport) break;
+                if (_cancellationToken.IsCancellationRequested)
+                {
+                    break;
+                }
             }
         }
 
@@ -49,18 +52,15 @@ namespace Informedica.GenImport.GStandard.Services
 
         #region Implementation of IImportService
 
-        public void Start()
+        public void Start(CancellationToken cancellationToken)
         {
+            _cancellationToken = cancellationToken;
+            
             IsRunning = true;
             
             OpenFileAndProcess(Import);
             
             IsRunning = false;
-        }
-
-        public void Stop()
-        {
-            _stopImport = true;
         }
 
         public bool IsRunning { get; private set; }

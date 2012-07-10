@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Services;
 
@@ -8,6 +11,7 @@ namespace Informedica.GenImport.GStandard.Services
     public class GStandardImportService : IImportService
     {
         private readonly IList<IImportService> _importServices;
+        private CancellationToken _cancellationToken = new CancellationToken();
 
         public GStandardImportService(IImportService<ICommercialProduct> commercialProductImportService, IImportService<IComposition> compositionImportService,
             IImportService<IGenericComposition> genericCompositionImportService, IImportService<IGenericName> genericNameImportService, IImportService<IGenericProduct> genericProductImportService,
@@ -37,22 +41,26 @@ namespace Informedica.GenImport.GStandard.Services
 
         #region Implementation of IImportService
 
-        public void Start()
+        public void Start(CancellationToken cancellationToken)
         {
+            if (IsRunning) return;
+
             foreach (var importService in _importServices)
             {
-                importService.Start();
+                importService.Start(_cancellationToken);
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    break;
+                }
             }
-        }
-
-        public void Stop()
-        {
-            throw new NotImplementedException();
         }
 
         public bool IsRunning
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                return _importServices.Any(s => s.IsRunning);
+            }
         }
 
         #endregion
