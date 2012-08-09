@@ -1,24 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class Brand : IBrand
+    [DataContract]
+    public class Brand
     {
-        public Guid Id
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public string Name
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public IEnumerable<IProduct> Products
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name {get; set; }
     }
 }

@@ -1,33 +1,23 @@
-﻿using System;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class Unit : IUnit
+    [DataContract]
+    public class Unit
     {
-        public string Name
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name { get; set; }
 
-        public IUnitGroup UnitGroup
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public UnitGroup UnitGroup { get; set; }
 
-        public string Abbreviation
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Abbreviation { get; set; }
 
-        public decimal Multiplier
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public decimal Multiplier { get; set; }
 
-        public bool IsReference
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public bool IsReference { get; set; }
     }
 }

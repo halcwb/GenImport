@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Informedica.GenImport.Wcf.WcfService, Informedica.GenImport.Wcf" 
+Factory="Informedica.GenImport.Wcf.MyServiceHostFactory, Informedica.GenImport.Wcf" CodeBehind="WcfService.svc.cs" %>

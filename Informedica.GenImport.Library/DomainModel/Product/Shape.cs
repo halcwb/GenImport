@@ -1,34 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class Shape : IShape
+    [DataContract]
+    public class Shape
     {
-        public Guid Id
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public List<Product> Products { get; set; }
 
-        public IEnumerable<IProduct> Products
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public List<Package> Packages { get; set; }
 
-        public IEnumerable<IPackage> Packages
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public IEnumerable<IUnitGroup> UnitGroups
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public List<UnitGroup> UnitGroups { get; set; }
     }
 }

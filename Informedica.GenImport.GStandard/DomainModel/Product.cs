@@ -20,7 +20,11 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(6, 13)]
         [Modulo11]
-        public virtual int AtKode { get; set; }
+        public virtual int AtKode
+        {
+            get { return Id; }
+            set { Id = value; }
+        }
 
         /// <summary>
         /// HandelsProduktKode
@@ -41,14 +45,14 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public override bool IsIdentical(Product entity)
         {
-            throw new NotImplementedException();
+            return IsIdentical(entity);
         }
 
         #endregion
 
         #region Implementation of IEntity<in IProduct,out int>
 
-        public bool IsIdentical(IProduct entity)
+        public virtual bool IsIdentical(IProduct entity)
         {
             throw new NotImplementedException();
         }

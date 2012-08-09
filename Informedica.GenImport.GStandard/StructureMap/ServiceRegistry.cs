@@ -12,24 +12,38 @@ namespace Informedica.GenImport.GStandard.StructureMap
     {
         public ServiceRegistry()
         {
+            RegisterImportServices();
+
+            For<IProductService>().Use<ProductService>();
+        }
+
+        private void RegisterImportServices()
+        {
             GStandardConfigurationSection config = (GStandardConfigurationSection)ConfigurationManager.GetSection("GStandard");
 
             For<IImportService>().Singleton().Use<GStandardImportService>(); //singleton
 
             For<IImportService<ICommercialProduct>>().Use<FileImportService<ICommercialProduct>>()
-                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder,config.CommercialProductFile.FileName));
-
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.CommercialProductFile.FileName));
             For<IImportService<IComposition>>().Use<FileImportService<IComposition>>()
                 .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.CompostionFile.FileName));
-
-            For<IImportService<IGenericComposition>>().Use<FileImportService<IGenericComposition>>();
-            For<IImportService<IGenericName>>().Use<FileImportService<IGenericName>>();
-            For<IImportService<IGenericProduct>>().Use<FileImportService<IGenericProduct>>();
-            For<IImportService<IName>>().Use<FileImportService<IName>>();
-            For<IImportService<IPrescriptionProduct>>().Use<FileImportService<IPrescriptionProduct>>();
-            For<IImportService<IProduct>>().Use<FileImportService<IProduct>>();
-            For<IImportService<IRelationBetweenName>>().Use<FileImportService<IRelationBetweenName>>();
-            For<IImportService<IThesauriTotal>>().Use<FileImportService<IThesauriTotal>>();
+            For<IImportService<IGenericComposition>>().Use<FileImportService<IGenericComposition>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.GenericCompostionFile.FileName));
+            For<IImportService<IGenericName>>().Use<FileImportService<IGenericName>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.GenericNameFile.FileName));
+            For<IImportService<IGenericProduct>>().Use<FileImportService<IGenericProduct>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.GenericProductFile.FileName));
+            For<IImportService<IName>>().Use<FileImportService<IName>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.NameFile.FileName));
+            For<IImportService<IPrescriptionProduct>>().Use<FileImportService<IPrescriptionProduct>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.PrescriptionProductFile.FileName));
+            For<IImportService<IProduct>>().Use<FileImportService<IProduct>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.ProductFile.FileName));
+            //TODO
+            //For<IImportService<IRelationBetweenName>>().Use<FileImportService<IRelationBetweenName>>()
+            //    .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.Rela.FileName));
+            For<IImportService<IThesauriTotal>>().Use<FileImportService<IThesauriTotal>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.ThesauriTotalFile.FileName));
         }
     }
 }

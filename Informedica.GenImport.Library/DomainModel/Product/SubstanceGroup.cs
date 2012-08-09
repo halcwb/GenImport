@@ -1,50 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class SubstanceGroup : ISubstanceGroup
+    [DataContract]
+    public class SubstanceGroup
     {
-        public Guid Id
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public SubstanceGroup MainSubstanceGroup { get; set; }
 
-        public ISubstanceGroup MainSubstanceGroup
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
-
-        public IEnumerable<ISubstance> Substances
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool ContainsSubstance(ISubstance subst)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddSubstance(ISubstance substance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(ISubstance substance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearAllSubstances()
-        {
-            throw new NotImplementedException();
-        }
+        [DataMember]
+        public List<Substance> Substances { get; set; }
     }
 }

@@ -9,12 +9,12 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IName x, IName y)
         {
-            return x.NmNaam == y.NmNaam;
+            return x.NmNr == y.NmNr;
         }
 
         public int GetHashCode(IName obj)
         {
-            return obj.NmNaam.GetHashCode();
+            return obj.NmNr.GetHashCode();
         }
 
         #endregion

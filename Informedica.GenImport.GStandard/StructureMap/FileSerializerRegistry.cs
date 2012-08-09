@@ -17,6 +17,7 @@ namespace Informedica.GenImport.GStandard.StructureMap
             For<IFileSerializer<IGenericName>>().Use<GStandardFileSerializer<GenericName>>();
             For<IFileSerializer<IGenericProduct>>().Use<GStandardFileSerializer<GenericProduct>>();
             For<IFileSerializer<IName>>().Use<GStandardFileSerializer<Name>>();
+            For<IFileSerializer<IPrescriptionProduct>>().Use<GStandardFileSerializer<PrescriptionProduct>>();
             For<IFileSerializer<IProduct>>().Use<GStandardFileSerializer<Product>>();
             For<IFileSerializer<IRelationBetweenName>>().Use<GStandardFileSerializer<RelationBetweenName>>();
             For<IFileSerializer<IThesauriTotal>>().Use<GStandardFileSerializer<ThesauriTotal>>();
@@ -27,6 +28,7 @@ namespace Informedica.GenImport.GStandard.StructureMap
             For<IRepository<IGenericName>>().Use<NHibernateRepository<IGenericName>>();
             For<IRepository<IGenericProduct>>().Use<NHibernateRepository<IGenericProduct>>();
             For<IRepository<IName>>().Use<NHibernateRepository<IName>>();
+            For<IRepository<IPrescriptionProduct>>().Use<NHibernateRepository<IPrescriptionProduct>>();
             For<IRepository<IProduct>>().Use<NHibernateRepository<IProduct>>();
             For<IRepository<IRelationBetweenName>>().Use<NHibernateRepository<IRelationBetweenName>>();
             For<IRepository<IThesauriTotal>>().Use<NHibernateRepository<IThesauriTotal>>();

@@ -1,27 +1,14 @@
-﻿using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class Package : IPackage
+    [DataContract]
+    public class Package
     {
-        public System.Guid Id
-        {
-            get { throw new System.NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { throw new System.NotImplementedException(); }
-        }
-
-        public string Abbreviation
-        {
-            get { throw new System.NotImplementedException(); }
-        }
-
-        public System.Collections.Generic.IEnumerable<IProduct> Products
-        {
-            get { throw new System.NotImplementedException(); }
-        }
+        [DataMember]
+        public string Abbreviation { get; set; }
     }
 }

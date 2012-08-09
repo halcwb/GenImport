@@ -79,7 +79,16 @@
     <Compile Include="Attributes\Modulo11AttributeShould.cs" />
     <Compile Include="DomainModel\Equality\CommercialProductComparerShould.cs" />
     <Compile Include="DomainModel\Equality\CompositionComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\GenericCompositionComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\GenericNameComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\GenericProductComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\NameComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\PrescriptionProductComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\ProductComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\RelationBetweenNameComparerShould.cs" />
+    <Compile Include="DomainModel\Equality\ThesauriTotalComparerShould.cs" />
     <Compile Include="DomainModel\GenericNameShould.cs" />
+    <Compile Include="Mappings\ProductMapShould.cs" />
     <Compile Include="Serialization\CommercialProductFileSerializerShould.cs" />
     <Compile Include="Serialization\CompositionFileSerializerShould.cs" />
     <Compile Include="Serialization\GenericCompositionFileSerializerShould.cs" />
@@ -107,17 +116,17 @@
     <Compile Include="Mappings\PrescriptionProductMapShould.cs" />
     <Compile Include="Mappings\CompositionMapShould.cs" />
     <Compile Include="Mappings\ThesauriTotalMapShould.cs" />
-    <Compile Include="ModelMappingProfileShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\GenericNameImportServiceShould.cs" />
-    <Compile Include="Services\GenericCompositionImportServiceShould.cs" />
-    <Compile Include="Services\CommercialProductImportServiceShould.cs" />
-    <Compile Include="Services\GenericProductImportServiceShould.cs" />
-    <Compile Include="Services\GStandardImportServiceShould.cs" />
-    <Compile Include="Services\NameImportServiceShould.cs" />
-    <Compile Include="Services\PrescriptionProductImportServiceShould.cs" />
-    <Compile Include="Services\CompositionImportServiceShould.cs" />
-    <Compile Include="Services\ThesauriTotalImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\CommercialProductImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\CompositionImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\GenericCompositionImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\GenericNameImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\GenericProductImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\GStandardImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\NameImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\PrescriptionProductImportServiceShould.cs" />
+    <Compile Include="Services\ImportServices\ThesauriTotalImportServiceShould.cs" />
+    <Compile Include="Services\ProductServiceShould.cs" />
     <Compile Include="TestSessionContext.cs" />
     <Compile Include="StructureMap.cs" />
   </ItemGroup>
@@ -129,10 +138,6 @@
     <ProjectReference Include="..\..\EntityRepository\Informedica.EntityRepository\Informedica.EntityRepository.csproj">
       <Project>{E3780309-03FF-43DC-A134-828269F2008C}</Project>
       <Name>Informedica.EntityRepository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
-      <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
-      <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Informedica.GenImport.GStandard\Informedica.GenImport.GStandard.csproj">
       <Project>{D2D059C9-14E8-48C0-97AF-95D38AA90947}</Project>

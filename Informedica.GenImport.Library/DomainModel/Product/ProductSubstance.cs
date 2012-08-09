@@ -1,33 +1,20 @@
-﻿using System;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class ProductSubstance : IProductSubstance
+    [DataContract]
+    public class ProductSubstance
     {
-        public Guid Id
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public int SortOrder { get; set; }
 
-        public int SortOrder
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public Substance Substance { get; set; }
 
-        public ISubstance Substance
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public IUnitValue Quantity
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public UnitValue Quantity { get; set; }
     }
 }

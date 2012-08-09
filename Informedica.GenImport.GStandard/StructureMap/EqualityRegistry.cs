@@ -11,7 +11,14 @@ namespace Informedica.GenImport.GStandard.StructureMap
         {
             For<IEqualityComparer<ICommercialProduct>>().Use<CommercialProductComparer>();
             For<IEqualityComparer<IComposition>>().Use<CompositionComparer>();
+            For<IEqualityComparer<IGenericComposition>>().Use<GenericCompositionComparer>();
+            For<IEqualityComparer<IGenericName>>().Use<GenericNameComparer>();
+            For<IEqualityComparer<IGenericProduct>>().Use<GenericProductComparer>();
             For<IEqualityComparer<IName>>().Use<NameComparer>();
+            For<IEqualityComparer<IPrescriptionProduct>>().Use<PrescriptionProductComparer>();
+            For<IEqualityComparer<IProduct>>().Use<ProductComparer>();
+            For<IEqualityComparer<IRelationBetweenName>>().Use<RelationBetweenNameComparer>();
+            For<IEqualityComparer<IThesauriTotal>>().Use<ThesauriTotalComparer>();
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
@@ -10,8 +8,39 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
     public class CommercialProductComparerShould
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Equal_CommercialProducts_When_HpKode_Are_Equal()
         {
+            var x = new CommercialProduct { HpKode = 2 };
+            var y = new CommercialProduct { HpKode = 2 };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_CommercialProducts_When_HpKode_Are_Different()
+        {
+            var x = new CommercialProduct { HpKode = 2 };
+            var y = new CommercialProduct { HpKode = 3 };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Return_Correct_HashCode_From_HpKode()
+        {
+            var commercialProduct = new CommercialProduct { HpKode = 3 };
+            int expectedHashCode = commercialProduct.HpKode.GetHashCode();
+            
+            var comparer = new CommercialProductComparer();
+            int result = comparer.GetHashCode(commercialProduct);
+
+            Assert.AreEqual(expectedHashCode, result);
         }
     }
 }

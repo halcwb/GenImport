@@ -1,90 +1,36 @@
-﻿using System;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class Product : IProduct
+    [DataContract]
+    public class Product
     {
-        public Guid Id
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public int ProductCode { get; set; }
 
-        public string ProductCode { get; set; }
+        [DataMember]
+        public string GenericName { get; set; }
 
-        public string GenericName
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public Brand Brand { get; set; }
 
-        public IBrand Brand
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public Shape Shape { get; set; }
 
-        public IShape Shape
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public UnitValue Quantity { get; set; }
 
-        public IUnitValue Quantity
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public Package Package { get; set; }
 
-        public IPackage Package
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public string DisplayName { get; set; }
 
-        public string DisplayName
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public System.Collections.Generic.IEnumerable<IProductSubstance> Substances
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool ContainsSubstance(ISubstance substance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddSubstance(ISubstance substance, int sortOrder, IUnitValue quanity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveSubstance(ISubstance substance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public System.Collections.Generic.IEnumerable<IRoute> Routes
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public bool ContainsRoute(IRoute route)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRoute(IRoute route)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRoute(IRoute route)
-        {
-            throw new NotImplementedException();
-        }
+        [DataMember]
+        public List<ProductSubstance> Substances { get; set; }
     }
 }

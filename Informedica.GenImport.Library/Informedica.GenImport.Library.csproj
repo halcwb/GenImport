@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +55,8 @@
     <Compile Include="DomainModel\Product\UnitGroup.cs" />
     <Compile Include="DomainModel\Product\UnitValue.cs" />
     <Compile Include="Exceptions\CannotParseLineException.cs" />
+    <Compile Include="Exceptions\ProductIncompleteException.cs" />
+    <Compile Include="Services\IProductService.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Serialization\FileSerializer.cs" />
     <Compile Include="Serialization\IFileSerializer.cs" />
@@ -67,10 +71,6 @@
     <ProjectReference Include="..\..\EntityRepository\Informedica.EntityRepository\Informedica.EntityRepository.csproj">
       <Project>{E3780309-03FF-43DC-A134-828269F2008C}</Project>
       <Name>Informedica.EntityRepository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\GenForm\Informedica.GenForm.Library.DomainModel.Interfaces\Informedica.GenForm.Library.DomainModel.Interfaces.csproj">
-      <Project>{ECB17AF3-B61D-48BB-97A2-7D4027C2E6DE}</Project>
-      <Name>Informedica.GenForm.Library.DomainModel.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

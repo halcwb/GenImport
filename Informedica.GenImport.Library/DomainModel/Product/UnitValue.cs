@@ -1,18 +1,14 @@
-﻿using System;
-using Informedica.GenForm.DomainModel.Interfaces;
+﻿using System.Runtime.Serialization;
 
 namespace Informedica.GenImport.Library.DomainModel.Product
 {
-    public class UnitValue : IUnitValue
+    [DataContract]
+    public class UnitValue
     {
-        public IUnit Unit
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public Unit Unit { get; set; }
 
-        public decimal Value
-        {
-            get { throw new NotImplementedException(); }
-        }
+        [DataMember]
+        public decimal Value { get; set; }
     }
 }

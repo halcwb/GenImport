@@ -8,7 +8,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
     public class CompositionComparerShould
     {
         [TestMethod]
-        public void Equal_Two_Compositions_When_Keys_Are_Equal()
+        public void Equal_Compositions_When_Keys_Are_Equal()
         {
             var x = new Composition{
                                        SrtCde = 123456,
@@ -30,7 +30,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_Two_Compositions_When_SrtCode_Is_Different()
+        public void Not_Equal_Compositions_When_SrtCode_Is_Different()
         {
             var x = new Composition
             {
@@ -54,7 +54,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_Two_Compositions_When_Code_Is_Different()
+        public void Not_Equal_Compositions_When_Code_Is_Different()
         {
             var x = new Composition
             {
@@ -78,7 +78,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_Two_Compositions_When_GnGnK_Is_Different()
+        public void Not_Equal_Compositions_When_GnGnK_Is_Different()
         {
             var x = new Composition
             {
@@ -102,7 +102,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_Two_Compositions_When_GnHoev_Is_Different()
+        public void Not_Equal_Compositions_When_GnHoev_Is_Different()
         {
             var x = new Composition
             {
@@ -126,7 +126,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_Two_Compositions_When_GnEenh_Is_Different()
+        public void Not_Equal_Compositions_When_GnEenh_Is_Different()
         {
             var x = new Composition
             {
@@ -147,6 +147,27 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
 
             var comparer = new CompositionComparer();
             Assert.IsFalse(comparer.Equals(x, y));
+        }
+
+        [TestMethod]
+        public void Return_Correct_HashCode_From_SrtCde_Code_GnGnK_GnHoev_GnEenh()
+        {
+            var composition = new Composition{
+                                                 Code = 1,
+                                                 SrtCde = 2,
+                                                 GnGnK = 3,
+                                                 GnHoev = 4,
+                                                 GnEenh = 5
+                                             };
+
+            int expectedHashCode = composition.Code.GetHashCode() + composition.SrtCde.GetHashCode() +
+                                   composition.GnGnK.GetHashCode() + composition.GnHoev.GetHashCode() +
+                                   composition.GnEenh.GetHashCode();
+
+            var comparer = new CompositionComparer();
+            int result = comparer.GetHashCode(composition);
+
+            Assert.AreEqual(expectedHashCode, result);
         }
     }
 }

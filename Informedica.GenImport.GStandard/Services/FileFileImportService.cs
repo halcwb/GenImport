@@ -14,14 +14,14 @@ namespace Informedica.GenImport.GStandard.Services
     {
         private readonly string _databaseFilePath;
         private readonly IFileSerializer<TModel> _fileSerializer;
-        private readonly IRepository<TModel> _repository;
+        protected readonly IRepository<TModel> Repository;
         private CancellationToken _cancellationToken;
 
         public FileImportService(string databaseFilePath, IFileSerializer<TModel> fileSerializer, IRepository<TModel> repository)
         {
             _databaseFilePath = databaseFilePath;
             _fileSerializer = fileSerializer;
-            _repository = repository;
+            Repository = repository;
         }
 
         private void OpenFileAndProcess(Action<Stream> streamAction)
@@ -32,7 +32,7 @@ namespace Informedica.GenImport.GStandard.Services
             }
         }
 
-        private void ProcessFile(Stream stream, Action<TModel> processLineAction)
+        protected void ProcessFile(Stream stream, Action<TModel> processLineAction)
         {
             var lines = _fileSerializer.ReadLines(stream);
             foreach (var model in lines)
@@ -47,7 +47,7 @@ namespace Informedica.GenImport.GStandard.Services
 
         protected virtual void Import(Stream stream)
         {
-            ProcessFile(stream, n => _repository.Add(n));
+            ProcessFile(stream, n => Repository.Add(n));
         }
 
         #region Implementation of IImportService
