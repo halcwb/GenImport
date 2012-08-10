@@ -26,7 +26,7 @@ namespace Informedica.GenImport.Wcf
 
         private static ISessionFactory GetSessionFactory()
         {
-            var config = Fluently.Configure().Database(SQLiteConfiguration.Standard.UsingFile("c:/tmp/test.db"))
+            var config = Fluently.Configure().Database(SQLiteConfiguration.Standard.ConnectionString(c => c.FromConnectionStringWithKey("GStandardDbConnectionString")))
                 .Mappings(x => x.FluentMappings.AddFromAssemblyOf<NameMap>())
                 .CurrentSessionContext<ThreadStaticSessionContext>()
                 .BuildConfiguration();

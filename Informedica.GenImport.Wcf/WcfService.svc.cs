@@ -7,18 +7,18 @@ namespace Informedica.GenImport.Wcf
 {
     public class WcfService : IWcfService
     {
-        private readonly IProductService _productService;
+        private readonly IDataService _dataService;
 
-        public WcfService(IProductService productService)
+        public WcfService(IDataService dataService)
         {
-            _productService = productService;
+            _dataService = dataService;
         }
 
         #region Implementation of IWcfService
 
         public List<Product> GetProductsByProductCode(int productCode)
         {
-            return _productService.GetProductsByProductCode(productCode);
+            return _dataService.GetProductsByProductCode(productCode);
         }
 
         public void RefreshDatabase()

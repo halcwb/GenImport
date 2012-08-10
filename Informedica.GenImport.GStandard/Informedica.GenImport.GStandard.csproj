@@ -110,7 +110,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\GStandardImportService.cs" />
     <Compile Include="Services\FileFileImportService.cs" />
-    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\DataService.cs" />
     <Compile Include="StructureMap\EqualityRegistry.cs" />
     <Compile Include="StructureMap\FileSerializerRegistry.cs" />
     <Compile Include="StructureMap\RepositoryRegistry.cs" />

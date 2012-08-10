@@ -126,7 +126,7 @@
     <Compile Include="Services\ImportServices\NameImportServiceShould.cs" />
     <Compile Include="Services\ImportServices\PrescriptionProductImportServiceShould.cs" />
     <Compile Include="Services\ImportServices\ThesauriTotalImportServiceShould.cs" />
-    <Compile Include="Services\ProductServiceShould.cs" />
+    <Compile Include="Services\DataServiceShould.cs" />
     <Compile Include="TestSessionContext.cs" />
     <Compile Include="StructureMap.cs" />
   </ItemGroup>

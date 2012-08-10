@@ -14,7 +14,7 @@ namespace Informedica.GenImport.GStandard.StructureMap
         {
             RegisterImportServices();
 
-            For<IProductService>().Use<ProductService>();
+            For<IDataService>().Use<DataService>();
         }
 
         private void RegisterImportServices()
