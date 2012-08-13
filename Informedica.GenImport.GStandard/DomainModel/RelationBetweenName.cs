@@ -52,5 +52,14 @@ namespace Informedica.GenImport.GStandard.DomainModel
         }
 
         #endregion
+
+        #region Implementation of ICopyable<in IRelationBetweenName>
+
+        public virtual void CopyTo(IRelationBetweenName other)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

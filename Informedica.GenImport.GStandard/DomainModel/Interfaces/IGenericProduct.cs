@@ -5,7 +5,7 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
     /// <summary>
     /// Contract for a line in G-Standard file 711.
     /// </summary>
-    public interface IGenericProduct : IGStandardModel<IGenericProduct>
+    public interface IGenericProduct : IGStandardModel<IGenericProduct>, ICopyable<IGenericProduct>
     {
         /// <summary>
         /// Mutatiekode

@@ -1,4 +1,5 @@
 ﻿using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,10 +9,28 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
     public class CommercialProductComparerShould
     {
         [TestMethod]
-        public void Equal_CommercialProducts_When_HpKode_Are_Equal()
+        public void Equal_When_All_Fields_Are_Equal()
         {
-            var x = new CommercialProduct { HpKode = 2 };
-            var y = new CommercialProduct { HpKode = 2 };
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
 
             var comparer = new CommercialProductComparer();
             bool result = comparer.Equals(x, y);
@@ -20,10 +39,208 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_CommercialProducts_When_HpKode_Are_Different()
+        public void Not_Equal_When_FsNaam_Is_Different()
         {
-            var x = new CommercialProduct { HpKode = 2 };
-            var y = new CommercialProduct { HpKode = 3 };
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "B",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_HpKode_Is_Different()
+        {
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 2,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_HpNamN_Is_Different()
+        {
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 3,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_MsNaam_Is_Different()
+        {
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "C",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_MutKod_Is_Different()
+        {
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordAdded,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_TsEmbM_Is_Different()
+        {
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 4,
+                XsEmbM = 4
+            };
+
+            var comparer = new CommercialProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_XsEmbM_Is_Different()
+        {
+            var x = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 4
+            };
+            var y = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 5
+            };
 
             var comparer = new CommercialProductComparer();
             bool result = comparer.Equals(x, y);
@@ -34,9 +251,21 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         [TestMethod]
         public void Return_Correct_HashCode_From_HpKode()
         {
-            var commercialProduct = new CommercialProduct { HpKode = 3 };
-            int expectedHashCode = commercialProduct.HpKode.GetHashCode();
-            
+            var commercialProduct = new CommercialProduct
+            {
+                FsNaam = "A",
+                HpKode = 1,
+                HpNamN = 2,
+                MsNaam = "B",
+                MutKod = MutKod.RecordUpdated,
+                TsEmbM = 3,
+                XsEmbM = 5
+            };
+
+            int expectedHashCode = commercialProduct.FsNaam.GetHashCode() ^ commercialProduct.HpKode ^
+                                   commercialProduct.HpNamN ^ commercialProduct.MsNaam.GetHashCode() ^
+                                   (byte)commercialProduct.MutKod ^ commercialProduct.TsEmbM ^ commercialProduct.XsEmbM;
+
             var comparer = new CommercialProductComparer();
             int result = comparer.GetHashCode(commercialProduct);
 

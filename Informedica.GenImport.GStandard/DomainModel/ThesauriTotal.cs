@@ -112,5 +112,14 @@ namespace Informedica.GenImport.GStandard.DomainModel
         }
 
         #endregion
+
+        #region Implementation of ICopyable<in IThesauriTotal>
+
+        public virtual void CopyTo(IThesauriTotal other)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

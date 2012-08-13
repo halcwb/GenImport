@@ -58,7 +58,7 @@ namespace Informedica.GenImport.GStandard.Tests.Serialization
         }
 
         [TestMethod]
-        public void Be_Able_To_Parse_5_Lines_To_5_GenericName_Models()
+        public void Be_Able_To_Parse_5_Lines_To_5_GenericProduct_Models()
         {
             const int expectedLineCount = 5;
             string data =
@@ -73,7 +73,7 @@ namespace Informedica.GenImport.GStandard.Tests.Serialization
                 "071100000029900000299006230007009005952300329955MG                      0000000000009200000004101200000000000299058004G03DC02 0022450000000000000000000000000000";
             byte[] dataBytes = Encoding.UTF8.GetBytes(data);
             var memoryStream = new MemoryStream(dataBytes);
-            var serializer = new GStandardFileSerializer<GenericName>();
+            var serializer = new GStandardFileSerializer<GenericProduct>();
             var lines = serializer.ReadLines(memoryStream);
 
             Assert.IsNotNull(lines);

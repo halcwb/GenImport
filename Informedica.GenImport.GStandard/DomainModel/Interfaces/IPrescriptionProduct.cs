@@ -6,7 +6,7 @@ namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
     /// <summary>
     /// Contract for a line in G-Standard file 050.
     /// </summary>
-    public interface IPrescriptionProduct : IGStandardModel<IPrescriptionProduct>
+    public interface IPrescriptionProduct : IGStandardModel<IPrescriptionProduct>, ICopyable<IPrescriptionProduct>
     {
         /// <summary>
         /// Mutatiekode

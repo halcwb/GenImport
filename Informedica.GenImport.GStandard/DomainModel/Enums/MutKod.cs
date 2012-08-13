@@ -7,7 +7,7 @@
     {
         RecordNotChanged = 0,
         RecordDeleted = 1,
-        RecordUpdated = 3,
+        RecordUpdated = 2,
         RecordAdded = 3
     }
 }

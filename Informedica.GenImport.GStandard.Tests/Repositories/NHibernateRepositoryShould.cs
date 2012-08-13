@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
+using Informedica.EntityRepository.Entities;
 using Informedica.GenImport.GStandard.DomainModel;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.GStandard.Mappings;
@@ -24,7 +23,7 @@ namespace Informedica.GenImport.GStandard.Tests.Repositories
                 set { Id = value; }
             }
 
-            #region Overrides of Entity<MyEntity,int>
+            #region Overrides of Entity<MyCopyableEntity,int>
 
             public override bool IsIdentical(MyEntity entity)
             {
@@ -44,6 +43,14 @@ namespace Informedica.GenImport.GStandard.Tests.Repositories
             #endregion
         }
 
+        private class MyEntityMap : EntityMap<MyEntity>
+        {
+            public MyEntityMap()
+            {
+                Map(x => x.Name).Length(50);
+            }
+        }
+
         private class MyEntityComparer : IEqualityComparer<MyEntity>
         {
             #region Implementation of IEqualityComparer<in MyEntity>
@@ -59,14 +66,6 @@ namespace Informedica.GenImport.GStandard.Tests.Repositories
             }
 
             #endregion
-        }
-
-        private class MyEntityMap : EntityMap<MyEntity>
-        {
-            public MyEntityMap()
-            {
-                Map(x => x.Name).Length(50);
-            }
         }
 
         #endregion

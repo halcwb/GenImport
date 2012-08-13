@@ -3,12 +3,13 @@ using System.Linq;
 using Informedica.DataAccess.Repositories;
 using Informedica.EntityRepository.Entities;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+using Informedica.GenImport.Library.DomainModel.Interfaces;
 using NHibernate;
 
 namespace Informedica.GenImport.GStandard.Repositories
 {
     public class NHibernateRepository<TEnt> : NHibernateRepository<TEnt, int>, IRepository<TEnt>
-        where TEnt : class, IEntity<TEnt, int>
+        where TEnt : class, IEntity<TEnt, int>, ICopyable<TEnt>
     {
         private readonly IEqualityComparer<TEnt> _comparer;
 
@@ -31,10 +32,7 @@ namespace Informedica.GenImport.GStandard.Repositories
             if(dbEntity != null)
             {
                 var copyable = entity as ICopyable<TEnt>;
-                if(copyable != null)
-                {
-                    copyable.CopyTo(dbEntity);
-                }
+                copyable.CopyTo(dbEntity);
             }
             else
             {

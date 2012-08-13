@@ -1,5 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Informedica.GenImport.GStandard.Tests.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -90,5 +92,23 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
                           string.Format(AttributeTestUtility.HasNoModulo11AttributeMessage, info.Name));
         }
         #endregion
+
+        [TestMethod]
+        public void Copy_All_Fields_From_One_To_Another()
+        {
+            CommercialProduct from = new CommercialProduct{
+                                                              FsNaam = "A",
+                                                              HpKode = 1,
+                                                              HpNamN = 2,
+                                                              MsNaam = "B",
+                                                              MutKod = MutKod.RecordUpdated,
+                                                              TsEmbM = 3,
+                                                              XsEmbM = 4
+                                                          };
+            CommercialProduct to = new CommercialProduct();
+            from.CopyTo(to);
+
+            Assert.IsTrue(new CommercialProductComparer().Equals(from, to));
+        }
     }
 }
