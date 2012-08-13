@@ -1,12 +1,12 @@
-﻿using Informedica.EntityRepository.Entities;
-using Informedica.GenImport.GStandard.DomainModel.Enums;
+﻿using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.Library.DomainModel.Interfaces;
 
 namespace Informedica.GenImport.GStandard.DomainModel.Interfaces
 {
     /// <summary>
     /// Contract for a line in G-Standard file 031.
     /// </summary>
-    public interface ICommercialProduct : IGStandardModel<ICommercialProduct>
+    public interface ICommercialProduct : IGStandardModel<ICommercialProduct>, ICopyable<ICommercialProduct>
     {
         /// <summary>
         /// Mutatiekode

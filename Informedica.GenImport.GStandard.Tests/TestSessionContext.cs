@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Cfg;
+﻿using System;
+using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Informedica.GenImport.GStandard.Mappings;
 using NHibernate;
@@ -15,8 +16,13 @@ namespace Informedica.GenImport.GStandard.Tests
 
         protected static ISessionFactory GetSessionFactory()
         {
+            return GetSessionFactory(x => x.FluentMappings.AddFromAssemblyOf<NameMap>());
+        }
+
+        protected static ISessionFactory GetSessionFactory(Action<MappingConfiguration> mappings)
+        {
             var config = Fluently.Configure().Database(SQLiteConfiguration.Standard.InMemory())
-                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<NameMap>())
+                .Mappings(mappings)
                 .CurrentSessionContext<ThreadStaticSessionContext>()
                 .BuildConfiguration();
             var fact = config.BuildSessionFactory();
@@ -26,6 +32,5 @@ namespace Informedica.GenImport.GStandard.Tests
 
             return fact;
         }
-
     }
 }

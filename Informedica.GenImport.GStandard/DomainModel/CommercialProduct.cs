@@ -75,5 +75,14 @@ namespace Informedica.GenImport.GStandard.DomainModel
         }
 
         #endregion
+
+        #region Implementation of ICopyable<in ICommercialProduct>
+
+        public void CopyTo(ICommercialProduct other)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

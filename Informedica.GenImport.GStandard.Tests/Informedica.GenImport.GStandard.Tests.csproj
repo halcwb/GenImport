@@ -87,6 +87,7 @@
     <Compile Include="DomainModel\Equality\ThesauriTotalComparerShould.cs" />
     <Compile Include="DomainModel\GenericNameShould.cs" />
     <Compile Include="Mappings\ProductMapShould.cs" />
+    <Compile Include="Repositories\NHibernateRepositoryShould.cs" />
     <Compile Include="Serialization\CommercialProductFileSerializerShould.cs" />
     <Compile Include="Serialization\CompositionFileSerializerShould.cs" />
     <Compile Include="Serialization\GenericCompositionFileSerializerShould.cs" />

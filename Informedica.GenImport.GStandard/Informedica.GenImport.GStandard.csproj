@@ -102,6 +102,7 @@
     <Compile Include="DomainModel\Equality\ProductComparer.cs" />
     <Compile Include="DomainModel\Equality\RelationBetweenNameComparer.cs" />
     <Compile Include="DomainModel\Equality\ThesauriTotalComparer.cs" />
+    <Compile Include="DomainModel\Interfaces\ICopyable.cs" />
     <Compile Include="DomainModel\Product.cs" />
     <Compile Include="DomainModel\Entity.cs" />
     <Compile Include="DomainModel\Enums\SubstanceIndication.cs" />
@@ -149,7 +150,6 @@
     <Compile Include="StructureMap\FileSerializerRegistry.cs" />
     <Compile Include="StructureMap\RepositoryRegistry.cs" />
     <Compile Include="StructureMap\ServiceRegistry.cs" />
-    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DataAccess\Informedica.DataAccess\Informedica.DataAccess.csproj">

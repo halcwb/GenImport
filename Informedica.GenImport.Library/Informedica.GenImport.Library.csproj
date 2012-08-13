@@ -91,7 +91,6 @@
     <Compile Include="Exceptions\CannotParseLineException.cs" />
     <Compile Include="Exceptions\ProductIncompleteException.cs" />
     <Compile Include="Services\IDataService.cs" />
-    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="Serialization\FileSerializer.cs" />
     <Compile Include="Serialization\IFileSerializer.cs" />
     <Compile Include="Services\IImportService.cs" />

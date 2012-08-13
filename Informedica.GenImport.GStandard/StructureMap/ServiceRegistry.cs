@@ -2,10 +2,8 @@
 using System.IO;
 using Informedica.GenImport.GStandard.Configuration;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
-using Informedica.GenImport.GStandard.Repositories;
 using Informedica.GenImport.GStandard.Services;
 using Informedica.GenImport.Library.Services;
-using Informedica.GenImport.Library.UnitOfWork;
 using StructureMap.Configuration.DSL;
 
 namespace Informedica.GenImport.GStandard.StructureMap
@@ -17,7 +15,6 @@ namespace Informedica.GenImport.GStandard.StructureMap
             RegisterImportServices();
 
             For<IDataService>().Use<DataService>();
-            //For<IUnitOfWork>().Use<NHibernateUnitOfWork>();
         }
 
         private void RegisterImportServices()
