@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.IO;
 using Informedica.GenImport.Library.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Exceptions;
@@ -10,6 +11,7 @@ namespace Informedica.GenImport.Library.Serialization
     public abstract class FileSerializer<TModel> : IFileSerializer<TModel>
         where TModel : class, IModel
     {
+        [Pure]
         public virtual IEnumerable<TModel> ReadLines(Stream inputStream)
         {
             using (StreamReader streamReader = new StreamReader(inputStream))
@@ -26,6 +28,7 @@ namespace Informedica.GenImport.Library.Serialization
             }
         }
 
+        [Pure]
         private TModel TryParseLine(string line)
         {
             TModel model = null;
@@ -41,8 +44,10 @@ namespace Informedica.GenImport.Library.Serialization
             return model;
         }
 
+        [Pure]
         protected abstract TModel ParseLineToModel(string line);
         
+        [Pure]
         IEnumerable<IModel> IFileSerializer.ReadLines(Stream inputStream)
         {
             return ReadLines(inputStream);

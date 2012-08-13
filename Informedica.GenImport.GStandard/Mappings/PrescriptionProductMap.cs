@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.Mappings
         public PrescriptionProductMap()
         {
             Map(x => x.MutKod).Not.Nullable().CustomType<byte>();
-            Map(x => x.PrNmNr).Not.Nullable();
+            Map(x => x.PrNmNr).Not.Nullable().Unique();
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Informedica.GenImport.Library.Services;
 
@@ -11,22 +11,24 @@ namespace Informedica.GenImport.GStandard.Services
     public class GStandardImportService : IImportService
     {
         private readonly IList<IImportService> _importServices;
-        private CancellationToken _cancellationToken = new CancellationToken();
+        private readonly CancellationToken _cancellationToken = new CancellationToken();
 
+        [Pure]
         public GStandardImportService(IImportService<ICommercialProduct> commercialProductImportService, IImportService<IComposition> compositionImportService,
             IImportService<IGenericComposition> genericCompositionImportService, IImportService<IGenericName> genericNameImportService, IImportService<IGenericProduct> genericProductImportService,
-            IImportService<IName> nameImportService, IImportService<IPrescriptionProduct> prescriptionProductImportService, IImportService<IThesauriTotal> thesauriTotalImportService)
+            IImportService<IName> nameImportService, IImportService<IPrescriptionProduct> prescriptionProductImportService, IImportService<IProduct> productImportService, IImportService<IThesauriTotal> thesauriTotalImportService)
         {
-            if (commercialProductImportService == null) throw new ArgumentNullException("commercialProductImportService");
-            if (compositionImportService == null) throw new ArgumentNullException("compositionImportService");
-            if (genericCompositionImportService == null) throw new ArgumentNullException("genericCompositionImportService");
-            if (genericNameImportService == null) throw new ArgumentNullException("genericNameImportService");
-            if (genericProductImportService == null) throw new ArgumentNullException("genericProductImportService");
-            if (nameImportService == null) throw new ArgumentNullException("nameImportService");
-            if (prescriptionProductImportService == null) throw new ArgumentNullException("prescriptionProductImportService");
-            if (thesauriTotalImportService == null) throw new ArgumentNullException("thesauriTotalImportService");
+            Contract.Requires<ArgumentNullException>(commercialProductImportService != null, "commercialProductImportService");
+            Contract.Requires<ArgumentNullException>(compositionImportService != null, "compositionImportService");
+            Contract.Requires<ArgumentNullException>(genericCompositionImportService != null, "genericCompositionImportService");
+            Contract.Requires<ArgumentNullException>(genericNameImportService != null, "genericNameImportService");
+            Contract.Requires<ArgumentNullException>(genericProductImportService != null, "genericProductImportService");
+            Contract.Requires<ArgumentNullException>(nameImportService != null, "nameImportService");
+            Contract.Requires<ArgumentNullException>(prescriptionProductImportService != null, "prescriptionProductImportService");
+            Contract.Requires<ArgumentNullException>(productImportService != null, "productImportService");
+            //TODO relationBetweenName
+            Contract.Requires<ArgumentNullException>(thesauriTotalImportService != null, "thesauriTotalImportService");
 
-            //TODO be sure to set order according to references used by entities
             _importServices = new List<IImportService>{
                                                           commercialProductImportService,
                                                           compositionImportService,
@@ -35,12 +37,14 @@ namespace Informedica.GenImport.GStandard.Services
                                                           genericProductImportService,
                                                           nameImportService,
                                                           prescriptionProductImportService,
+                                                          productImportService,
                                                           thesauriTotalImportService
                                                       };
         }
 
         #region Implementation of IImportService
-
+        
+        [Pure]
         public void Start(CancellationToken cancellationToken)
         {
             if (IsRunning) return;
@@ -55,6 +59,7 @@ namespace Informedica.GenImport.GStandard.Services
             }
         }
 
+        [Pure]
         public bool IsRunning
         {
             get

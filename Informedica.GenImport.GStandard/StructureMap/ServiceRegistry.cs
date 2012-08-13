@@ -2,8 +2,10 @@
 using System.IO;
 using Informedica.GenImport.GStandard.Configuration;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
+using Informedica.GenImport.GStandard.Repositories;
 using Informedica.GenImport.GStandard.Services;
 using Informedica.GenImport.Library.Services;
+using Informedica.GenImport.Library.UnitOfWork;
 using StructureMap.Configuration.DSL;
 
 namespace Informedica.GenImport.GStandard.StructureMap
@@ -15,6 +17,7 @@ namespace Informedica.GenImport.GStandard.StructureMap
             RegisterImportServices();
 
             For<IDataService>().Use<DataService>();
+            //For<IUnitOfWork>().Use<NHibernateUnitOfWork>();
         }
 
         private void RegisterImportServices()
@@ -39,9 +42,8 @@ namespace Informedica.GenImport.GStandard.StructureMap
                 .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.PrescriptionProductFile.FileName));
             For<IImportService<IProduct>>().Use<FileImportService<IProduct>>()
                 .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.ProductFile.FileName));
-            //TODO
-            //For<IImportService<IRelationBetweenName>>().Use<FileImportService<IRelationBetweenName>>()
-            //    .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.Rela.FileName));
+            For<IImportService<IRelationBetweenName>>().Use<FileImportService<IRelationBetweenName>>()
+                .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.RelationBetweenNameFile.FileName));
             For<IImportService<IThesauriTotal>>().Use<FileImportService<IThesauriTotal>>()
                 .Ctor<string>("databaseFilePath").Is(Path.Combine(config.DatabaseFolder, config.ThesauriTotalFile.FileName));
         }

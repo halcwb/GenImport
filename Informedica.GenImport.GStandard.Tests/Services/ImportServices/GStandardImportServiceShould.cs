@@ -77,6 +77,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
         }
 
@@ -88,6 +89,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
         }
 
@@ -99,6 +101,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                         null, GetMockImportService<IGenericName>(),
                                         GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                         GetMockImportService<IPrescriptionProduct>(),
+                                        GetMockImportService<IProduct>(),
                                         GetMockImportService<IThesauriTotal>());
         }
 
@@ -110,6 +113,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), null,
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
         }
 
@@ -121,6 +125,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        null, GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
         }
 
@@ -132,6 +137,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), null,
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
         }
 
@@ -142,6 +148,19 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
             new GStandardImportService(GetMockImportService<ICommercialProduct>(), GetMockImportService<IComposition>(),
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
+                                       null,
+                                       GetMockImportService<IProduct>(),
+                                       GetMockImportService<IThesauriTotal>());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Throw_ArgumentNullException_When_Constructor_Is_Called_With_ProductImportService_Null()
+        {
+            new GStandardImportService(GetMockImportService<ICommercialProduct>(), GetMockImportService<IComposition>(),
+                                       GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
+                                       GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
+                                       GetMockImportService<IPrescriptionProduct>(),
                                        null,
                                        GetMockImportService<IThesauriTotal>());
         }
@@ -154,6 +173,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        null);
         }
 
@@ -171,6 +191,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                 GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                 GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                 GetMockImportService<IPrescriptionProduct>(),
+                GetMockImportService<IProduct>(),
                 GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
@@ -187,6 +208,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
@@ -203,6 +225,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
@@ -219,6 +242,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericName>(() => serviceStarted = true),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
@@ -235,6 +259,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericProduct>(() => serviceStarted = true),
                                        GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
@@ -251,6 +276,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericProduct>(),
                                        GetMockImportService<IName>(() => serviceStarted = true),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
@@ -266,12 +292,30 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(() => serviceStarted = true),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>());
 
             service.Start(GetToken());
 
             Assert.IsTrue(serviceStarted);
         }
+
+        [TestMethod]
+        public void Start_ProductImportService_When_Start_Is_Called()
+        {
+            bool serviceStarted = false;
+            var service = new GStandardImportService(GetMockImportService<ICommercialProduct>(), GetMockImportService<IComposition>(),
+                                       GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
+                                       GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
+                                       GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(() => serviceStarted = true),
+                                       GetMockImportService<IThesauriTotal>());
+
+            service.Start(GetToken());
+
+            Assert.IsTrue(serviceStarted);
+        }
+
 
         [TestMethod]
         public void Start_ThesauriTotalImportService_When_Start_Is_Called()
@@ -281,6 +325,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                                        GetMockImportService<IGenericComposition>(), GetMockImportService<IGenericName>(),
                                        GetMockImportService<IGenericProduct>(), GetMockImportService<IName>(),
                                        GetMockImportService<IPrescriptionProduct>(),
+                                       GetMockImportService<IProduct>(),
                                        GetMockImportService<IThesauriTotal>(() => serviceStarted = true));
 
             service.Start(GetToken());
@@ -302,6 +347,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                 GetMockImportService<IGenericProduct>(),
                 GetMockImportService<IName>(),
                 GetMockImportService<IPrescriptionProduct>(),
+                GetMockImportService<IProduct>(),
                 GetMockImportService<IThesauriTotal>());
 
             var token = GetToken();
@@ -322,6 +368,7 @@ namespace Informedica.GenImport.GStandard.Tests.Services.ImportServices
                 GetMockImportService<IGenericProduct>(() => Thread.Sleep(100), true),
                 GetMockImportService<IName>(() => Thread.Sleep(100), true),
                 GetMockImportService<IPrescriptionProduct>(() => Thread.Sleep(100), true),
+                GetMockImportService<IProduct>(),
                 GetMockImportService<IThesauriTotal>(() => Thread.Sleep(100), true));
 
             var tokenSoure = new CancellationTokenSource();

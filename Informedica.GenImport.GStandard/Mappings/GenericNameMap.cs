@@ -7,7 +7,7 @@ namespace Informedica.GenImport.GStandard.Mappings
         public GenericNameMap()
         {
             Map(x => x.MutKod).Not.Nullable().CustomType<byte>();
-            Map(x => x.GnGnAm).Not.Nullable().Length(50);
+            Map(x => x.GnGnAm).Not.Nullable().Length(50).Unique();
         }
     }
 }

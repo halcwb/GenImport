@@ -7,7 +7,6 @@ namespace Informedica.GenImport.GStandard.Mappings
         public GenericProductMap()
         {
             Map(x => x.GpInSt).Not.Nullable().Length(25);
-            //Map(x => x.GpKode).Not.Nullable();
             Map(x => x.GpKtVr).Not.Nullable();
             Map(x => x.GpKTwg).Not.Nullable();
             Map(x => x.GpNmNr).Not.Nullable();

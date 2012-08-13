@@ -20,7 +20,10 @@ namespace Informedica.GenImport.GStandard.DomainModel
         /// </summary>
         [FileLinePosition(6, 13)]
         [Modulo11]
-        public virtual int GpKode { get; set; }
+        public virtual int GpKode { 
+            get { return Id; }
+            set { Id = value; }
+        }
 
         /// <summary>
         /// GSK-code

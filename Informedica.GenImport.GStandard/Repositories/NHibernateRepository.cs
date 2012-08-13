@@ -1,58 +1,37 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Informedica.DataAccess.Repositories;
 using Informedica.EntityRepository.Entities;
 using NHibernate;
-using NHibernate.Context;
 
 namespace Informedica.GenImport.GStandard.Repositories
 {
     public class NHibernateRepository<TEnt> : NHibernateRepository<TEnt, int>, IRepository<TEnt>
         where TEnt : class, IEntity<TEnt, int>
     {
-        public readonly IEqualityComparer<TEnt> Comparer;
+        private readonly IEqualityComparer<TEnt> _comparer;
 
-        public NHibernateRepository(ISessionFactory factory, IEqualityComparer<TEnt> comparer) : base(factory)
+        public NHibernateRepository(ISessionFactory sessionFactory, IEqualityComparer<TEnt> comparer)
+            : base(sessionFactory)
         {
-            Comparer = comparer;
+            _comparer = comparer;
         }
 
         public override void Add(TEnt entity)
         {
-           Add(entity, Comparer);
+            Add(entity, _comparer);
         }
 
-        protected override ISession Session
+        public void Add(IEnumerable<TEnt> entities)
         {
-            get
+            Transact(() => AddEntities(entities));
+        }
+
+        private void AddEntities(IEnumerable<TEnt> entities)
+        {
+            foreach (var entity in entities)
             {
-#warning hack, remove
-                //TODO temporary fix, should be removed later!
-                if(!CurrentSessionContext.HasBind(Factory))
-                {
-                    CurrentSessionContext.Bind(Factory.OpenSession());
-                }
-                return base.Session;
+                Session.Save(entity);
             }
-        }
-
-        ///// <summary>
-        ///// Will save without Transact, because of UnitOfWork implementation.
-        ///// </summary>
-        ///// <param name="item"></param>
-        ///// <param name="comparer"></param>
-        //public override void Add(TEnt item, IEqualityComparer<TEnt> comparer)
-        //{
-        //    //TODO add or update
-        //    if (this.Contains(item, comparer)) return;
-        //    Session.Save(item);
-        //}
-
-        //public ISessionFactory SessionFactory { get { return Factory; } }
-
-        public IQuery CreateSqlQuery(string query)
-        {
-            return Session.CreateSQLQuery(query);
         }
     }
 }

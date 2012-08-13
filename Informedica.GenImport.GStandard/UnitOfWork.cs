@@ -43,5 +43,14 @@ namespace Informedica.GenImport.GStandard
                 Session.Close();
             }
         }
+
+        #region Implementation of INHibernateUnitOfWork
+
+        public ISessionFactory Factory
+        {
+            get { return _sessionFactory; }
+        }
+
+        #endregion
     }
 }

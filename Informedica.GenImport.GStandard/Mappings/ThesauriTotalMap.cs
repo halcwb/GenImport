@@ -19,8 +19,8 @@ namespace Informedica.GenImport.GStandard.Mappings
             Map(x => x.ThNm15).Not.Nullable().Length(15);
             Map(x => x.ThNm25).Not.Nullable().Length(25);
             Map(x => x.ThNm50).Not.Nullable().Length(50);
-            Map(x => x.TsItNr).Not.Nullable();
-            Map(x => x.TsNr).Not.Nullable();
+            Map(x => x.TsItNr).Not.Nullable().UniqueKey("UN_ThesauriTotal_TsItNr_TsNr");
+            Map(x => x.TsNr).Not.Nullable().UniqueKey("UN_ThesauriTotal_TsItNr_TsNr");
         }
     }
 }

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Reflection;
-using System.Text;
 
 namespace Informedica.GenImport.Library.Validation
 {
     public static class Validator
     {
+        [Pure]
         public static IList<string> Validate(object toValidate)
         {
             List<string> errors = new List<string>();

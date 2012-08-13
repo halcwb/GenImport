@@ -7,12 +7,13 @@ namespace Informedica.GenImport.GStandard.Configuration
         private const string DatabaseFolderConfigurationName = "databaseFolder";
         private const string CommercialProductFileConfigurationName = "commercialProductFile";
         private const string CompostionFileConfigurationName = "compostionFile";
-        private const string GenericCompostionFileConfigurationName = "GenericCompostionFile";
+        private const string GenericCompostionFileConfigurationName = "genericCompostionFile";
         private const string GenericNameFileConfigurationName = "genericNameFile";
         private const string GenericProductFileConfigurationName = "genericProductFile";
         private const string NameFileConfigurationName = "nameFile";
-        private const string ProductFileConfigurationName = "productFile";
         private const string PrescriptionProductFileConfigurationName = "prescriptionProductFile";
+        private const string ProductFileConfigurationName = "productFile";
+        private const string RelationBetweenNameFileConfigurationName = "relationBetweenNameFile";
         private const string ThesauriTotalFileConfigurationName = "thesauriTotalFile";
 
         [ConfigurationProperty(DatabaseFolderConfigurationName, IsRequired = true)]
@@ -75,6 +76,13 @@ namespace Informedica.GenImport.GStandard.Configuration
         {
             get { return (GStandardFileConfigurationElement)this[ProductFileConfigurationName]; }
             set { this[ProductFileConfigurationName] = value; }
+        }
+
+        [ConfigurationProperty(RelationBetweenNameFileConfigurationName, IsRequired = true)]
+        public GStandardFileConfigurationElement RelationBetweenNameFile
+        {
+            get { return (GStandardFileConfigurationElement)this[RelationBetweenNameFileConfigurationName]; }
+            set { this[RelationBetweenNameFileConfigurationName] = value; }
         }
 
         [ConfigurationProperty(ThesauriTotalFileConfigurationName, IsRequired = true)]

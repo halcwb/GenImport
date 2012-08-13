@@ -8,7 +8,6 @@ using Informedica.GenImport.Library.Services;
 
 namespace Informedica.GenImport.GStandard.Services
 {
-    //TODO might want to introduce UnitOfWork
     public class FileImportService<TModel> : IImportService<TModel>
         where TModel : class, IGStandardModel<TModel>
     {
@@ -32,22 +31,10 @@ namespace Informedica.GenImport.GStandard.Services
             }
         }
 
-        protected void ProcessFile(Stream stream, Action<TModel> processLineAction)
-        {
-            var lines = _fileSerializer.ReadLines(stream);
-            foreach (var model in lines)
-            {
-                processLineAction(model);
-                if (_cancellationToken.IsCancellationRequested)
-                {
-                    break;
-                }
-            }
-        }
-
         protected virtual void Import(Stream stream)
         {
-            ProcessFile(stream, n => Repository.Add(n));
+            var lines = _fileSerializer.ReadLines(stream);
+            Repository.Add(lines);
         }
 
         #region Implementation of IImportService

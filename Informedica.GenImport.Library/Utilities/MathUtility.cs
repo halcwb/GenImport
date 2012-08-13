@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace Informedica.GenImport.Library.Utilities
 {
     public class MathUtility
     {
+        [Pure]
         public static bool IsValidModulo11(int value)
         {
             short intLength = IntLength(value);
@@ -18,11 +20,12 @@ namespace Informedica.GenImport.Library.Utilities
             return total % 11 == 0;
         }
 
+        [Pure]
         public static short IntLength(int i)
         {
-            if (i < 0) throw new ArgumentOutOfRangeException();
-            if (i == 0) return 1;
+            Contract.Requires<ArgumentOutOfRangeException>(i > 0, "i");
 
+            if (i == 0) return 1;
             return (short)(Math.Floor(Math.Log10(i)) + 1);
         }
     }

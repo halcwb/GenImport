@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.GStan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Wcf", "Informedica.GenImport.Wcf\Informedica.GenImport.Wcf.csproj", "{5866EFEE-10FC-4B1F-917B-8263C3550C1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Wcf.Tests", "Informedica.GenImport.Wcf.Tests\Informedica.GenImport.Wcf.Tests.csproj", "{D100A668-81DB-405E-99F5-3AEA52214400}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenImport.vsmdi
@@ -131,6 +133,16 @@ Global
 		{5866EFEE-10FC-4B1F-917B-8263C3550C1D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5866EFEE-10FC-4B1F-917B-8263C3550C1D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5866EFEE-10FC-4B1F-917B-8263C3550C1D}.Release|x86.ActiveCfg = Release|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,5 +151,6 @@ Global
 		{B03A2E8D-836B-47B9-8FDB-ED593101A973} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 		{03C9FA43-68D0-4086-B378-9B1CCD9FFA83} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 		{CD2C6FC9-850D-4A54-98A3-CD883A8A1D9E} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
+		{D100A668-81DB-405E-99F5-3AEA52214400} = {34FCDA00-F550-41EF-A609-F0E381A600BF}
 	EndGlobalSection
 EndGlobal
