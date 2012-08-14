@@ -249,7 +249,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Return_Correct_HashCode_From_HpKode()
+        public void Return_Correct_HashCode_From_Fields()
         {
             var commercialProduct = new CommercialProduct
             {

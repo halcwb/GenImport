@@ -9,17 +9,28 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IComposition x, IComposition y)
         {
-            return x.SrtCde == y.SrtCde &&
-                   x.Code == y.Code &&
+            return x.Code == y.Code &&
+                   x.GnEenh == y.GnEenh &&
                    x.GnGnK == y.GnGnK &&
                    x.GnHoev == y.GnHoev &&
-                   x.GnEenh == y.GnEenh;
+                   x.GnStam == y.GnStam &&
+                   x.MutKod == y.MutKod &&
+                   x.SrtCde == y.SrtCde &&
+                   x.StAdd == y.StAdd &&
+                   x.StEenh == y.StEenh &&
+                   x.StHoev == y.StHoev &&
+                   x.ThsrTc == y.ThsrTc &&
+                   x.TsGneH == y.TsGneH &&
+                   x.TsStEh == y.TsStEh;
         }
 
         public int GetHashCode(IComposition obj)
         {
-            return obj.SrtCde.GetHashCode() + obj.Code.GetHashCode() + obj.GnGnK.GetHashCode() +
-                   obj.GnHoev.GetHashCode() + obj.GnEenh.GetHashCode();
+            return obj.Code ^ obj.GnEenh ^ obj.GnGnK ^
+                   obj.GnHoev.GetHashCode() ^ obj.GnStam ^
+                   (byte)obj.MutKod ^ obj.SrtCde ^ obj.StAdd.GetHashCode() ^
+                   obj.StEenh ^ obj.StHoev.GetHashCode() ^
+                   obj.ThsrTc ^ obj.TsGneH ^ obj.TsStEh;
         }
 
         #endregion
