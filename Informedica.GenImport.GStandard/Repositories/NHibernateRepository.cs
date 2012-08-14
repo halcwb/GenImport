@@ -28,7 +28,10 @@ namespace Informedica.GenImport.GStandard.Repositories
         {
             if (this.Contains(entity, _comparer)) return;
             
-            var dbEntity = GetById(entity.Id);
+            //var dbEntity = GetById(entity.Id);
+
+            var dbEntity = this.SingleOrDefault(e => e.IsIdentical(entity));
+
             if(dbEntity != null)
             {
                 var copyable = entity as ICopyable<TEnt>;

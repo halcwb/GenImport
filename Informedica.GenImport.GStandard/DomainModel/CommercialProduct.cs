@@ -62,7 +62,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public override bool IsIdentical(CommercialProduct entity)
         {
-            throw new NotImplementedException();
+            return IsIdentical(entity);
         }
 
         #endregion
@@ -71,7 +71,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual bool IsIdentical(ICommercialProduct entity)
         {
-            throw new NotImplementedException();
+            return entity.HpKode == HpKode;
         }
 
         #endregion
