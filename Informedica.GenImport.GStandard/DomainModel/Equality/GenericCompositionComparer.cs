@@ -9,14 +9,21 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IGenericComposition x, IGenericComposition y)
         {
-            return x.GnMwHs == y.GnMwHs &&
+            return x.GnMomH == y.GnMomH &&
+                   x.GnMwHs == y.GnMwHs &&
+                   x.GnNkPk == y.GnNkPk &&
                    x.GsKode == y.GsKode &&
-                   x.GnNkPk == y.GnNkPk;
+                   x.MutKod == y.MutKod &&
+                   x.XnMomE == y.XnMomE &&
+                   x.XpEhHv == y.XpEhHv;
         }
 
         public int GetHashCode(IGenericComposition obj)
         {
-            return obj.GnMwHs.GetHashCode() + obj.GsKode.GetHashCode() + obj.GnNkPk.GetHashCode();
+            return obj.GnMomH.GetHashCode() ^ (byte)obj.GnMwHs ^
+                   obj.GnNkPk ^ obj.GsKode ^
+                   (byte)obj.MutKod ^ obj.XnMomE ^
+                   obj.XpEhHv;
         }
 
         #endregion
