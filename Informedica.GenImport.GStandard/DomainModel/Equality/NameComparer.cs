@@ -9,13 +9,14 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IName x, IName y)
         {
-            return
-                x.MutKod == y.MutKod &&
-                x.NmEtiket == y.NmEtiket &&
-                x.NmMemo == y.NmMemo &&
-                x.NmNaam == y.NmNaam &&
-                x.NmNm40 == y.NmNm40 &&
-                x.NmNr == y.NmNr;
+            if (ReferenceEquals(x, y)) return true;
+            if (x == null || y == null) return false;
+            return x.MutKod == y.MutKod &&
+                   x.NmEtiket == y.NmEtiket &&
+                   x.NmMemo == y.NmMemo &&
+                   x.NmNaam == y.NmNaam &&
+                   x.NmNm40 == y.NmNm40 &&
+                   x.NmNr == y.NmNr;
         }
 
         public int GetHashCode(IName obj)

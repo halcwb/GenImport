@@ -9,6 +9,8 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IGenericProduct x, IGenericProduct y)
         {
+            if (ReferenceEquals(x, y)) return true;
+            if (x == null || y == null) return false;
             return x.GpInSt == y.GpInSt &&
                    x.GpKode == y.GpKode &&
                    x.GpKtVr == y.GpKtVr &&

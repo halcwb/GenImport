@@ -1,8 +1,5 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Informedica.GenImport.GStandard.DomainModel;
+﻿using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,11 +8,21 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
     [TestClass]
     public class PrescriptionProductComparerShould
     {
-        [TestMethod]
-        public void Equal_When_PrKode_Are_Equal()
+        private static PrescriptionProduct GetPrescriptionProduct()
         {
-            var x = new PrescriptionProduct { PrKode = 2 };
-            var y = new PrescriptionProduct { PrKode = 2 };
+            return new PrescriptionProduct
+            {
+                MutKod = MutKod.RecordNotChanged,
+                PrKode = 1,
+                PrNmNr = 2
+            };
+        }
+
+        [TestMethod]
+        public void Equal_When_All_Fields_Are_Equal()
+        {
+            var x = GetPrescriptionProduct();
+            var y = GetPrescriptionProduct();
 
             var comparer = new PrescriptionProductComparer();
             bool result = comparer.Equals(x, y);
@@ -24,10 +31,11 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Not_Equal_When_PrKode_Are_Different()
+        public void Not_Equal_When_MutKod_Is_Different()
         {
-            var x = new PrescriptionProduct { PrKode = 2 };
-            var y = new PrescriptionProduct { PrKode = 3 };
+            var x = GetPrescriptionProduct();
+            var y = GetPrescriptionProduct();
+            y.MutKod = MutKod.RecordUpdated;
 
             var comparer = new PrescriptionProductComparer();
             bool result = comparer.Equals(x, y);
@@ -36,10 +44,37 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
         }
 
         [TestMethod]
-        public void Return_Correct_HashCode_From_PrKode()
+        public void Not_Equal_When_PrKode_Is_Different()
         {
-            var prescriptionProduct = new PrescriptionProduct { PrKode = 3 };
-            int expectedHashCode = prescriptionProduct.PrKode.GetHashCode();
+            var x = GetPrescriptionProduct();
+            var y = GetPrescriptionProduct();
+            y.PrKode = 2;
+
+            var comparer = new PrescriptionProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Not_Equal_When_PrNmNr_Is_Different()
+        {
+            var x = GetPrescriptionProduct();
+            var y = GetPrescriptionProduct();
+            y.PrNmNr = 3;
+
+            var comparer = new PrescriptionProductComparer();
+            bool result = comparer.Equals(x, y);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Return_Correct_HashCode_From_Fields()
+        {
+            var prescriptionProduct = GetPrescriptionProduct();
+            int expectedHashCode = (byte)prescriptionProduct.MutKod ^ prescriptionProduct.PrKode ^
+                                   prescriptionProduct.PrNmNr;
 
             var comparer = new PrescriptionProductComparer();
             int result = comparer.GetHashCode(prescriptionProduct);

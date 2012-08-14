@@ -9,12 +9,17 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IPrescriptionProduct x, IPrescriptionProduct y)
         {
-            return x.PrKode == y.PrKode;
+            if (ReferenceEquals(x, y)) return true;
+            if (x == null || y == null) return false;
+
+            return x.MutKod == y.MutKod &&
+                   x.PrKode == y.PrKode &&
+                   x.PrNmNr == y.PrNmNr;
         }
 
         public int GetHashCode(IPrescriptionProduct obj)
         {
-            return obj.PrKode.GetHashCode();
+            return (byte)obj.MutKod ^ obj.PrKode ^ obj.PrNmNr;
         }
 
         #endregion

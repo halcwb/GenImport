@@ -9,6 +9,8 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IGenericComposition x, IGenericComposition y)
         {
+            if (ReferenceEquals(x, y)) return true;
+            if (x == null || y == null) return false;
             return x.GnMomH == y.GnMomH &&
                    x.GnMwHs == y.GnMwHs &&
                    x.GnNkPk == y.GnNkPk &&
