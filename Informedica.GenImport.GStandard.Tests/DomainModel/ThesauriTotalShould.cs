@@ -1,5 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Informedica.GenImport.GStandard.Tests.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,6 +11,8 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
     [TestClass]
     public class ThesauriTotalShould
     {
+        #region FileLinePositionAttribute
+
         [TestMethod]
         public void Have_A_LinePositionAttribute_On_14_Known_Properties()
         {
@@ -127,5 +131,94 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 117, 117),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
+
+        #endregion
+
+        #region IsIdentical
+
+        [TestMethod]
+        public void Return_True_On_IsIdentical_When_Identity_Is_Equal()
+        {
+            var x = new ThesauriTotal
+            {
+                TsItNr = 1,
+                TsNr = 2
+            };
+            var y = new ThesauriTotal
+            {
+                TsItNr = 1,
+                TsNr = 2
+            };
+
+            Assert.IsTrue(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_TsItNr_Is_Different()
+        {
+            var x = new ThesauriTotal
+            {
+                TsItNr = 1,
+                TsNr = 2
+            };
+            var y = new ThesauriTotal
+            {
+                TsItNr = 2,
+                TsNr = 2
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_TsNr_Is_Different()
+        {
+            var x = new ThesauriTotal
+            {
+                TsItNr = 1,
+                TsNr = 2
+            };
+            var y = new ThesauriTotal
+            {
+                TsItNr = 1,
+                TsNr = 3
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        #endregion
+
+        #region CopyTo
+
+        [TestMethod]
+        public void Copy_All_Fields_From_One_To_Another()
+        {
+            var from = new ThesauriTotal
+            {
+                MutKod = MutKod.RecordUpdated,
+                ThAKd1 = "A",
+                ThAKd2 = "B",
+                ThAKd3 = "C",
+                ThAKd4 = "D",
+                ThAKd5 = "E",
+                ThAKd6 = "F",
+                ThItMk = "G",
+                ThNm15 = "H",
+                ThNm25 = "I",
+                ThNm4 =  "J",
+                ThNm50 = "K",
+                TsItNr = 1,
+                TsNr = 2
+
+            };
+            var to = new ThesauriTotal();
+
+            from.CopyTo(to);
+
+            Assert.IsTrue(new ThesauriTotalComparer().Equals(from, to));
+        }
+
+        #endregion
     }
 }

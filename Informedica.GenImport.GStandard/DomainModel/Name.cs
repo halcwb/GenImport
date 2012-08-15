@@ -64,7 +64,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual bool IsIdentical(IName entity)
         {
-            throw new NotImplementedException();
+            return entity.NmNr == NmNr;
         }
 
         #endregion
@@ -73,7 +73,12 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual void CopyTo(IName other)
         {
-            throw new NotImplementedException();
+            other.MutKod = MutKod;
+            other.NmEtiket = NmEtiket;
+            other.NmMemo = NmMemo;
+            other.NmNaam = NmNaam;
+            other.NmNm40 = NmNm40;
+            other.NmNr = NmNr;
         }
 
         #endregion

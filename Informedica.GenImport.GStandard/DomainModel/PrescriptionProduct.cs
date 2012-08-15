@@ -1,5 +1,4 @@
-﻿using System;
-using Informedica.GenImport.GStandard.Attributes;
+﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
@@ -38,7 +37,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public override bool IsIdentical(PrescriptionProduct entity)
         {
-            throw new NotImplementedException();
+            return IsIdentical(entity);
         }
 
         #endregion
@@ -47,7 +46,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual bool IsIdentical(IPrescriptionProduct entity)
         {
-            throw new NotImplementedException();
+            return entity.PrKode == PrKode;
         }
 
         #endregion
@@ -56,7 +55,9 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual void CopyTo(IPrescriptionProduct other)
         {
-            throw new NotImplementedException();
+            other.MutKod = MutKod;
+            other.PrKode = PrKode;
+            other.PrNmNr = PrNmNr;
         }
 
         #endregion

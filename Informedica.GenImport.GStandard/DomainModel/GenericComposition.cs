@@ -56,7 +56,7 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         #endregion
 
-        #region Overrides of Entity<GeneriekeSamenstelling,int>
+        #region Overrides of Entity<GenericComposition,int>
 
         public override bool IsIdentical(GenericComposition entity)
         {
@@ -69,7 +69,9 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual bool IsIdentical(IGenericComposition entity)
         {
-            throw new NotImplementedException();
+            return entity.GnMwHs == GnMwHs &&
+                   entity.GnNkPk == GnNkPk &&
+                   entity.GsKode == GsKode;
         }
 
         #endregion
@@ -78,7 +80,13 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual void CopyTo(IGenericComposition other)
         {
-            throw new NotImplementedException();
+            other.GnMomH = GnMomH;
+            other.GnMwHs = GnMwHs;
+            other.GnNkPk = GnNkPk;
+            other.GsKode = GsKode;
+            other.MutKod = MutKod;
+            other.XnMomE = XnMomE;
+            other.XpEhHv = XpEhHv;
         }
 
         #endregion

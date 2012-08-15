@@ -1,5 +1,4 @@
-﻿using System;
-using Informedica.GenImport.GStandard.Attributes;
+﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
@@ -108,7 +107,8 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual bool IsIdentical(IThesauriTotal entity)
         {
-            throw new NotImplementedException();
+            return entity.TsItNr == TsItNr &&
+                   entity.TsNr == TsNr;
         }
 
         #endregion
@@ -117,13 +117,22 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual void CopyTo(IThesauriTotal other)
         {
-            throw new NotImplementedException();
+            other.MutKod = MutKod;
+            other.ThAKd1 = ThAKd1;
+            other.ThAKd2 = ThAKd2;
+            other.ThAKd3 = ThAKd3;
+            other.ThAKd4 = ThAKd4;
+            other.ThAKd5 = ThAKd5;
+            other.ThAKd6 = ThAKd6;
+            other.ThItMk = ThItMk;
+            other.ThNm15 = ThNm15;
+            other.ThNm25 = ThNm25;
+            other.ThNm4 = ThNm4;
+            other.ThNm50 = ThNm50;
+            other.TsItNr = TsItNr;
+            other.TsNr = TsNr;
         }
 
         #endregion
-
-        
-
-
     }
 }

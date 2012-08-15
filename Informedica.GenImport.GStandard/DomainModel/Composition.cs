@@ -94,16 +94,21 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         #endregion
 
+        #region Overrides of Entity<Composition,int>
+
         public override bool IsIdentical(Composition entity)
         {
             return IsIdentical(entity);
         }
 
+        #endregion
+
         #region Implementation of IEntity<in IComposition,out int>
 
         public virtual bool IsIdentical(IComposition entity)
         {
-            throw new NotImplementedException();
+            return entity.Code == Code && entity.GnEenh == GnEenh && entity.GnGnK == GnGnK && entity.GnHoev == GnHoev &&
+                   entity.SrtCde == SrtCde;
         }
 
         #endregion
@@ -112,7 +117,19 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual void CopyTo(IComposition other)
         {
-            throw new NotImplementedException();
+            other.Code = Code;
+            other.GnEenh = GnEenh;
+            other.GnGnK = GnGnK;
+            other.GnHoev = GnHoev;
+            other.GnStam = GnStam;
+            other.MutKod = MutKod;
+            other.SrtCde = SrtCde;
+            other.StAdd = StAdd;
+            other.StEenh = StEenh;
+            other.StHoev = StHoev;
+            other.ThsrTc = ThsrTc;
+            other.TsGneH = TsGneH;
+            other.TsStEh = TsStEh;
         }
 
         #endregion

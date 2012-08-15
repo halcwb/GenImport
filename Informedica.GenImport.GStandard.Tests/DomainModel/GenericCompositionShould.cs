@@ -1,5 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Informedica.GenImport.GStandard.Tests.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -42,7 +44,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
 
-        
+
 
         [TestMethod]
         public void Have_A_Valid_LinePositionAttribute_On_GnNkPk_Property_With_Position_15_20()
@@ -120,6 +122,109 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             var info = ReflectionUtility.GetMemberInfo(() => new GenericComposition().GnMomH);
             Assert.IsTrue(AttributeTestUtility.HasValidConvertToDecimalAttributeOnProperty(info, 3),
                           string.Format(AttributeTestUtility.HasNoOrInvalidConvertToDecimalAttributeMessage, info.Name));
+        }
+
+        #endregion
+
+        #region IsIdentical
+
+        [TestMethod]
+        public void Return_True_On_IsIdentical_When_Identity_Is_Equal()
+        {
+            var x = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 1,
+                GsKode = 2
+            };
+            var y = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 1,
+                GsKode = 2
+            };
+
+            Assert.IsTrue(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_GnMwHs_Is_Different()
+        {
+            var x = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 1,
+                GsKode = 2
+            };
+            var y = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.W,
+                GnNkPk = 1,
+                GsKode = 2
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_GnNkPk_Is_Different()
+        {
+            var x = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 1,
+                GsKode = 2
+            };
+            var y = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 2,
+                GsKode = 2
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_GsKode_Is_Different()
+        {
+            var x = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 1,
+                GsKode = 2
+            };
+            var y = new GenericComposition
+            {
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 1,
+                GsKode = 3
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+        #endregion
+
+        #region CopyTo
+
+        [TestMethod]
+        public void Copy_All_Fields_From_One_To_Another()
+        {
+            var from = new GenericComposition
+            {
+                GnMomH = 1,
+                GnMwHs = SubstanceIndication.H,
+                GnNkPk = 2,
+                GsKode = 3,
+                MutKod = MutKod.RecordUpdated,
+                XnMomE = 4,
+                XpEhHv = 5
+            };
+            var to = new GenericComposition();
+
+            from.CopyTo(to);
+
+            Assert.IsTrue(new GenericCompositionComparer().Equals(from, to));
         }
 
         #endregion

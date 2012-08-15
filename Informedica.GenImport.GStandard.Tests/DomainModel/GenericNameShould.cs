@@ -1,5 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Informedica.GenImport.GStandard.Tests.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -60,7 +62,61 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasModulo11AttributeOnProperty(info),
                           string.Format(AttributeTestUtility.HasNoModulo11AttributeMessage, info.Name));
         }
-        
+
+        #endregion
+
+        #region IsIdentical
+
+        [TestMethod]
+        public void Return_True_On_IsIdentical_When_Identity_Is_Equal()
+        {
+            var x = new GenericName
+            {
+                GnGnK = 1
+            };
+            var y = new GenericName
+            {
+                GnGnK = 1
+            };
+
+            Assert.IsTrue(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_Identity_Is_Different()
+        {
+            var x = new GenericName
+            {
+                GnGnK = 1
+            };
+            var y = new GenericName
+            {
+                GnGnK = 2
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        #endregion
+
+        #region CopyTo
+
+        [TestMethod]
+        public void Copy_All_Fields_From_One_To_Another()
+        {
+            var from = new GenericName
+            {
+                GnGnAm = "A",
+                GnGnK = 3,
+                MutKod = MutKod.RecordUpdated,
+            };
+            var to = new GenericName();
+
+            from.CopyTo(to);
+
+            Assert.IsTrue(new GenericNameComparer().Equals(from, to));
+        }
+
         #endregion
     }
 }

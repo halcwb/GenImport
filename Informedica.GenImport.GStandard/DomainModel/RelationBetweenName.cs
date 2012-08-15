@@ -1,5 +1,4 @@
-﻿using System;
-using Informedica.GenImport.GStandard.Attributes;
+﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 
@@ -48,7 +47,9 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public bool IsIdentical(IRelationBetweenName entity)
         {
-            throw new NotImplementedException();
+            return entity.NmNrIn == NmNrIn &&
+                   entity.NmNrUit == NmNrUit &&
+                   entity.NmRNr == NmRNr;
         }
 
         #endregion
@@ -57,7 +58,10 @@ namespace Informedica.GenImport.GStandard.DomainModel
 
         public virtual void CopyTo(IRelationBetweenName other)
         {
-            throw new NotImplementedException();
+            other.MutKod = MutKod;
+            other.NmNrIn = NmNrIn;
+            other.NmNrUit = NmNrUit;
+            other.NmRNr = NmRNr;
         }
 
         #endregion

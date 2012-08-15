@@ -1,5 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Informedica.GenImport.GStandard.Tests.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,6 +12,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
     public class GenericProductShould
     {
         #region FileLinePositionAttribute
+
         [TestMethod]
         public void Have_A_LinePositionAttribute_On_13_Properties()
         {
@@ -120,9 +123,11 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasValidLinePositionAttributeOnProperty(info, 130, 132),
                           string.Format(AttributeTestUtility.HasNoOrInvalidLinePositionAttributeMessage, info.Name));
         }
+
         #endregion
 
         #region Modulo11Attribute
+
         [TestMethod]
         public void Have_A_Modulo11Attribute_On_3_Properties()
         {
@@ -153,6 +158,71 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasModulo11AttributeOnProperty(info),
                           string.Format(AttributeTestUtility.HasNoModulo11AttributeMessage, info.Name));
         }
+
+        #endregion
+
+        #region IsIdentical
+
+        [TestMethod]
+        public void Return_True_On_IsIdentical_When_Identity_Is_Equal()
+        {
+            var x = new GenericProduct
+            {
+                GpKode = 1
+            };
+            var y = new GenericProduct
+            {
+                GpKode = 1
+            };
+
+            Assert.IsTrue(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_Identity_Is_Different()
+        {
+            var x = new GenericProduct
+            {
+                GpKode = 1
+            };
+            var y = new GenericProduct
+            {
+                GpKode = 2
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        #endregion
+
+        #region CopyTo
+
+        [TestMethod]
+        public void Copy_All_Fields_From_One_To_Another()
+        {
+            var from = new GenericProduct
+            {
+                GpInSt = "A",
+                GpKode = 1,
+                GpKtVr = 2,
+                GpKTwg = 3,
+                GpNmNr = 4,
+                GpStNr = 5,
+                GsKode = 6,
+                MutKod = MutKod.RecordUpdated,
+                SpKode = 7,
+                ThEhHv = 8,
+                ThKtVr = 9,
+                ThKTwg = 10,
+                XpEhHv = 11
+            };
+            var to = new GenericProduct();
+
+            from.CopyTo(to);
+
+            Assert.IsTrue(new GenericProductComparer().Equals(from, to));
+        }
+
         #endregion
     }
 }

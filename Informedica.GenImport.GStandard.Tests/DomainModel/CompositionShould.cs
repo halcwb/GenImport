@@ -1,5 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.Attributes;
 using Informedica.GenImport.GStandard.DomainModel;
+using Informedica.GenImport.GStandard.DomainModel.Enums;
+using Informedica.GenImport.GStandard.DomainModel.Equality;
 using Informedica.GenImport.GStandard.Tests.Attributes;
 using Informedica.GenImport.Library.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -187,6 +189,178 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel
             Assert.IsTrue(AttributeTestUtility.HasValidConvertToBooleanAttributeOnProperty(info, "J", "N"),
                           string.Format(AttributeTestUtility.HasNoOrInvalidConvertToBooleanAttributeMessage, info.Name));
         }
+        #endregion
+
+        #region IsIdentical
+        
+        [TestMethod]
+        public void Return_True_On_IsIdentical_When_Identity_Is_Equal()
+        {
+            var x = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+            var y = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+
+            Assert.IsTrue(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_Code_Is_Different()
+        {
+            var x = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+            var y = new Composition
+            {
+                Code = 2,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_GnGnK_Is_Different()
+        {
+            var x = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+            var y = new Composition
+            {
+                Code = 1,
+                GnGnK = 3,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_GnHoev_Is_Different()
+        {
+            var x = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+            var y = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 4,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_GnEenh_Is_Different()
+        {
+            var x = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+            var y = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 5,
+                SrtCde = 5,
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        [TestMethod]
+        public void Return_False_On_IsIdentical_When_SrtCde_Is_Different()
+        {
+            var x = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 5,
+            };
+            var y = new Composition
+            {
+                Code = 1,
+                GnGnK = 2,
+                GnHoev = 3,
+                GnEenh = 4,
+                SrtCde = 6,
+            };
+
+            Assert.IsFalse(x.IsIdentical(y));
+        }
+
+        #endregion
+
+        #region CopyTo
+        
+        [TestMethod]
+        public void Copy_All_Fields_From_One_To_Another()
+        {
+            var from = new Composition
+            {
+                Code = 1,
+                GnEenh = 2,
+                GnGnK = 3,
+                GnHoev = 4,
+                GnStam = 5,
+                MutKod = MutKod.RecordUpdated,
+                SrtCde = 6,
+                StAdd = true,
+                StEenh = 7,
+                StHoev = 8,
+                ThsrTc = 9,
+                TsGneH = 10,
+                TsStEh = 11
+            };
+            var to = new Composition();
+
+            from.CopyTo(to);
+
+            Assert.IsTrue(new CompositionComparer().Equals(from, to));
+        }
+
         #endregion
     }
 }
