@@ -27,7 +27,7 @@ namespace Informedica.GenImport.GStandard.Tests.Repositories
 
             public override bool IsIdentical(MyEntity entity)
             {
-                throw new NotImplementedException();
+                return entity.Id == Id;
             }
 
             #endregion
