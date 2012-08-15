@@ -1,6 +1,7 @@
 ﻿using Informedica.GenImport.GStandard.DomainModel;
 using Informedica.GenImport.GStandard.DomainModel.Enums;
 using Informedica.GenImport.GStandard.DomainModel.Equality;
+using Informedica.GenImport.GStandard.DomainModel.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
@@ -8,7 +9,7 @@ namespace Informedica.GenImport.GStandard.Tests.DomainModel.Equality
     [TestClass]
     public class PrescriptionProductComparerShould
     {
-        private static PrescriptionProduct GetPrescriptionProduct()
+        private static IPrescriptionProduct GetPrescriptionProduct()
         {
             return new PrescriptionProduct
             {
