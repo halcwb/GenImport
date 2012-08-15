@@ -9,14 +9,15 @@ namespace Informedica.GenImport.GStandard.DomainModel.Equality
 
         public bool Equals(IRelationBetweenName x, IRelationBetweenName y)
         {
-            return x.NmRNr == y.NmRNr &&
+            return x.MutKod == y.MutKod &&
                    x.NmNrIn == y.NmNrIn &&
-                   x.NmNrUit == y.NmNrUit;
+                   x.NmNrUit == y.NmNrUit &&
+                   x.NmRNr == y.NmRNr;
         }
 
         public int GetHashCode(IRelationBetweenName obj)
         {
-            return obj.NmRNr.GetHashCode() + obj.NmNrIn.GetHashCode() + obj.NmNrUit.GetHashCode();
+            return (byte)obj.MutKod ^ obj.NmNrIn ^ obj.NmNrUit ^ obj.NmRNr;
         }
 
         #endregion
