@@ -3,8 +3,9 @@ using System.Linq;
 using Informedica.DataAccess.Repositories;
 using Informedica.EntityRepository.Entities;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
-using Informedica.GenImport.Library.DomainModel.Interfaces;
 using NHibernate;
+using NHibernate.Context;
+using NHibernate.Linq;
 
 namespace Informedica.GenImport.GStandard.Repositories
 {
@@ -28,8 +29,6 @@ namespace Informedica.GenImport.GStandard.Repositories
         {
             if (this.Contains(entity, _comparer)) return;
             
-            //var dbEntity = GetById(entity.Id);
-
             var dbEntity = this.SingleOrDefault(e => e.IsIdentical(entity));
 
             if(dbEntity != null)
@@ -44,7 +43,7 @@ namespace Informedica.GenImport.GStandard.Repositories
             Session.SaveOrUpdate(dbEntity);
         }
 
-        public void Add(IEnumerable<TEnt> entities)
+        public virtual void Add(IEnumerable<TEnt> entities)
         {
             Transact(() => AddEntities(entities));
         }
@@ -55,6 +54,23 @@ namespace Informedica.GenImport.GStandard.Repositories
             {
                 AddEntity(entity);
             }
+        }
+
+        protected override ISession Session
+        {
+            get
+            {
+                if(!CurrentSessionContext.HasBind(Factory))
+                {
+                    CurrentSessionContext.Bind(Factory.OpenSession());
+                }
+                return base.Session;
+            }
+        }
+
+        public virtual IQueryable<TEnt> GetQueryable()
+        {
+            return Session.Query<TEnt>();
         }
     }
 }
