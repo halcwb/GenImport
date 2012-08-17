@@ -5,11 +5,8 @@ namespace Informedica.GenImport.Library.Services
 {
     public interface IDataService
     {
-        List<Product> GetProductsByProductCode(int productCode);
-
-        //IEnumerable<Product> GetProductsByBrand(Brand brand);
-        //IEnumerable<Product> GetProductsByPackage(Package package);
-        //IEnumerable<Product> GetProductsByShape(Shape shape);
-        //IEnumerable<Product> GetProductsBySubstance(Substance substance);
+        IEnumerable<Product> FindProductsByName(string name);
+        int GetProductCount();
+        IEnumerable<Product> GetProductsByProductCode(int productCode);
     }
 }

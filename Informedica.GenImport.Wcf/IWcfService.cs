@@ -8,6 +8,12 @@ namespace Informedica.GenImport.Wcf
     public interface IWcfService
     {
         [OperationContract]
+        List<Product> FindProductsByName(string name);
+
+        [OperationContract]
+        int GetProductCount();
+        
+        [OperationContract]
         List<Product> GetProductsByProductCode(int productCode);
 
         [OperationContract]

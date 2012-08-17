@@ -30,8 +30,11 @@ namespace Informedica.GenImport.Wcf
                 .Mappings(x => x.FluentMappings.AddFromAssemblyOf<NameMap>())
                 .CurrentSessionContext<ThreadStaticSessionContext>()
                 .BuildConfiguration();
-            
-            return config.BuildSessionFactory();
+
+            var factory = config.BuildSessionFactory();
+            CurrentSessionContext.Bind(factory.OpenSession());
+
+            return factory;
         }
     }
 }
