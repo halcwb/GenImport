@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="fit">
-      <HintPath>..\..\..\Fitnesse\fitsharp\fit.dll</HintPath>
+      <HintPath>..\..\fitsharp\source\fit\bin\Debug\fit.dll</HintPath>
     </Reference>
     <Reference Include="fitSharp">
-      <HintPath>..\..\..\Fitnesse\fitsharp\fitSharp.dll</HintPath>
+      <HintPath>..\..\fitsharp\source\fitSharp\bin\Debug\fitSharp.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
