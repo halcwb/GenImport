@@ -39,10 +39,10 @@ namespace Informedica.GenImport.Wcf.Tests
         public void Start_Import_Of_GStandard_When_RefreshDatabase_Is_Called()
         {
             bool started = false;
-            var importService = GetImportServiceMock(x => started = true);
-            var dataService = GetDataServiceMock(null);
-
-            var wcfService = new WcfService(dataService, importService);
+            //var importService = GetImportServiceMock(x => started = true);
+            //var dataService = GetDataServiceMock(null);
+            Bootstrapper.ConfigureStructureMap();
+            var wcfService = new WcfService();
 
             wcfService.RefreshDatabase();
             

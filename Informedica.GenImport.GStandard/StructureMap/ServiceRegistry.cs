@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.IO;
 using Informedica.GenImport.GStandard.Configuration;
 using Informedica.GenImport.GStandard.DomainModel.Interfaces;
@@ -20,6 +21,11 @@ namespace Informedica.GenImport.GStandard.StructureMap
         private void RegisterImportServices()
         {
             GStandardConfigurationSection config = (GStandardConfigurationSection)ConfigurationManager.GetSection("GStandard");
+
+            if (config == null)
+            {
+                File.Copy(@"C:\Development\GenImport\Informedica.GenImport.Wcf\\Web.config", AppDomain.CurrentDomain.SetupInformation.ConfigurationFile, true);
+            }
 
             For<IImportService>().Singleton().Use<GStandardImportService>(); //singleton
 

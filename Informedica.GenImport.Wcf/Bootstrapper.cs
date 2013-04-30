@@ -4,6 +4,7 @@ using Informedica.GenImport.GStandard.Mappings;
 using Informedica.GenImport.GStandard.StructureMap;
 using NHibernate;
 using NHibernate.Context;
+using NHibernate.Tool.hbm2ddl;
 using StructureMap;
 
 namespace Informedica.GenImport.Wcf
@@ -31,6 +32,8 @@ namespace Informedica.GenImport.Wcf
                 .CurrentSessionContext<ThreadStaticSessionContext>()
                 .BuildConfiguration();
 
+            //Temp solution to create new database
+            new SchemaExport(config).Execute(true, true, false);
             var factory = config.BuildSessionFactory();
             CurrentSessionContext.Bind(factory.OpenSession());
 

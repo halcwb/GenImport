@@ -6,13 +6,16 @@ using System.Threading;
 using System.Threading.Tasks;
 using Informedica.GenImport.Library.DomainModel.Product;
 using Informedica.GenImport.Library.Services;
+using StructureMap;
 
 namespace Informedica.GenImport.Wcf
 {
     public class WcfService : IWcfService
     {
-        private readonly IDataService _dataService;
-        private readonly IImportService _importService;
+        private readonly IDataService _dataService     = ObjectFactory.GetInstance<IDataService>();
+        private readonly IImportService _importService = ObjectFactory.GetInstance<IImportService>();
+
+        public WcfService() {}
 
         public WcfService(IDataService dataService, IImportService importService)
         {

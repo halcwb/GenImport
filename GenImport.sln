@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Wcf",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenImport.Wcf.Tests", "Informedica.GenImport.Wcf.Tests\Informedica.GenImport.Wcf.Tests.csproj", "{D100A668-81DB-405E-99F5-3AEA52214400}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Informedica.GenImport.GStandard.FSharp", "Informedica.GenImport.GStandard.FSharp\Informedica.GenImport.GStandard.FSharp.fsproj", "{33141BCE-7FA4-4ED0-A804-B93002E05FEF}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenImport.vsmdi
@@ -143,6 +145,16 @@ Global
 		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D100A668-81DB-405E-99F5-3AEA52214400}.Release|x86.ActiveCfg = Release|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{33141BCE-7FA4-4ED0-A804-B93002E05FEF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
