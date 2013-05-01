@@ -2,12 +2,38 @@
 // for more guidance on F# programming.
 #I @"C:\Development\GenImport\packages\RavenDB.Client.2.0.2330\lib\net40\"
 #r "Raven.Client.Lightweight.dll"
+#I @"C:\Development\GenImport\packages\RavenDB.Client.2.0.2330\lib\net40\"
+#r "Raven.Abstractions.dll"
 
 
 #load "Library1.fs"
 open Informedica.GenImport.GStandard.FSharp
+open Raven.Client
+open Raven.Client.Extensions
 
-// Define your library scripting code here
+// Set up the document store
+let store = 
+    let store = new Raven.Client.Document.DocumentStore()
+    store.Url <- @"http://localhost:8080"
+    store.Initialize()
+
+// Delete the database, note database map still has to be deleted on disk
+let deleteDatabase (store: Raven.Client.IDocumentStore) (name: string) hard =
+    let maxdatabases = 10
+    let cmd = store.DatabaseCommands
+    if (cmd.GetDatabaseNames(maxdatabases) |> Array.exists(fun n -> n = name)) then
+        let url = "/admin/databases/" + name
+
+        let client  = cmd.ForSystemDatabase() :?> Raven.Client.Connection.ServerClient
+        let jsonReq = client.CreateRequest("DELETE", url)
+        do jsonReq.ExecuteRequest()
+
+let createDatabase(store: Raven.Client.IDocumentStore) name =
+    let cmd = store.DatabaseCommands
+    cmd.EnsureDatabaseExists(name)
+    
+
+// Define G-Standard files
 let path = @"c:\tmp\062012\"
 let productfile = "BST031T"
 let genericfile = "BST031T"
@@ -16,11 +42,21 @@ let thesauriTotalFile = "BST902T"
 let fieldsFile = "BST001T"
 let groupFile = "BST500T"
 
+// Define G-Standard structure
+type Position = {Start: int; End: int}
+
+type GFile = { Name: string; Path: string }
+
+type GField = { Name: string; Position: Position; ForeignKey: GFile list option }
+
+type GStruct = { File: GFile; FieldList: GField list}
+
+// Read files
 let getlines p f = System.IO.File.ReadAllLines(p + f)
 let getlinesfromfile = getlines path
 
-type Position = {Start: int; End: int}
 
+// Parse files
 let getPosition (p:Position) (l: string) = 
     l.Substring(p.Start - 1, p.End - p.Start) 
 
@@ -30,16 +66,7 @@ let splitLine (pl: Position list) (l: string) =
 let splitFile (pl: Position list) (f: string list) =
     f |> List.filter(fun line -> line.Length > 11) |> List.map(fun line -> line |> splitLine pl)    
 
-type TherapeuticGroup = { Id: string; Name: string; Text: string }
-
-let grouplist (l: string list list) = 
-    l |> List.map(fun g -> { Id = null; Name = g.[0]; Text = "" })
-
-let store = 
-    let store = new Raven.Client.Document.DocumentStore()
-    store.Url <- @"http://localhost:8080"
-    store.Initialize()
-
+// Write to database
 let write (database: string) (s: Raven.Client.IDocumentStore) data =
     use s = s.OpenSession(database)
     do s.Store(data)
@@ -52,3 +79,70 @@ let writeListToTest data = writelist "Test" store data
 
 let storelist w l = 
     l |> List.iter(fun d -> d |> w)
+
+// Create therapy group documents
+//Bestandsbeschrijvingen: Bestand 500 Informatorium groepen
+//
+//Veld	    Omschrijving	    SR1	    Lengte2	    Type3	    Posities
+//BSTNUM	Bestand-nummer		        4	        N	        001-004
+//MUTKOD	Mutatiekode		            1	        N	        005-005
+//GRPINP	Groepkode	        1O	    4	        N	        006-009
+//          Leeg veld		            1	        A	        010-010
+//GRPNAM	Groepnaam		            50	        A	        011-060
+//XRPO1	    Groepvolgorde kode		    11	        N	        061-071
+//          Leeg veld		            25	        A	        072-096
+
+type TherapeuticGroup = { Id: string; Record: string; Name: string; Text: string; HiearchyCode: string list; Groups: TherapeuticGroup list }    
+
+let hiearchyCode (c: string) = [c.Substring(0,3);c.Substring(2,2);c.Substring(4,2);c.Substring(6,2);c.Substring(8,2)] |> List.filter(fun s -> s = "00" |> not)
+
+let createGroup (sl: string list) = { Id = ""; Record = sl |> List.fold(fun id s -> id + s) "" ; Name = sl.[0].Trim(); Text = ""; HiearchyCode = (sl.[1] |> hiearchyCode); Groups = [] }
+
+let addGroup (g1: TherapeuticGroup) (g2: TherapeuticGroup) =
+    { g1 with Groups = match g1.Groups with |[] -> [g2] | _ -> g2::g1.Groups  } 
+
+let isParentOf g1 g2 = g1.HiearchyCode |> Seq.take (g1.HiearchyCode.Length - 1) |> Seq.toList = g2.HiearchyCode
+
+let hasChildren gl p = gl |> List.exists(fun c -> p |> isParentOf c)
+
+let isChild gl c = not (c |> hasChildren gl)
+
+let isRoot gl g =
+    gl |> List.exists(fun p -> p |> isParentOf g && not (p = g)) |> not   
+
+let addChildren gl g =    
+    let rec add g ch =
+        match ch with 
+        | [] -> g
+        | head::tail -> tail |> add (head |> addGroup g)
+
+    gl |> List.filter(fun c -> g |> isParentOf c) |> add g
+
+let findParent l c = l |> List.find(fun p -> p |> isParentOf c)
+
+let groupList (l: string list list) = 
+    l |> List.map(fun g -> g |> createGroup)
+
+let groups = 
+    let positions = [{Start = 11; End = 60};{Start = 61; End = 71}]
+    groupFile |> getlinesfromfile |> Array.toList |> splitFile positions |> groupList 
+
+// Some test groups
+let overige = groups |> List.find(fun g -> g.Name = "OVERIGE DIURETICA")
+let diuretica  = groups |> List.find(fun g -> g.Name = "DIURETICA")
+let protozoica = groups |> List.find(fun g -> g.Name = "ANTIPROTOZOICA")
+
+let children, parents = groups |> List.partition(fun g -> g |> isChild groups)
+
+let newparents = parents |> List.map(fun p -> p |> addChildren children)
+
+newparents |> storelist writeListToTest
+
+// Delete a collection of documents in the test database
+let deleteByIndex (store: IDocumentStore) index =
+    let query = new Raven.Abstractions.Data.IndexQuery()
+    query.Query <- ("Tag: " + index)
+    let session = store.OpenSession()
+    session.Advanced.DocumentStore.DatabaseCommands.ForDatabase("Test").DeleteByIndex("Raven/DocumentsByEntityName", query, true)
+    do session.SaveChanges()
+    
