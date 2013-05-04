@@ -7,9 +7,11 @@
 
 
 #load "Library1.fs"
+#load "TreeStructures.fs"
 open Informedica.GenImport.GStandard.FSharp
 open Raven.Client
 open Raven.Client.Extensions
+open TreeStructures
 
 // Set up the document store
 let store = 
@@ -143,7 +145,9 @@ let buildTree groups =
                            roots |> List.map(fun g -> g |> addGroups ((nodes |> List.filter(fun n -> g |> isParentOf n) |> build)))
 
     build groups
-     
+
+let buildGroupTree groups = TreeStructures.buildGenericTree isParentOf partNodes addGroups groups
+
 // Some test groups
 let overige    = groups |> List.find(fun g -> g.Name = "OVERIGE DIURETICA")
 let diuretica  = groups |> List.find(fun g -> g.Name = "DIURETICA")
