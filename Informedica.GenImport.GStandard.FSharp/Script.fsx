@@ -58,7 +58,7 @@ let getlinesfromfile = getlines path
 
 // Parse files
 let getPosition (p:Position) (l: string) = 
-    l.Substring(p.Start - 1, p.End - p.Start) 
+    l.Substring(p.Start - 1, p.End - (p.Start - 1)) 
 
 let splitLine (pl: Position list) (l: string) =
     pl |> List.map(fun pos -> l |> getPosition pos)
@@ -92,25 +92,32 @@ let storelist w l =
 //XRPO1	    Groepvolgorde kode		    11	        N	        061-071
 //          Leeg veld		            25	        A	        072-096
 
-type TherapeuticGroup = { Id: string; Record: string; Name: string; Text: string; HiearchyCode: string list; Groups: TherapeuticGroup list }    
+type TherapeuticGroup = { Id: string; GroupCode: string; Name: string; Text: string; HiearchyCode: string list; Groups: TherapeuticGroup list }    
 
 let hiearchyCode (c: string) = [c.Substring(0,3);c.Substring(2,2);c.Substring(4,2);c.Substring(6,2);c.Substring(8,2)] |> List.filter(fun s -> s = "00" |> not)
 
-let createGroup (sl: string list) = { Id = ""; Record = sl |> List.fold(fun id s -> id + s) "" ; Name = sl.[0].Trim(); Text = ""; HiearchyCode = (sl.[1] |> hiearchyCode); Groups = [] }
+let createGroup (sl: string list) = { Id = ""; GroupCode = sl.[0] ; Name = sl.[1].Trim(); Text = ""; HiearchyCode = (sl.[2] |> hiearchyCode); Groups = [] }
 
 let addGroup (g1: TherapeuticGroup) (g2: TherapeuticGroup) =
     { g1 with Groups = match g1.Groups with |[] -> [g2] | _ -> g2::g1.Groups  } 
 
+let addGroups gl group = { group with Groups = gl } 
+
 let isParentOf g1 g2 = g1.HiearchyCode |> Seq.take (g1.HiearchyCode.Length - 1) |> Seq.toList = g2.HiearchyCode
 
-let hasChildren gl p = gl |> List.exists(fun c -> p |> isParentOf c)
+let findParent l c = l |> List.tryFind(fun p -> p |> isParentOf c)
 
-let isChild gl c = not (c |> hasChildren gl)
+let hasParent l c = c |> findParent l = None
 
 let isRoot gl g =
     gl |> List.exists(fun p -> p |> isParentOf g && not (p = g)) |> not   
 
-let addChildren gl g =    
+let hasChildren gl p = gl |> List.exists(fun c -> p |> isParentOf c)
+
+let isChild gl c = not (c |> hasChildren gl) && not (c |> isRoot gl)
+
+let addChildren gl g = 
+    printfn "Adding children for %A " g.Name   
     let rec add g ch =
         match ch with 
         | [] -> g
@@ -118,25 +125,31 @@ let addChildren gl g =
 
     gl |> List.filter(fun c -> g |> isParentOf c) |> add g
 
-let findParent l c = l |> List.find(fun p -> p |> isParentOf c)
 
 let groupList (l: string list list) = 
     l |> List.map(fun g -> g |> createGroup)
 
 let groups = 
-    let positions = [{Start = 11; End = 60};{Start = 61; End = 71}]
+    let positions = [{Start = 6; End = 9};{Start = 11; End = 60};{Start = 61; End = 71}]
     groupFile |> getlinesfromfile |> Array.toList |> splitFile positions |> groupList 
 
+let partNodes l = l |> List.partition(fun g -> g |> isRoot l)
+
+let buildTree groups =
+    let rec build nodes =
+        match nodes |> partNodes with
+        | roots, nodes when nodes |> List.length = 0 -> printfn "No more nodes"; roots
+        | roots, nodes  -> printfn "roots: %A, nodes %A" roots.Length nodes.Length
+                           roots |> List.map(fun g -> g |> addGroups ((nodes |> List.filter(fun n -> g |> isParentOf n) |> build)))
+
+    build groups
+     
 // Some test groups
-let overige = groups |> List.find(fun g -> g.Name = "OVERIGE DIURETICA")
+let overige    = groups |> List.find(fun g -> g.Name = "OVERIGE DIURETICA")
 let diuretica  = groups |> List.find(fun g -> g.Name = "DIURETICA")
 let protozoica = groups |> List.find(fun g -> g.Name = "ANTIPROTOZOICA")
 
-let children, parents = groups |> List.partition(fun g -> g |> isChild groups)
-
-let newparents = parents |> List.map(fun p -> p |> addChildren children)
-
-newparents |> storelist writeListToTest
+groups |> buildTree |> storelist writeListToTest
 
 // Delete a collection of documents in the test database
 let deleteByIndex (store: IDocumentStore) index =
@@ -145,4 +158,29 @@ let deleteByIndex (store: IDocumentStore) index =
     let session = store.OpenSession()
     session.Advanced.DocumentStore.DatabaseCommands.ForDatabase("Test").DeleteByIndex("Raven/DocumentsByEntityName", query, true)
     do session.SaveChanges()
+
+//MSNAAM	Merkstamnaam		50	A	037-086
     
+//GRP001	FTK 1		4	N	201-204
+//GRP002	FTK 2		4	N	205-208
+//GRP003	FTK 3		4	N	209-212
+//GRP004	FTK 4		4	N	213-216
+//GRP005	FTK 5		4	N	217-220
+
+
+type Product = { Name: string; FTK: TherapeuticGroup list } 
+
+let productGroups groups (ftk: string) = 
+    let sl = [0..4..15] |> List.map(fun i -> ftk.Substring(i, 4))
+    groups |> List.filter(fun g -> sl |> List.exists(fun fk -> fk = g.GroupCode))
+
+let createProduct (sl: string list) = { Name = sl.[0].Trim(); FTK = sl.[1] |> productGroups groups } 
+ 
+let productList (l: string list list) = 
+    l |> List.filter(fun sl -> sl.[0].Trim() = "" |> not) |> List.map(fun g -> g |> createProduct)
+
+let products =
+    let positions = [{Start = 37; End = 86};{Start = 201; End = 220}]
+    productfile |> getlinesfromfile |> Array.toList |> splitFile positions |> productList 
+
+products |> storelist writeListToTest
