@@ -8,6 +8,12 @@
 
 #load "Library1.fs"
 #load "TreeStructures.fs"
+open System.Collections.Generic
+open System
+open System.IO
+open System.Net
+open System.Text.RegularExpressions
+
 open Informedica.GenImport.GStandard.FSharp
 open Raven.Client
 open Raven.Client.Extensions
@@ -36,16 +42,19 @@ let createDatabase(store: Raven.Client.IDocumentStore) name =
     
 
 // Define G-Standard files
-let path = @"c:\tmp\062012\"
-let productfile = "BST031T"
-let genericfile = "BST031T"
+let gstandUrl = @"http://www.z-index.nl/g-standaard/beschrijvingen/technisch/Bestanden/bestand?bestandsnaam="
+let gstandPath = @"c:\tmp\062012\"
+let ziFile = "BST031T"
+let gpkFile = "BST031T"
 let namefile = "BST020T"
-let thesauriTotalFile = "BST902T"
+let thesauriFile = "BST902T"
 let fieldsFile = "BST001T"
 let groupFile = "BST500T"
 
+let gstandFileUrl file = gstandUrl + file
+
 // Define G-Standard structure
-type Position = {Start: int; End: int}
+type Position = { ColName: string; Descr: string; Start: int; End: int}
 
 type GFile = { Name: string; Path: string }
 
@@ -53,10 +62,71 @@ type GField = { Name: string; Position: Position; ForeignKey: GFile list option 
 
 type GStruct = { File: GFile; FieldList: GField list}
 
+// Fetches a Web page.
+let fetch (url : string) =
+    try
+        let req = WebRequest.Create(url) :?> HttpWebRequest
+        req.UserAgent <- "Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)"
+        req.Timeout <- 5000
+        use resp = req.GetResponse()
+        let content = resp.ContentType
+        let isHtml = Regex("html").IsMatch(content)
+        match isHtml with
+        | true -> use stream = resp.GetResponseStream()
+                  use reader = new StreamReader(stream)
+                  let html = reader.ReadToEnd()
+                  Some html
+        | false -> None
+    with
+    | _ -> None
+
+let getTableName html =
+    let m = Regex.Match(html, @"Bestand\s\d\d\d(.*?)\<", RegexOptions.IgnoreCase)
+
+    let name = m.Groups.[1].ToString().Trim().Replace(' ', '_').Replace('-', '_')
+    Regex.Replace(name, "[^A-Za-z0-9 _]", "")
+
+let columnInfo html =
+    let tr = @"\<tr\sclass=""(odd|even)"".*?\>(.*?)<\/tr\>"
+    let th = @"\<th\>\<.*?\>(.*?)\<"
+    let td = @"\<td.*?\>(.*?)\<"
+    let cn r = Regex.Match(r, th, RegexOptions.IgnoreCase).Groups.[1].ToString()
+    let metaData r = Regex.Matches(r, td, RegexOptions.IgnoreCase)
+    let clength cl = System.Int32.Parse(Regex.Replace(cl, @"\(.*?\)", ""))
+
+    let descr (md: MatchCollection) = md.[0].Groups.[1].ToString().Replace(' ', '_').Replace('-', '_')
+    let colname md = 
+        let md = md |> descr
+        Regex.Replace(md, "[^A-Za-z0-9 _]", "")
+    let position (md: MatchCollection) = 
+        let md = md.[4].Groups.[1].ToString()
+        (Int32.Parse(md.Split('-').[0]), Int32.Parse(md.Split('-').[1]))
+    
+    let m = Regex.Matches(html, tr, RegexOptions.Singleline)
+    seq { for i in m do
+                let md = i.Groups.[2].ToString() |> metaData
+                let cl = md.[2].Groups.[1].ToString()
+                yield { ColName = i.Groups.[2].ToString() |> cn; Descr = md |> colname; Start = md |> position |> fst; End = md |> position |> snd}
+                }
+
+
+let enumerateFiles path =
+    printfn "path enumerate: %A" path
+    seq { for file in (new DirectoryInfo(path)).EnumerateFiles() do yield file }    
+
 // Read files
 let getlines p f = System.IO.File.ReadAllLines(p + f)
-let getlinesfromfile = getlines path
+let gettext  p f = System.IO.File.ReadAllText(p + f)
+let getlinesfromfile = getlines gstandPath
 
+let rec tableInfo table path = 
+    let path = path + "\\cached_files\\"
+    let file = table + ".html"
+    match path |> enumerateFiles |> Seq.toList |> Seq.exists(fun f -> f.Name = file) with
+    | false -> let html = table |> gstandFileUrl |> fetch 
+               File.WriteAllText(path + file, html.Value)
+               tableInfo table path
+    | _ -> file |> gettext path |> columnInfo
 
 // Parse files
 let getPosition (p:Position) (l: string) = 
@@ -98,7 +168,7 @@ type TherapeuticGroup = { Id: string; GroupCode: string; Name: string; Text: str
 
 let hiearchyCode (c: string) = [c.Substring(0,3);c.Substring(2,2);c.Substring(4,2);c.Substring(6,2);c.Substring(8,2)] |> List.filter(fun s -> s = "00" |> not)
 
-let createGroup (sl: string list) = { Id = ""; GroupCode = sl.[0] ; Name = sl.[1].Trim(); Text = ""; HiearchyCode = (sl.[2] |> hiearchyCode); Groups = [] }
+let createGroup (sl: string list) = { Id = ""; GroupCode = sl.[2] ; Name = sl.[4].Trim(); Text = ""; HiearchyCode = (sl.[5] |> hiearchyCode); Groups = [] }
 
 let addGroup (g1: TherapeuticGroup) (g2: TherapeuticGroup) =
     { g1 with Groups = match g1.Groups with |[] -> [g2] | _ -> g2::g1.Groups  } 
@@ -132,7 +202,8 @@ let groupList (l: string list list) =
     l |> List.map(fun g -> g |> createGroup)
 
 let groups = 
-    let positions = [{Start = 6; End = 9};{Start = 11; End = 60};{Start = 61; End = 71}]
+    let positions = gstandPath |> tableInfo groupFile |> Seq.toList
+    printfn "positions: %A" positions
     groupFile |> getlinesfromfile |> Array.toList |> splitFile positions |> groupList 
 
 let partNodes l = l |> List.partition(fun g -> g |> isRoot l)
@@ -153,7 +224,7 @@ let overige    = groups |> List.find(fun g -> g.Name = "OVERIGE DIURETICA")
 let diuretica  = groups |> List.find(fun g -> g.Name = "DIURETICA")
 let protozoica = groups |> List.find(fun g -> g.Name = "ANTIPROTOZOICA")
 
-groups |> buildTree |> storelist writeListToTest
+//groups |> buildTree |> storelist writeListToTest
 
 // Delete a collection of documents in the test database
 let deleteByIndex (store: IDocumentStore) index =
@@ -174,17 +245,17 @@ let deleteByIndex (store: IDocumentStore) index =
 
 type Product = { Name: string; FTK: TherapeuticGroup list } 
 
-let productGroups groups (ftk: string) = 
-    let sl = [0..4..15] |> List.map(fun i -> ftk.Substring(i, 4))
+let productGroups groups (sl: string list) = 
+    let sl = [18..1..20] |> List.map(fun i -> sl.[i])
     groups |> List.filter(fun g -> sl |> List.exists(fun fk -> fk = g.GroupCode))
 
-let createProduct (sl: string list) = { Name = sl.[0].Trim(); FTK = sl.[1] |> productGroups groups } 
+let createProduct (sl: string list) = { Name = sl.[6].Trim(); FTK = sl |> productGroups groups } 
  
 let productList (l: string list list) = 
     l |> List.filter(fun sl -> sl.[0].Trim() = "" |> not) |> List.map(fun g -> g |> createProduct)
 
 let products =
-    let positions = [{Start = 37; End = 86};{Start = 201; End = 220}]
-    productfile |> getlinesfromfile |> Array.toList |> splitFile positions |> productList 
+    let positions = gstandPath |> tableInfo ziFile |> Seq.toList
+    ziFile |> getlinesfromfile |> Array.toList |> splitFile positions |> productList 
 
-products |> storelist writeListToTest
+//products |> storelist writeListToTest
