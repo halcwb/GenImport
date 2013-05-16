@@ -54,7 +54,7 @@ let groupFile = "BST500T"
 let gstandFileUrl file = gstandUrl + file
 
 // Define G-Standard structure
-type Position = { ColName: string; Descr: string; Start: int; End: int}
+type Position = { ColName: string; Descr: string; Start: int; End: int; Value: string }
 
 type GFile = { Name: string; Path: string }
 
@@ -106,7 +106,7 @@ let columnInfo html =
     seq { for i in m do
                 let md = i.Groups.[2].ToString() |> metaData
                 let cl = md.[2].Groups.[1].ToString()
-                yield { ColName = i.Groups.[2].ToString() |> cn; Descr = md |> colname; Start = md |> position |> fst; End = md |> position |> snd}
+                yield { ColName = i.Groups.[2].ToString() |> cn; Descr = md |> colname; Start = md |> position |> fst; End = md |> position |> snd; Value = "" }
                 }
 
 
@@ -117,7 +117,7 @@ let enumerateFiles path =
 // Read files
 let getlines p f = System.IO.File.ReadAllLines(p + f)
 let gettext  p f = System.IO.File.ReadAllText(p + f)
-let getlinesfromfile = getlines gstandPath
+let getLinesFromFile = getlines gstandPath
 
 let rec tableInfo table path = 
     let path = path + "\\cached_files\\"
@@ -126,11 +126,11 @@ let rec tableInfo table path =
     | false -> let html = table |> gstandFileUrl |> fetch 
                File.WriteAllText(path + file, html.Value)
                tableInfo table path
-    | _ -> file |> gettext path |> columnInfo
+    | _ -> file |> gettext path |> columnInfo |> Seq.cache
 
 // Parse files
 let getPosition (p:Position) (l: string) = 
-    l.Substring(p.Start - 1, p.End - (p.Start - 1)) 
+    { p with Value = l.Substring(p.Start - 1, p.End - (p.Start - 1))}
 
 let splitLine (pl: Position list) (l: string) =
     pl |> List.map(fun pos -> l |> getPosition pos)
@@ -168,7 +168,7 @@ type TherapeuticGroup = { Id: string; GroupCode: string; Name: string; Text: str
 
 let hiearchyCode (c: string) = [c.Substring(0,3);c.Substring(2,2);c.Substring(4,2);c.Substring(6,2);c.Substring(8,2)] |> List.filter(fun s -> s = "00" |> not)
 
-let createGroup (sl: string list) = { Id = ""; GroupCode = sl.[2] ; Name = sl.[4].Trim(); Text = ""; HiearchyCode = (sl.[5] |> hiearchyCode); Groups = [] }
+let createGroup (sl: Position list) = { Id = ""; GroupCode = sl.[2].Value ; Name = sl.[4].Value.Trim(); Text = ""; HiearchyCode = (sl.[5].Value |> hiearchyCode); Groups = [] }
 
 let addGroup (g1: TherapeuticGroup) (g2: TherapeuticGroup) =
     { g1 with Groups = match g1.Groups with |[] -> [g2] | _ -> g2::g1.Groups  } 
@@ -198,13 +198,13 @@ let addChildren gl g =
     gl |> List.filter(fun c -> g |> isParentOf c) |> add g
 
 
-let groupList (l: string list list) = 
+let groupList (l: Position list list) = 
     l |> List.map(fun g -> g |> createGroup)
 
 let groups = 
     let positions = gstandPath |> tableInfo groupFile |> Seq.toList
-    printfn "positions: %A" positions
-    groupFile |> getlinesfromfile |> Array.toList |> splitFile positions |> groupList 
+    printfn "positions: %A\n" positions
+    groupFile |> getLinesFromFile |> Array.toList |> splitFile positions |> groupList 
 
 let partNodes l = l |> List.partition(fun g -> g |> isRoot l)
 
@@ -245,17 +245,40 @@ let deleteByIndex (store: IDocumentStore) index =
 
 type Product = { Name: string; FTK: TherapeuticGroup list } 
 
-let productGroups groups (sl: string list) = 
+let productGroups groups (sl: Position list) = 
     let sl = [18..1..20] |> List.map(fun i -> sl.[i])
-    groups |> List.filter(fun g -> sl |> List.exists(fun fk -> fk = g.GroupCode))
+    groups |> List.filter(fun g -> sl |> List.exists(fun fk -> fk.Value = g.GroupCode))
 
-let createProduct (sl: string list) = { Name = sl.[6].Trim(); FTK = sl |> productGroups groups } 
+let createProduct (sl: Position list) = { Name = sl.[6].Value.Trim(); FTK = sl |> productGroups groups } 
  
-let productList (l: string list list) = 
-    l |> List.filter(fun sl -> sl.[0].Trim() = "" |> not) |> List.map(fun g -> g |> createProduct)
+let productList (l: Position list list) = 
+    l |> List.filter(fun sl -> sl.[0].Value.Trim() = "" |> not) |> List.map(fun g -> g |> createProduct)
 
 let products =
     let positions = gstandPath |> tableInfo ziFile |> Seq.toList
-    ziFile |> getlinesfromfile |> Array.toList |> splitFile positions |> productList 
+    ziFile |> getLinesFromFile |> Array.toList |> splitFile positions |> productList 
 
 //products |> storelist writeListToTest
+
+let map = [("BST004T", "ATNMNR"); ("BST020T","NMNR");("BST020T","NMNAAM")]
+
+let getTable t =
+    let positions = gstandPath |> tableInfo t |> Seq.toList
+    t |> getLinesFromFile |> Array.toList |> splitFile positions
+
+let rowData field row = 
+    let value = (row |> List.find(fun c -> c.ColName = field)).Value
+    value
+
+let tableRow tr t =
+    let f, k = tr
+    t |> List.find(fun r -> r |> rowData f = k)
+
+let mapField row map = 
+    let rec mF row map =
+        printf "looping row: %A" (row |> rowData "BSTNUM")
+        match map with
+        | (t,f)::tail when tail.Length > 0 -> tail |> mF (t |> getTable |> tableRow (f, row |> rowData f))
+        | (t,f)::_                         -> t |> getTable |> tableRow (f, row |> rowData f) |> rowData f
+        
+    mF row map
